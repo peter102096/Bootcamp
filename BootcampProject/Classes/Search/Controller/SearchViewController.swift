@@ -71,13 +71,11 @@ class SearchViewController: BaseViewController {
 
         viewModel.output.searchResult
             .drive(onNext: { [weak self] result in
-                if let self = self {
-                    self.dismissLoadingView()
-                    if result["Music"] is MusicModel, result["Movie"] is MovieModel {
-                        DispatchQueue.main.async {
-                            self.searchResultTableView.reloadData()
-                            self.searchResultTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-                        }
+                self?.dismissLoadingView()
+                if let self = self, result["Music"] is MusicModel, result["Movie"] is MovieModel {
+                    DispatchQueue.main.async {
+                        self.searchResultTableView.reloadData()
+                        self.searchResultTableView.scrollRectToVisible(.init(x: 0, y: 0, width: 1, height: 1), animated: true)
                     }
                 }
             })

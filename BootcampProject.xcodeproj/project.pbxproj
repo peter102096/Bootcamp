@@ -25,6 +25,7 @@
 		9111582C2AAEE0CC0009965D /* BootcampProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9111582B2AAEE0CC0009965D /* BootcampProjectUITestsLaunchTests.swift */; };
 		911158402AAF09400009965D /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9111583F2AAF09400009965D /* APIModel.swift */; };
 		9128BE032AB7D4AB00F596FF /* BookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9128BE022AB7D4AB00F596FF /* BookmarkButton.swift */; };
+		913FCC132AB9684C001796FE /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913FCC122AB9684C001796FE /* BookmarkViewModel.swift */; };
 		916AD40F2AB04B00001491DD /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916AD40E2AB04B00001491DD /* UserViewController.xib */; };
 		916AD4112AB04C81001491DD /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4102AB04C81001491DD /* MainNavController.swift */; };
 		916AD4142AB04DBA001491DD /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4122AB04DBA001491DD /* MovieTableViewCell.swift */; };
@@ -38,7 +39,7 @@
 		916AD4242AB05A46001491DD /* UIViewController+RxAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD41F2AB05A46001491DD /* UIViewController+RxAdditions.swift */; };
 		916AD4262AB05AB2001491DD /* UISearchBar+Fluent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4252AB05AB2001491DD /* UISearchBar+Fluent.swift */; };
 		916AD4282AB05D64001491DD /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4272AB05D64001491DD /* Global.swift */; };
-		916AD42C2AB05ED2001491DD /* Int+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD42B2AB05ED2001491DD /* Int+Format.swift */; };
+		916AD42C2AB05ED2001491DD /* TimeInterval+Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD42B2AB05ED2001491DD /* TimeInterval+Format.swift */; };
 		916AD42F2AB0625C001491DD /* SearchViewController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD42E2AB0625C001491DD /* SearchViewController+UITableView.swift */; };
 		916AD4312AB148C5001491DD /* UIButton+Fluent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4302AB148C5001491DD /* UIButton+Fluent.swift */; };
 		916AD4332AB149DE001491DD /* UIColor+Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4322AB149DE001491DD /* UIColor+Customer.swift */; };
@@ -63,7 +64,7 @@
 		91AC831C2AB427B500A06B9B /* String+Fluent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC831B2AB427B500A06B9B /* String+Fluent.swift */; };
 		91C2F6172AB042380019D2F6 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C2F6162AB042380019D2F6 /* SearchViewController.xib */; };
 		91D3FD962AB04AE5006EB68D /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3FD942AB04AE5006EB68D /* UserViewController.swift */; };
-		91E4803C2AB8426900F1CAB9 /* BookmarkModel+Fluent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E4803B2AB8426900F1CAB9 /* BookmarkModel+Fluent.swift */; };
+		91E480412AB946D500F1CAB9 /* UILabel+IsTruncated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E480402AB946D500F1CAB9 /* UILabel+IsTruncated.swift */; };
 		D08FC0A72AB86524002380BF /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FC0A62AB86524002380BF /* Delegates.swift */; };
 		D08FC0A92AB866FF002380BF /* BookmarkViewController+MediaTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FC0A82AB866FF002380BF /* BookmarkViewController+MediaTableViewCellDelegate.swift */; };
 		D08FC0AB2AB8692A002380BF /* MediaResultModel+BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FC0AA2AB8692A002380BF /* MediaResultModel+BookmarkModel.swift */; };
@@ -114,6 +115,7 @@
 		9111583F2AAF09400009965D /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
 		911158412AAF0AB60009965D /* Project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project-Bridging-Header.h"; sourceTree = "<group>"; };
 		9128BE022AB7D4AB00F596FF /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
+		913FCC122AB9684C001796FE /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		916AD40E2AB04B00001491DD /* UserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
 		916AD4102AB04C81001491DD /* MainNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
 		916AD4122AB04DBA001491DD /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
@@ -127,7 +129,7 @@
 		916AD41F2AB05A46001491DD /* UIViewController+RxAdditions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+RxAdditions.swift"; sourceTree = "<group>"; };
 		916AD4252AB05AB2001491DD /* UISearchBar+Fluent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Fluent.swift"; sourceTree = "<group>"; };
 		916AD4272AB05D64001491DD /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
-		916AD42B2AB05ED2001491DD /* Int+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Format.swift"; sourceTree = "<group>"; };
+		916AD42B2AB05ED2001491DD /* TimeInterval+Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Format.swift"; sourceTree = "<group>"; };
 		916AD42E2AB0625C001491DD /* SearchViewController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewController+UITableView.swift"; sourceTree = "<group>"; };
 		916AD4302AB148C5001491DD /* UIButton+Fluent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Fluent.swift"; sourceTree = "<group>"; };
 		916AD4322AB149DE001491DD /* UIColor+Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Customer.swift"; sourceTree = "<group>"; };
@@ -152,7 +154,7 @@
 		91AC831B2AB427B500A06B9B /* String+Fluent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Fluent.swift"; sourceTree = "<group>"; };
 		91C2F6162AB042380019D2F6 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		91D3FD942AB04AE5006EB68D /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
-		91E4803B2AB8426900F1CAB9 /* BookmarkModel+Fluent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarkModel+Fluent.swift"; sourceTree = "<group>"; };
+		91E480402AB946D500F1CAB9 /* UILabel+IsTruncated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+IsTruncated.swift"; sourceTree = "<group>"; };
 		BE3D9A54F596B6AD1649D79E /* Pods-BootcampProject-BootcampProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BootcampProject-BootcampProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-BootcampProject-BootcampProjectUITests/Pods-BootcampProject-BootcampProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BF34C843F3D4ED00A30FF5FD /* Pods-BootcampProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BootcampProject.debug.xcconfig"; path = "Target Support Files/Pods-BootcampProject/Pods-BootcampProject.debug.xcconfig"; sourceTree = "<group>"; };
 		D08FC0A62AB86524002380BF /* Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				916AD4382AB1562F001491DD /* UserViewModel.swift */,
+				913FCC122AB9684C001796FE /* BookmarkViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -410,16 +413,17 @@
 			children = (
 				916AD43E2AB15BB9001491DD /* DB */,
 				916AD41A2AB05A18001491DD /* Extensions */,
+				91E4803F2AB946B200F1CAB9 /* Utils */,
 				D08FC0A52AB8631B002380BF /* View */,
 				9111583F2AAF09400009965D /* APIModel.swift */,
 				91AC830A2AB29F9F00A06B9B /* BaseViewController.swift */,
 				D08FC0A62AB86524002380BF /* Delegates.swift */,
 				916AD4272AB05D64001491DD /* Global.swift */,
+				91AC830C2AB2A25700A06B9B /* LoadingView.swift */,
 				910CA9DE2AB03B66002C8CB9 /* MovieModel.swift */,
 				910CA9D22AB006CA002C8CB9 /* MusicModel.swift */,
-				916AD43A2AB15657001491DD /* ViewModelType.swift */,
-				91AC830C2AB2A25700A06B9B /* LoadingView.swift */,
 				91AC830E2AB2AB6F00A06B9B /* ShareDefaults.swift */,
+				916AD43A2AB15657001491DD /* ViewModelType.swift */,
 			);
 			path = Commons;
 			sourceTree = "<group>";
@@ -427,10 +431,10 @@
 		916AD41A2AB05A18001491DD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				916AD42B2AB05ED2001491DD /* Int+Format.swift */,
 				D08FC0AA2AB8692A002380BF /* MediaResultModel+BookmarkModel.swift */,
 				916AD41C2AB05A46001491DD /* ObserableType+Extensions.swift */,
 				91AC831B2AB427B500A06B9B /* String+Fluent.swift */,
+				916AD42B2AB05ED2001491DD /* TimeInterval+Format.swift */,
 				916AD4302AB148C5001491DD /* UIButton+Fluent.swift */,
 				916AD4322AB149DE001491DD /* UIColor+Customer.swift */,
 				916AD4342AB14A47001491DD /* UIImage+Customer.swift */,
@@ -459,7 +463,6 @@
 		916AD43E2AB15BB9001491DD /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				91E4803A2AB8425C00F1CAB9 /* Extensions */,
 				916AD43C2AB15B91001491DD /* DBModel.swift */,
 				916AD43F2AB15BE0001491DD /* BookmarkModel.swift */,
 			);
@@ -475,12 +478,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		91E4803A2AB8425C00F1CAB9 /* Extensions */ = {
+		91E4803F2AB946B200F1CAB9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				91E4803B2AB8426900F1CAB9 /* BookmarkModel+Fluent.swift */,
+				91E480402AB946D500F1CAB9 /* UILabel+IsTruncated.swift */,
 			);
-			path = Extensions;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		D08FC0A52AB8631B002380BF /* View */ = {
@@ -765,7 +768,6 @@
 				91D3FD962AB04AE5006EB68D /* UserViewController.swift in Sources */,
 				916AD4282AB05D64001491DD /* Global.swift in Sources */,
 				91AC830B2AB29F9F00A06B9B /* BaseViewController.swift in Sources */,
-				91E4803C2AB8426900F1CAB9 /* BookmarkModel+Fluent.swift in Sources */,
 				911158402AAF09400009965D /* APIModel.swift in Sources */,
 				910CA9E72AB0420D002C8CB9 /* SearchViewController.swift in Sources */,
 				91AC83092AB29EF000A06B9B /* WKWebView+Fluent.swift in Sources */,
@@ -788,9 +790,11 @@
 				916AD4142AB04DBA001491DD /* MovieTableViewCell.swift in Sources */,
 				916AD4242AB05A46001491DD /* UIViewController+RxAdditions.swift in Sources */,
 				91AC830F2AB2AB6F00A06B9B /* ShareDefaults.swift in Sources */,
-				916AD42C2AB05ED2001491DD /* Int+Format.swift in Sources */,
+				916AD42C2AB05ED2001491DD /* TimeInterval+Format.swift in Sources */,
+				91E480412AB946D500F1CAB9 /* UILabel+IsTruncated.swift in Sources */,
 				9111580B2AAEE0CB0009965D /* SceneDelegate.swift in Sources */,
 				916AD4262AB05AB2001491DD /* UISearchBar+Fluent.swift in Sources */,
+				913FCC132AB9684C001796FE /* BookmarkViewModel.swift in Sources */,
 				916AD4182AB04DC6001491DD /* MusicTableViewCell.swift in Sources */,
 				916AD4222AB05A46001491DD /* UITableView+Fluent.swift in Sources */,
 				916AD4402AB15BE0001491DD /* BookmarkModel.swift in Sources */,

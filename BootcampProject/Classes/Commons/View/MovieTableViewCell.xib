@@ -10,64 +10,68 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell" id="KGk-i7-Jjw" customClass="MovieTableViewCell" customModule="BootcampProject" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="369" height="171"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell" rowHeight="168" id="KGk-i7-Jjw" customClass="MovieTableViewCell" customModule="BootcampProject" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="361" height="168"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="369" height="171"/>
+                <rect key="frame" x="0.0" y="0.0" width="361" height="168"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gce-BR-Rnx">
-                        <rect key="frame" x="6" y="57.333333333333329" width="60" height="56.999999999999986"/>
+                        <rect key="frame" x="6" y="55.666666666666657" width="60" height="57"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="LFW-zf-K6x"/>
                             <constraint firstAttribute="width" secondItem="gce-BR-Rnx" secondAttribute="height" multiplier="1:1" id="NSp-xR-hEQ"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrackName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciJ-wm-VtR">
-                        <rect key="frame" x="82" y="6" width="281" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrackName" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciJ-wm-VtR">
+                        <rect key="frame" x="82" y="5.9999999999999982" width="221" height="20.333333333333329"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="artistName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GA7-xy-cKD">
-                        <rect key="frame" x="82" y="33" width="281" height="17"/>
+                        <rect key="frame" x="82" y="32.333333333333336" width="221" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="collectionName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBB-Yi-ugt">
-                        <rect key="frame" x="82" y="56" width="281" height="17"/>
+                        <rect key="frame" x="82" y="55.333333333333336" width="221" height="17.000000000000007"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="影片長度 00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8Q-7V-YdG">
-                        <rect key="frame" x="82" y="79" width="281" height="17"/>
+                        <rect key="frame" x="82" y="78.333333333333329" width="221" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="long descriptionlong descriptionlong descriptionlong descriptionlong descriptionlong description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rfb-qa-LRd">
-                        <rect key="frame" x="82" y="102" width="281" height="33.666666666666657"/>
+                        <rect key="frame" x="82" y="101.33333333333333" width="221" height="33.666666666666671"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJI-EK-9hJ" customClass="BookmarkButton" customModule="BootcampProject" customModuleProvider="target">
+                        <rect key="frame" x="309" y="66" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="fJI-EK-9hJ" secondAttribute="height" multiplier="1:1" id="vJA-3z-Z9r"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="star" catalog="system"/>
+                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRQ-yG-GaR">
-                        <rect key="frame" x="299" y="137.66666666666666" width="64" height="31.333333333333343"/>
+                        <rect key="frame" x="239" y="137" width="64" height="29"/>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="...read more"/>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJI-EK-9hJ" customClass="BookmarkButton" customModule="BootcampProject" customModuleProvider="target">
-                        <rect key="frame" x="325" y="72.333333333333329" width="28" height="26.666666666666671"/>
-                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                        <state key="normal" image="star" catalog="system"/>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="GA7-xy-cKD" firstAttribute="leading" secondItem="ciJ-wm-VtR" secondAttribute="leading" id="6bp-RK-30F"/>
+                    <constraint firstItem="GRQ-yG-GaR" firstAttribute="trailing" secondItem="ciJ-wm-VtR" secondAttribute="trailing" id="Bun-mN-pzy"/>
                     <constraint firstItem="Rfb-qa-LRd" firstAttribute="trailing" secondItem="ciJ-wm-VtR" secondAttribute="trailing" id="CfG-Ls-C2S"/>
                     <constraint firstItem="Rfb-qa-LRd" firstAttribute="leading" secondItem="ciJ-wm-VtR" secondAttribute="leading" id="ES7-QT-lt1"/>
                     <constraint firstItem="gce-BR-Rnx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="EY5-fD-Wnw"/>
@@ -75,22 +79,22 @@
                     <constraint firstItem="ciJ-wm-VtR" firstAttribute="leading" secondItem="gce-BR-Rnx" secondAttribute="trailing" constant="16" id="Fia-ts-X7d"/>
                     <constraint firstItem="tBB-Yi-ugt" firstAttribute="leading" secondItem="ciJ-wm-VtR" secondAttribute="leading" id="GMh-w7-raz"/>
                     <constraint firstAttribute="bottom" secondItem="GRQ-yG-GaR" secondAttribute="bottom" constant="2" id="Ghl-G3-fIP"/>
-                    <constraint firstAttribute="trailing" secondItem="GRQ-yG-GaR" secondAttribute="trailing" constant="6" id="Hkv-rJ-lhe"/>
                     <constraint firstItem="GA7-xy-cKD" firstAttribute="trailing" secondItem="ciJ-wm-VtR" secondAttribute="trailing" id="Ia7-Cy-djY"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gce-BR-Rnx" secondAttribute="bottom" constant="6" id="KDK-r2-mhu"/>
                     <constraint firstItem="Rfb-qa-LRd" firstAttribute="top" secondItem="S8Q-7V-YdG" secondAttribute="bottom" constant="6" id="NGd-bJ-xSs"/>
                     <constraint firstItem="gce-BR-Rnx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="SKV-IQ-8Y6"/>
                     <constraint firstItem="S8Q-7V-YdG" firstAttribute="trailing" secondItem="ciJ-wm-VtR" secondAttribute="trailing" id="YeO-Ta-peu"/>
+                    <constraint firstItem="fJI-EK-9hJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bbo-2z-UcC"/>
                     <constraint firstItem="GRQ-yG-GaR" firstAttribute="top" secondItem="Rfb-qa-LRd" secondAttribute="bottom" constant="2" id="cyQ-cE-uDI"/>
                     <constraint firstItem="S8Q-7V-YdG" firstAttribute="leading" secondItem="ciJ-wm-VtR" secondAttribute="leading" id="fZv-hG-vat"/>
-                    <constraint firstAttribute="trailing" secondItem="ciJ-wm-VtR" secondAttribute="trailing" constant="6" id="iG9-HW-41C"/>
+                    <constraint firstItem="fJI-EK-9hJ" firstAttribute="leading" secondItem="ciJ-wm-VtR" secondAttribute="trailing" constant="6" id="hZP-9t-18U"/>
                     <constraint firstItem="ciJ-wm-VtR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="ihJ-Bu-e3a"/>
-                    <constraint firstItem="fJI-EK-9hJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ii5-my-v3W"/>
                     <constraint firstItem="S8Q-7V-YdG" firstAttribute="top" secondItem="tBB-Yi-ugt" secondAttribute="bottom" constant="6" id="kVL-ee-oXv"/>
                     <constraint firstItem="tBB-Yi-ugt" firstAttribute="top" secondItem="GA7-xy-cKD" secondAttribute="bottom" constant="6" id="kXX-ce-1YN"/>
                     <constraint firstItem="GRQ-yG-GaR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gce-BR-Rnx" secondAttribute="trailing" constant="6" id="r0o-yv-NNd"/>
                     <constraint firstItem="GA7-xy-cKD" firstAttribute="top" secondItem="ciJ-wm-VtR" secondAttribute="bottom" constant="6" id="rWN-rn-cF3"/>
                     <constraint firstItem="tBB-Yi-ugt" firstAttribute="trailing" secondItem="ciJ-wm-VtR" secondAttribute="trailing" id="umz-tS-CWs"/>
+                    <constraint firstItem="fJI-EK-9hJ" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.1" id="wJQ-Kh-hdl"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -104,7 +108,7 @@
                 <outlet property="trackCensoredNameLabel" destination="tBB-Yi-ugt" id="TZd-vP-Esr"/>
                 <outlet property="trackNameLabel" destination="ciJ-wm-VtR" id="VT9-XZ-VF2"/>
             </connections>
-            <point key="canvasLocation" x="67.938931297709928" y="47.535211267605639"/>
+            <point key="canvasLocation" x="63.358778625954194" y="53.521126760563384"/>
         </tableViewCell>
     </objects>
     <resources>

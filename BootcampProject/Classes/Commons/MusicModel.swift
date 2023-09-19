@@ -20,7 +20,7 @@ struct MusicResultModel: Codable {
     let trackViewURL: String
     let thumbnailURL: String
     let releaseDate: String
-    let trackTimeMillis: Int?
+    let trackTimeMillis: TimeInterval?
 
     enum CodingKeys: String, CodingKey {
         case trackID = "trackId"

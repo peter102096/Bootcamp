@@ -149,7 +149,7 @@ class UserViewController: BaseViewController {
     }
 
     private func updateAppearanceWithShareDefault(_ isDarkMode: Bool) {
-        ShareDefaults.shared.setAppearance(isDarkMode: isDarkMode) { [weak self] isSuccess in
+        ShareDefaults.shared.setDarkMode(isDarkMode) { [weak self] isSuccess in
             if isSuccess {
                 Global.isDarkMode = isDarkMode
                 DispatchQueue.main.async { [weak self] in

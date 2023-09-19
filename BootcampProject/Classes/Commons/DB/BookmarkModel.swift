@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 import RealmSwift
 
 enum MediaType: String {
@@ -16,7 +17,7 @@ class BookmarkModel: Object {
     @objc dynamic var trackViewURL: String = ""
     @objc dynamic var thumbnailURL: String = ""
     @objc dynamic var releaseDate: String = ""
-    @objc dynamic var trackTimeMillis: Int = 0
+    @objc dynamic var trackTimeMillis: TimeInterval = 0
     @objc dynamic var longDescription: String = ""
     @objc dynamic var isLiked: Bool = false
     
@@ -24,7 +25,7 @@ class BookmarkModel: Object {
         return "trackId"
     }
 
-    convenience init(trackId: String, type: MediaType, artistName: String, collectionName: String, trackName: String, trackViewURL: String, thumbnailURL: String, releaseDate: String, trackTimeMillis: Int, longDescription: String, isLiked: Bool) {
+    convenience init(trackId: String, type: MediaType, artistName: String, collectionName: String, trackName: String, trackViewURL: String, thumbnailURL: String, releaseDate: String, trackTimeMillis: TimeInterval, longDescription: String, isLiked: Bool) {
         self.init()
         self.trackId = trackId
         self.type = type.rawValue

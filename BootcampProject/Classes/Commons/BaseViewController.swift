@@ -27,6 +27,9 @@ class BaseViewController: UIViewController {
     }
 
     open func updateAppearance() {
+        tabBarController?.tabBar.tintColor = Global.isDarkMode ? ._EEEEF0 : ._1C1C20
+        tabBarController?.tabBar.unselectedItemTintColor = Global.isDarkMode ? ._5B5B60 : ._B9B9B9
+
         view.backgroundColor = Global.isDarkMode ? .darkModeBgColor: .lightModeBgColor
         tabBarController?.navigationController?.navigationBar.tintColor = Global.isDarkMode ? .darkModeTxtColor : .lightModeTxtColor
         tabBarController?.navigationController?.navigationBar.backgroundColor = Global.isDarkMode ? .darkModeBgColor : .lightModeBgColor

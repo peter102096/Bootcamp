@@ -6,7 +6,7 @@ extension MovieResultModel {
             trackId: String(trackID),
             type: .Movie,
             artistName: artistName,
-            collectionName: trackCensoredName ?? "",
+            collectionName: collectionName ?? "",
             trackName: trackName,
             trackViewURL: trackViewURL,
             thumbnailURL: thumbnailURL,

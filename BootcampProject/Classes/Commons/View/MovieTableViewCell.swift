@@ -41,10 +41,11 @@ class MovieTableViewCell: UITableViewCell {
         thunbnilImgView.sd_setImage(with: URL(string: model.thumbnailURL), placeholderImage: .photoIcon, options: [.refreshCached, .allowInvalidSSLCertificates])
         trackNameLabel.text = model.trackName
         artistNameLabel.text = model.artistName
-        trackCensoredNameLabel.text = model.trackCensoredName
+        trackCensoredNameLabel.text = model.collectionName
         durationLabel.text = model.trackTimeMillis == nil ? "NA:NA:NA" : model.trackTimeMillis?.movieFormat
         longDscriptionLabel.text = model.longDescription
         bookmarkBtn.isLiked = isLiked
+        longDscriptionLabel.isTruncated ? readMoreBtn.setHiddenState(false) : readMoreBtn.setHiddenState(true)
         
         bookmarkBtnDisposable = bookmarkBtn.rx.tap
             .subscribe { [weak self] _ in
@@ -65,6 +66,7 @@ class MovieTableViewCell: UITableViewCell {
         durationLabel.text = model.trackTimeMillis == 0 ? "NA:NA:NA" : model.trackTimeMillis.movieFormat
         longDscriptionLabel.text = model.longDescription
         bookmarkBtn.isLiked = model.isLiked
+        longDscriptionLabel.isTruncated ? readMoreBtn.setHiddenState(false) : readMoreBtn.setHiddenState(true)
         
         bookmarkBtnDisposable = bookmarkBtn.rx.tap
             .subscribe { [weak self] _ in

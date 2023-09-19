@@ -11,6 +11,8 @@ class SearchViewModel: NSObject, ViewModelType {
 
     private(set) var searchResult = BehaviorRelay<Dictionary<String, Codable?>>(value: ["Movie": nil, "Music": nil])
 
+    private(set) var bookmarkList: BehaviorRelay<[BookmarkModel]> = .init(value: [])
+
     private let disposeBag = DisposeBag()
 
     private let group = DispatchGroup()
@@ -54,7 +56,6 @@ class SearchViewModel: NSObject, ViewModelType {
             }
         }
         group.notify(queue: .main) { [weak self] in
-//            dump(tmpSearchResult)
             self?.searchResult.accept(tmpSearchResult)
         }
     }

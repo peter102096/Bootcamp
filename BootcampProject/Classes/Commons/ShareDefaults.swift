@@ -11,7 +11,8 @@ class ShareDefaults: NSObject {
         user = UserDefaults()
         super.init()
     }
-    func setAppearance(isDarkMode: Bool, completion: @escaping (Bool) -> Void) {
+
+    func setDarkMode(_ isDarkMode: Bool, completion: @escaping (Bool) -> Void) {
         user.set(isDarkMode, forKey: KEY_APPEARANCE)
         completion(user.synchronize())
     }
