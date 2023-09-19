@@ -12,7 +12,7 @@ extension MovieResultModel {
             thumbnailURL: thumbnailURL,
             releaseDate: releaseDate,
             trackTimeMillis: trackTimeMillis ?? 0,
-            longDescription: longDescription,
+            longDescription: longDescription ?? "",
             isLiked: true)
     }
 }

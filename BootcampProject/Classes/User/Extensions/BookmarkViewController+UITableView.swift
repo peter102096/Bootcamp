@@ -18,6 +18,10 @@ extension BookmarkViewController: UITableViewDelegate {
             break
         }
     }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }
 
 extension BookmarkViewController: UITableViewDataSource {
@@ -37,7 +41,7 @@ extension BookmarkViewController: UITableViewDataSource {
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as? MovieTableViewCell {
                 cell.delegates = self
-                cell.setUp(moveieBookmarksList[indexPath.row], indexPath: indexPath)
+                cell.setUp(moveieBookmarksList[indexPath.row])
                 return cell
             }
             break

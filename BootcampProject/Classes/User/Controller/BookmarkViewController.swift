@@ -17,6 +17,7 @@ class BookmarkViewController: BaseViewController {
             .setRegister(UINib(nibName: "MusicTableViewCell", bundle: nil), forCellReuseIdentifier: "MusicTableViewCell")
             .setRegister(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
             .setSeparatorStyle(.none)
+            .setTableFooterView(.init())
             .setDelaysContentTouches(false)
             .setDataSource(self)
             .setDelegate(self)

@@ -393,7 +393,6 @@
 			isa = PBXGroup;
 			children = (
 				91C2F6162AB042380019D2F6 /* SearchViewController.xib */,
-				9128BE022AB7D4AB00F596FF /* BookmarkButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -487,6 +486,7 @@
 		D08FC0A52AB8631B002380BF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9128BE022AB7D4AB00F596FF /* BookmarkButton.swift */,
 				916AD4122AB04DBA001491DD /* MovieTableViewCell.swift */,
 				916AD4132AB04DBA001491DD /* MovieTableViewCell.xib */,
 				916AD4162AB04DC6001491DD /* MusicTableViewCell.swift */,

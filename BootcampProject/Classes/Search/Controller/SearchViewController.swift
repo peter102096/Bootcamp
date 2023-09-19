@@ -15,6 +15,7 @@ class SearchViewController: BaseViewController {
             .setRegister(UINib(nibName: "MusicTableViewCell", bundle: nil), forCellReuseIdentifier: "MusicTableViewCell")
             .setRegister(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
             .setSeparatorStyle(.none)
+            .setTableFooterView(.init())
             .setDelaysContentTouches(false)
             .setDataSource(self)
             .setDelegate(self)
@@ -63,7 +64,7 @@ class SearchViewController: BaseViewController {
                 if let self = self {
                     self.searchBar.resignFirstResponder()
                     self.showLoadingView(in: self.view)
-                    self.viewModel.input.keyword.onNext(searchBar.text!)
+                    self.viewModel.input.keyword.onNext(self.searchBar.text!)
                 }
             }
             .disposed(by: disposeBag)
@@ -73,13 +74,14 @@ class SearchViewController: BaseViewController {
                 if let self = self {
                     self.dismissLoadingView()
                     if result["Music"] is MusicModel, result["Movie"] is MovieModel {
-                        self.searchResultTableView.reloadData()
+                        DispatchQueue.main.async {
+                            self.searchResultTableView.reloadData()
+                            self.searchResultTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                        }
                     }
                 }
-                
             })
             .disposed(by: disposeBag)
-            
     }
 
     override func updateAppearance() {

@@ -15,7 +15,7 @@ struct MovieResultModel: Codable {
     let thumbnailURL: String
     let releaseDate: String
     let trackTimeMillis: Int?
-    let longDescription: String
+    let longDescription: String?
     
     enum CodingKeys: String, CodingKey {
         case trackID = "trackId"

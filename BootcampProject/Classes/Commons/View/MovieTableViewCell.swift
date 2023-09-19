@@ -26,6 +26,8 @@ class MovieTableViewCell: UITableViewCell {
 
     weak var delegates: MediaTableViewCellDelegate?
 
+    private var isExpanded = false
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -34,7 +36,7 @@ class MovieTableViewCell: UITableViewCell {
         debugPrint(self.classForCoder, "deinit")
     }
 
-    func setUp(_ model: MovieResultModel, isLiked: Bool, indexPath: IndexPath) {
+    func setUp(_ model: MovieResultModel, isLiked: Bool) {
         resetViewState()
         thunbnilImgView.sd_setImage(with: URL(string: model.thumbnailURL), placeholderImage: .photoIcon, options: [.refreshCached, .allowInvalidSSLCertificates])
         trackNameLabel.text = model.trackName
@@ -49,20 +51,12 @@ class MovieTableViewCell: UITableViewCell {
                 if let self = self {
                     self.bookmarkBtn.isLiked.toggle()
 
-                    self.bookmarkBtn.isLiked ? setBookmark(model) : DBModel.shared.removeBookmark(String(model.trackID))
+                    self.bookmarkBtn.isLiked ? self.setBookmark(model) : DBModel.shared.removeBookmark(String(model.trackID))
                 }
             }
-
-        readMoreBtnDisposable = readMoreBtn.rx.tap
-            .subscribe(onNext: {  [weak self] _ in
-                if let self = self {
-                    self.longDscriptionLabel.numberOfLines = 0
-                    self.delegates?.didTapExpendedBtn?(self, indexPath: indexPath)
-                }
-            })
     }
 
-    func setUp(_ model: BookmarkModel, indexPath: IndexPath) {
+    func setUp(_ model: BookmarkModel) {
         resetViewState()
         thunbnilImgView.sd_setImage(with: URL(string: model.thumbnailURL), placeholderImage: .photoIcon, options: [.refreshCached, .allowInvalidSSLCertificates])
         trackNameLabel.text = model.trackName
@@ -80,14 +74,6 @@ class MovieTableViewCell: UITableViewCell {
                     self.delegates?.didDeselectBookmark(self, model: model)
                 }
             }
-
-        readMoreBtnDisposable = readMoreBtn.rx.tap
-            .subscribe(onNext: {  [weak self] _ in
-                if let self = self {
-                    self.longDscriptionLabel.numberOfLines = 0
-                    self.delegates?.didTapExpendedBtn?(self, indexPath: indexPath)
-                }
-            })
     }
 
     private func setBookmark(_ model: MovieResultModel) {
@@ -108,5 +94,15 @@ class MovieTableViewCell: UITableViewCell {
         bookmarkBtnDisposable?.dispose()
         readMoreBtnDisposable?.dispose()
         updateAppearance()
+        readMoreBtnDisposable = readMoreBtn.rx.tap
+            .subscribe(onNext: {  [weak self] _ in
+                if let self = self, let tableView = self.superview as? UITableView {
+                    self.isExpanded.toggle()
+                    self.longDscriptionLabel.numberOfLines = self.isExpanded ? 0 : 2
+                    self.readMoreBtn.setTitle(self.isExpanded ? "read less" : "...read more")
+                    tableView.beginUpdates()
+                    tableView.endUpdates()
+                }
+            })
     }
 }

@@ -18,6 +18,17 @@ extension SearchViewController: UITableViewDelegate {
             break
         }
     }
+
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.contentView.backgroundColor = Global.isDarkMode ? .darkModeBgColor : .lightModeBgColor
+            headerView.textLabel?.textColor = Global.isDarkMode ? .darkModeTxtColor : .lightModeTxtColor
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }
 extension SearchViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -45,20 +56,13 @@ extension SearchViewController: UITableViewDataSource {
             return nil
         }
     }
-
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if let headerView = view as? UITableViewHeaderFooterView {
-            headerView.contentView.backgroundColor = Global.isDarkMode ? .darkModeBgColor : .lightModeBgColor
-            headerView.textLabel?.textColor = Global.isDarkMode ? .darkModeTxtColor : .lightModeTxtColor
-        }
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as? MovieTableViewCell {
                 if let movieResult = (viewModel.searchResult.value["Movie"] as? MovieModel)?.results[indexPath.row] {
-                    cell.setUp(movieResult, isLiked: bookmarkList.first(where: { $0.trackId == String(movieResult.trackID) })?.isLiked ?? false, indexPath: indexPath)
+                    cell.setUp(movieResult, isLiked: bookmarkList.first(where: { $0.trackId == String(movieResult.trackID) })?.isLiked ?? false)
                 }
                 return cell
             }
