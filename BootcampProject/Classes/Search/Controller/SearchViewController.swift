@@ -36,6 +36,7 @@ class SearchViewController: BaseViewController {
 
     override func setupUI() {
         view.addSubview(searchBar)
+
         searchBar.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(6)
             $0.leading.trailing.equalToSuperview().inset(6)
@@ -129,7 +130,7 @@ class SearchViewController: BaseViewController {
                 clearButton.isHidden = false
                 let tintedClearImage = clearBtnImg.withTintColor(Global.isDarkMode ? ._8B8B92! : ._B9B9B9!)
                 clearButton.setImage(tintedClearImage, for: .normal)
-            }else{
+            } else {
                 clearButton.isHidden = true
             }
         }

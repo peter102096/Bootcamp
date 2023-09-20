@@ -31,6 +31,11 @@ class BookmarkViewController: BaseViewController {
         super.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        title = "FavoriteItem".localized()
+    }
+
     override func setupUI() {
         view.addSubview(mediaTypeSegmentControl)
         mediaTypeSegmentControl.snp.makeConstraints {

@@ -6,6 +6,6 @@ struct Key {
     static let SEARCH_VC = "SearchViewController"
     static let USER_VC = "UserViewController"
     static let BOOKMARK_VC = "BookmarkViewController"
-    static let WEBVIEW_VC = "WebViewController"
+    static let WEBVIEW_VC = "AboutiTunesViewController"
 
 }

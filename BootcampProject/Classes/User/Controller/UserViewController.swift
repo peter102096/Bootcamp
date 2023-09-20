@@ -22,7 +22,7 @@ class UserViewController: BaseViewController {
 
     lazy var bookmarkTitleLabel: UILabel = {
         UILabel()
-            .setText("LightTheme".localized())
+            .setText("FavoriteItem".localized())
             .setTextAlignment(.left)
             .setFont(UIFont.boldSystemFont(ofSize: 17))
     }()
@@ -111,7 +111,7 @@ class UserViewController: BaseViewController {
 
         aboutAppleButton.rx.tap
             .subscribe { [weak self] _ in
-                let vc = WebViewController(nibName: Key.WEBVIEW_VC, bundle: nil)
+                let vc = AboutiTunesViewController(nibName: Key.WEBVIEW_VC, bundle: nil)
                 self?.pushViewController(vc)
             }
             .disposed(by: disposeBag)

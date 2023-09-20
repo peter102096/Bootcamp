@@ -2,6 +2,7 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     let searchVC = SearchViewController(nibName: Key.SEARCH_VC, bundle: nil)
+
     let userVC = UserViewController(nibName: Key.USER_VC, bundle: nil)
 
     override func viewDidLoad() {
@@ -14,5 +15,4 @@ class MainTabBarController: UITabBarController {
         searchVC.tabBarItem.image = .searchIcon
         userVC.tabBarItem.image = .personIcon
     }
-
 }

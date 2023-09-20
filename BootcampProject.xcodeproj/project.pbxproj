@@ -16,7 +16,6 @@
 		910CA9E72AB0420D002C8CB9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910CA9E52AB0420D002C8CB9 /* SearchViewController.swift */; };
 		911158092AAEE0CB0009965D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911158082AAEE0CB0009965D /* AppDelegate.swift */; };
 		9111580B2AAEE0CB0009965D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9111580A2AAEE0CB0009965D /* SceneDelegate.swift */; };
-		9111580D2AAEE0CB0009965D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9111580C2AAEE0CB0009965D /* MainViewController.swift */; };
 		911158102AAEE0CB0009965D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9111580E2AAEE0CB0009965D /* Main.storyboard */; };
 		911158122AAEE0CC0009965D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 911158112AAEE0CC0009965D /* Assets.xcassets */; };
 		911158152AAEE0CC0009965D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911158132AAEE0CC0009965D /* LaunchScreen.storyboard */; };
@@ -50,8 +49,8 @@
 		916AD43B2AB15657001491DD /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD43A2AB15657001491DD /* ViewModelType.swift */; };
 		916AD43D2AB15B91001491DD /* DBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD43C2AB15B91001491DD /* DBModel.swift */; };
 		916AD4402AB15BE0001491DD /* BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD43F2AB15BE0001491DD /* BookmarkModel.swift */; };
-		916AD4452AB29CDD001491DD /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4432AB29CDD001491DD /* WebViewController.swift */; };
-		91AC83052AB29CF800A06B9B /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91AC83042AB29CF800A06B9B /* WebViewController.xib */; };
+		916AD4452AB29CDD001491DD /* AboutiTunesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4432AB29CDD001491DD /* AboutiTunesViewController.swift */; };
+		91AC83052AB29CF800A06B9B /* AboutiTunesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91AC83042AB29CF800A06B9B /* AboutiTunesViewController.xib */; };
 		91AC83072AB29DF700A06B9B /* UIViewController+NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC83062AB29DF700A06B9B /* UIViewController+NavigationController.swift */; };
 		91AC83092AB29EF000A06B9B /* WKWebView+Fluent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC83082AB29EF000A06B9B /* WKWebView+Fluent.swift */; };
 		91AC830B2AB29F9F00A06B9B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC830A2AB29F9F00A06B9B /* BaseViewController.swift */; };
@@ -105,7 +104,6 @@
 		911158052AAEE0CB0009965D /* BootcampProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BootcampProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		911158082AAEE0CB0009965D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9111580A2AAEE0CB0009965D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9111580C2AAEE0CB0009965D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		9111580F2AAEE0CB0009965D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		911158112AAEE0CC0009965D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		911158142AAEE0CC0009965D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -143,8 +141,8 @@
 		916AD43A2AB15657001491DD /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		916AD43C2AB15B91001491DD /* DBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBModel.swift; sourceTree = "<group>"; };
 		916AD43F2AB15BE0001491DD /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
-		916AD4432AB29CDD001491DD /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		91AC83042AB29CF800A06B9B /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		916AD4432AB29CDD001491DD /* AboutiTunesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutiTunesViewController.swift; sourceTree = "<group>"; };
+		91AC83042AB29CF800A06B9B /* AboutiTunesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutiTunesViewController.xib; sourceTree = "<group>"; };
 		91AC83062AB29DF700A06B9B /* UIViewController+NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+NavigationController.swift"; sourceTree = "<group>"; };
 		91AC83082AB29EF000A06B9B /* WKWebView+Fluent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+Fluent.swift"; sourceTree = "<group>"; };
 		91AC830A2AB29F9F00A06B9B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -241,7 +239,7 @@
 			children = (
 				91AC83102AB2E34900A06B9B /* BookmarkViewController.swift */,
 				91D3FD942AB04AE5006EB68D /* UserViewController.swift */,
-				916AD4432AB29CDD001491DD /* WebViewController.swift */,
+				916AD4432AB29CDD001491DD /* AboutiTunesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -249,7 +247,6 @@
 		910CA9D82AB03A91002C8CB9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9111580C2AAEE0CB0009965D /* MainViewController.swift */,
 				910CA9E22AB04053002C8CB9 /* MainTabBarController.swift */,
 				916AD4102AB04C81001491DD /* MainNavController.swift */,
 			);
@@ -277,7 +274,7 @@
 			children = (
 				91AC83112AB2E34900A06B9B /* BookmarkViewController.xib */,
 				916AD40E2AB04B00001491DD /* UserViewController.xib */,
-				91AC83042AB29CF800A06B9B /* WebViewController.xib */,
+				91AC83042AB29CF800A06B9B /* AboutiTunesViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -635,7 +632,7 @@
 				916AD4192AB04DC6001491DD /* MusicTableViewCell.xib in Resources */,
 				91AC83132AB2E34900A06B9B /* BookmarkViewController.xib in Resources */,
 				916AD40F2AB04B00001491DD /* UserViewController.xib in Resources */,
-				91AC83052AB29CF800A06B9B /* WebViewController.xib in Resources */,
+				91AC83052AB29CF800A06B9B /* AboutiTunesViewController.xib in Resources */,
 				91FC38F92ABACF5200397633 /* Localizable.strings in Resources */,
 				916AD4152AB04DBA001491DD /* MovieTableViewCell.xib in Resources */,
 				911158122AAEE0CC0009965D /* Assets.xcassets in Resources */,
@@ -785,7 +782,6 @@
 				91AC83092AB29EF000A06B9B /* WKWebView+Fluent.swift in Sources */,
 				916AD4312AB148C5001491DD /* UIButton+Fluent.swift in Sources */,
 				916AD4392AB1562F001491DD /* UserViewModel.swift in Sources */,
-				9111580D2AAEE0CB0009965D /* MainViewController.swift in Sources */,
 				910CA9E32AB04053002C8CB9 /* MainTabBarController.swift in Sources */,
 				916AD4212AB05A46001491DD /* ObserableType+Extensions.swift in Sources */,
 				D08FC0A72AB86524002380BF /* Delegates.swift in Sources */,
@@ -813,7 +809,7 @@
 				916AD4222AB05A46001491DD /* UITableView+Fluent.swift in Sources */,
 				916AD4402AB15BE0001491DD /* BookmarkModel.swift in Sources */,
 				91AC83122AB2E34900A06B9B /* BookmarkViewController.swift in Sources */,
-				916AD4452AB29CDD001491DD /* WebViewController.swift in Sources */,
+				916AD4452AB29CDD001491DD /* AboutiTunesViewController.swift in Sources */,
 				916AD4352AB14A47001491DD /* UIImage+Customer.swift in Sources */,
 				91AC830D2AB2A25700A06B9B /* LoadingView.swift in Sources */,
 				916AD43B2AB15657001491DD /* ViewModelType.swift in Sources */,
