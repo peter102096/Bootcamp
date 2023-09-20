@@ -23,22 +23,12 @@ class BookmarkViewController: BaseViewController {
             .setDelegate(self)
     }()
 
-    internal var moveieBookmarksList: [BookmarkModel] = []
-    internal var musicBookmarksList: [BookmarkModel] = []
+    internal let viewModel = BookmarkViewModel()
 
     let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        getBookmarks()
     }
 
     override func setupUI() {
@@ -57,10 +47,34 @@ class BookmarkViewController: BaseViewController {
     }
 
     override func bindView() {
+        super.bindView()
         mediaTypeSegmentControl.rx.selectedSegmentIndex
             .subscribe { [weak self] _ in
                 self?.bookmarksTableView.reloadData()
             }
+            .disposed(by: disposeBag)
+
+        rx.viewDidAppear
+            .subscribe(onNext: { [weak self] _ in
+                self?.showLoadingView(in: self?.view, style: .Normal)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    override func bindViewModel() {
+        rx.viewDidAppear
+            .mapToVoid()
+            .bind(to: viewModel.input.refresh)
+            .disposed(by: disposeBag)
+
+        viewModel.output.bookmarks
+            .drive(onNext: { [weak self] bookmarks in
+                self?.dismissLoadingView()
+                DispatchQueue.main.async {
+                    self?.bookmarksTableView.reloadData()
+                }
+
+            })
             .disposed(by: disposeBag)
     }
 
@@ -75,18 +89,5 @@ class BookmarkViewController: BaseViewController {
         mediaTypeSegmentControl.tintColor = Global.isDarkMode ? ._1C1C20 : ._EEEEF0
         mediaTypeSegmentControl.selectedSegmentTintColor = Global.isDarkMode ? ._5B5B60 : .white
         mediaTypeSegmentControl.setTitleTextAttributes([.foregroundColor: Global.isDarkMode ? UIColor.darkModeTxtColor! : UIColor.lightModeTxtColor!], for: .normal)
-    }
-
-    internal func getBookmarks() {
-        showLoadingView(in: view, style: .Normal)
-        DBModel.shared.getBookmarks { [weak self] result in
-            self?.dismissLoadingView()
-            let totalBookmarks = result
-            self?.moveieBookmarksList = totalBookmarks.filter({ $0.mediaType == .Movie })
-            self?.musicBookmarksList = totalBookmarks.filter({ $0.mediaType == .Music })
-            DispatchQueue.main.async { [weak self] in
-                self?.bookmarksTableView.reloadData()
-            }
-        }
     }
 }

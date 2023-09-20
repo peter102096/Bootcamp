@@ -17,5 +17,5 @@
 "LightTheme" = "淺色主題";
 "Cancel" = "取消";
 "FavoriteItem" = "收藏項目";
-"ShareFavoritesFormat" = "共有 %4d 項收藏";
+"ShareFavoritesFormat" = "共有 %@ 項收藏";
 "AboutiTunes" = "關於Apple iTunes";

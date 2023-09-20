@@ -29,7 +29,7 @@ class UserViewController: BaseViewController {
 
     lazy var bookmarkButton: UIButton = {
         UIButton(type: .system)
-            .setTitle("ShareFavoritesFormat".localizedWithFormat(1472))
+            .setTitle("ShareFavoritesFormat".localizedWithFormat(1000))
             .setContentMode(.scaleAspectFit)
             .setImage(.rightIcon)
             .setSemanticContent(.forceRightToLeft)
@@ -95,6 +95,7 @@ class UserViewController: BaseViewController {
     }
 
     override func bindView() {
+        super.bindView()
         themeButton.rx.tap
             .subscribe { [weak self] _ in
                 self?.showThemeActionSheet()
@@ -113,6 +114,28 @@ class UserViewController: BaseViewController {
                 let vc = WebViewController(nibName: Key.WEBVIEW_VC, bundle: nil)
                 self?.pushViewController(vc)
             }
+            .disposed(by: disposeBag)
+
+        rx.viewDidAppear
+            .subscribe(onNext: { [weak self] _ in
+                self?.showLoadingView(in: self?.view, style: .Normal)
+            })
+            .disposed(by: disposeBag)
+    }
+
+    override func bindViewModel() {
+        rx.viewDidAppear
+            .mapToVoid()
+            .bind(to: viewModel.input.refresh)
+            .disposed(by: disposeBag)
+
+        viewModel.output.bookmarks
+            .drive(onNext: { [weak self] (bookmarks) in
+                self?.dismissLoadingView()
+                DispatchQueue.main.async {
+                    self?.bookmarkButton.setTitle("ShareFavoritesFormat".localizedWithFormat(bookmarks.count + 1000))
+                }
+            })
             .disposed(by: disposeBag)
     }
 

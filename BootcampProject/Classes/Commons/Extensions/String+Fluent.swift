@@ -7,7 +7,9 @@ extension String {
     func localized() -> String {
         NSLocalizedString(self, comment: "")
     }
-    func localizedWithFormat(_ arguments: CVarArg...) -> String {
-        String.localizedStringWithFormat(self, arguments)
+    func localizedWithFormat(_ argument: Int) -> String {
+        let localized = localized()
+        let formatterInt = NumberFormatter.localizedString(from: argument as NSNumber, number: .decimal)
+        return String(format: localized, formatterInt)
     }
 }

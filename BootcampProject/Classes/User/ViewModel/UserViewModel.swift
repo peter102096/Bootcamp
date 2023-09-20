@@ -14,10 +14,15 @@ class UserViewModel: NSObject, ViewModelType {
 
     override init() {
         super.init()
+        let bookmarks = refresh.flatMapLatest { [weak self] in
+            self?.getBookmarks() ?? .empty()
+        }.asDriver(onErrorJustReturn: [])
+
         input = .init(refresh: self.refresh.asObserver())
+        output = .init(bookmarks: bookmarks)
     }
 
-    private func getBookmarks() -> Driver<[BookmarkModel]> {
+    private func getBookmarks() -> Observable<[BookmarkModel]> {
         Observable.create { observer in
             DBModel.shared.getBookmarks { bookmarks in
                 observer.onNext(bookmarks)
@@ -25,7 +30,6 @@ class UserViewModel: NSObject, ViewModelType {
             }
             return Disposables.create()
         }
-        .asDriver(onErrorJustReturn: [])
     }
 }
 extension UserViewModel {
@@ -34,7 +38,6 @@ extension UserViewModel {
     }
 
     struct Output {
-        let appearance: Driver<AppearanceMode>
         let bookmarks: Driver<[BookmarkModel]>
     }
 }

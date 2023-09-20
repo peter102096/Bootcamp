@@ -17,5 +17,5 @@
 "LightTheme" = "Light Theme";
 "Cancel" = "Cancel";
 "FavoriteItem" = "Favorite Item";
-"ShareFavoritesFormat" = "Total %4d items";
+"ShareFavoritesFormat" = "Total %@ items";
 "AboutiTunes" = "About Apple iTunes";

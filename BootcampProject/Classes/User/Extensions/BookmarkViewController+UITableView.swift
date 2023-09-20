@@ -5,12 +5,12 @@ extension BookmarkViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         switch mediaTypeSegmentControl.selectedSegmentIndex {
         case 0:
-            if let url = URL(string: moveieBookmarksList[indexPath.row].trackViewURL), UIApplication.shared.canOpenURL(url) {
+            if let url = URL(string: viewModel.bookmarks.value[Key.MOVIE]![indexPath.row].trackViewURL), UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             }
             break
         case 1:
-            if let url = URL(string: musicBookmarksList[indexPath.row].trackViewURL), UIApplication.shared.canOpenURL(url) {
+            if let url = URL(string: viewModel.bookmarks.value[Key.MUSIC]![indexPath.row].trackViewURL), UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             }
             break
@@ -28,9 +28,9 @@ extension BookmarkViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch mediaTypeSegmentControl.selectedSegmentIndex {
         case 0:
-            return moveieBookmarksList.count
+            return viewModel.bookmarks.value[Key.MOVIE]!.count
         case 1:
-            return musicBookmarksList.count
+            return viewModel.bookmarks.value[Key.MUSIC]!.count
         default:
             return 0
         }
@@ -41,14 +41,14 @@ extension BookmarkViewController: UITableViewDataSource {
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: Key.MOVIE_CELL, for: indexPath) as? MovieTableViewCell {
                 cell.delegates = self
-                cell.setUp(moveieBookmarksList[indexPath.row])
+                cell.setUp(viewModel.bookmarks.value[Key.MOVIE]![indexPath.row])
                 return cell
             }
             break
         case 1:
             if let cell = tableView.dequeueReusableCell(withIdentifier: Key.MUSIC_CELL, for: indexPath) as? MusicTableViewCell {
                 cell.delegate = self
-                cell.setUp(musicBookmarksList[indexPath.row])
+                cell.setUp(viewModel.bookmarks.value[Key.MUSIC]![indexPath.row])
                 return cell
             }
             break
