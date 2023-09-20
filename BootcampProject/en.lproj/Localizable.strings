@@ -1,0 +1,21 @@
+//搜尋頁面
+"Search" = "Search";
+"PleaseEnterKeyword" = "Please enter a keyword.";
+"Movie" = "Movie";
+"Music" = "Music";
+"ReadMore" = "...read more";
+"ReadLess" = "read less";
+"Error" = "Error";
+"KeywordNotEmpty" = "Keyword cannot be empty.";
+"Confirm" = "Confirm";
+"ExpectionError" = "Something expection error";
+
+//個人頁面
+"UserInfo" = "User Info";
+"ThemeColor" = "App Theme Color";
+"DarkTheme" = "Dark Theme";
+"LightTheme" = "Light Theme";
+"Cancel" = "Cancel";
+"FavoriteItem" = "Favorite Item";
+"ShareFavoritesFormat" = "Total %4d items";
+"AboutiTunes" = "About Apple iTunes";

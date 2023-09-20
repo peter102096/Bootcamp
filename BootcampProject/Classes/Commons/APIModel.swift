@@ -1,5 +1,5 @@
 import UIKit
-//import AFNetworking
+import AFNetworking
 
 class APIModel: NSObject {
     public static let shared = APIModel()
@@ -8,7 +8,7 @@ class APIModel: NSObject {
     var statusCode: Int? = 404
     private let baseUrl = "https://itunes.apple.com/search"
     private let countryTW = "country=TW"
-    private let group = DispatchGroup()
+    private var tasks: [URLSessionDataTask?] = []
     private override init() {
         super.init()
     }
@@ -27,9 +27,16 @@ class APIModel: NSObject {
         }
     }
 
+    public func cancelAllRequest() {
+        for task in tasks {
+            task?.cancel()
+        }
+        tasks.removeAll()
+    }
+
     private func getFromServer<T: Codable>(url: String, dataStruct struct: T.Type, param: Any? = nil, headers: Dictionary<String, String>? = nil, completion: @escaping APICallback) {
         statusCode = 404
-        manager.get(url, parameters: nil, headers: nil, progress: nil) { [weak self] (task, responseObject) in
+        tasks.append(manager.get(url, parameters: nil, headers: nil, progress: nil) { [weak self] (task, responseObject) in
             if let response = task.response as? HTTPURLResponse, let jsonDict = responseObject as? [String: Any] {
                 self?.statusCode = response.statusCode
                 do {
@@ -43,11 +50,11 @@ class APIModel: NSObject {
                 completion(self?.statusCode, nil)
             }
         } failure: { [weak self] (task, error) in
-            debugPrint(error.localizedDescription)
+            debugPrint("API", "getFromServer \(T.self) failure: \(error.localizedDescription)")
             if let response = task?.response as? HTTPURLResponse {
                 self?.statusCode = response.statusCode
             }
             completion(self?.statusCode, nil)
-        }
+        })
     }
 }

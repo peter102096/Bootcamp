@@ -7,15 +7,15 @@ class BookmarkViewController: BaseViewController {
 
     lazy var mediaTypeSegmentControl: UISegmentedControl = {
         UISegmentedControl()
-            .insertSegment("電影")
-            .insertSegment("音樂")
+            .insertSegment("Movie".localized())
+            .insertSegment("Music".localized())
             .selectedSegmentIndex(0)
     }()
     
     lazy var bookmarksTableView: UITableView = {
         UITableView()
-            .setRegister(UINib(nibName: "MusicTableViewCell", bundle: nil), forCellReuseIdentifier: "MusicTableViewCell")
-            .setRegister(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: "MovieTableViewCell")
+            .setRegister(UINib(nibName: Key.MUSIC_CELL, bundle: nil), forCellReuseIdentifier: Key.MUSIC_CELL)
+            .setRegister(UINib(nibName: Key.MOVIE_CELL, bundle: nil), forCellReuseIdentifier: Key.MOVIE_CELL)
             .setSeparatorStyle(.none)
             .setTableFooterView(.init())
             .setDelaysContentTouches(false)
@@ -56,7 +56,7 @@ class BookmarkViewController: BaseViewController {
         }
     }
 
-    override func bindingView() {
+    override func bindView() {
         mediaTypeSegmentControl.rx.selectedSegmentIndex
             .subscribe { [weak self] _ in
                 self?.bookmarksTableView.reloadData()
@@ -78,7 +78,7 @@ class BookmarkViewController: BaseViewController {
     }
 
     internal func getBookmarks() {
-        showLoadingView(in: view)
+        showLoadingView(in: view, style: .Normal)
         DBModel.shared.getBookmarks { [weak self] result in
             self?.dismissLoadingView()
             let totalBookmarks = result

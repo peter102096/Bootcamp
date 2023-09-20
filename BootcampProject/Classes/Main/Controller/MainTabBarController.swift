@@ -1,8 +1,8 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
-    let searchVC = SearchViewController(nibName: "SearchViewController", bundle: nil)
-    let userVC = UserViewController(nibName: "UserViewController", bundle: nil)
+    let searchVC = SearchViewController(nibName: Key.SEARCH_VC, bundle: nil)
+    let userVC = UserViewController(nibName: Key.USER_VC, bundle: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()

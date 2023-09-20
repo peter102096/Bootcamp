@@ -26,6 +26,7 @@
 		911158402AAF09400009965D /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9111583F2AAF09400009965D /* APIModel.swift */; };
 		9128BE032AB7D4AB00F596FF /* BookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9128BE022AB7D4AB00F596FF /* BookmarkButton.swift */; };
 		913FCC132AB9684C001796FE /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913FCC122AB9684C001796FE /* BookmarkViewModel.swift */; };
+		913FCC172AB99445001796FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913FCC162AB99445001796FE /* ViewController.swift */; };
 		916AD40F2AB04B00001491DD /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916AD40E2AB04B00001491DD /* UserViewController.xib */; };
 		916AD4112AB04C81001491DD /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4102AB04C81001491DD /* MainNavController.swift */; };
 		916AD4142AB04DBA001491DD /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4122AB04DBA001491DD /* MovieTableViewCell.swift */; };
@@ -65,6 +66,8 @@
 		91C2F6172AB042380019D2F6 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C2F6162AB042380019D2F6 /* SearchViewController.xib */; };
 		91D3FD962AB04AE5006EB68D /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3FD942AB04AE5006EB68D /* UserViewController.swift */; };
 		91E480412AB946D500F1CAB9 /* UILabel+IsTruncated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E480402AB946D500F1CAB9 /* UILabel+IsTruncated.swift */; };
+		91FC38F92ABACF5200397633 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91FC38FB2ABACF5200397633 /* Localizable.strings */; };
+		91FC38FE2ABAD80E00397633 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FC38FD2ABAD80E00397633 /* Keys.swift */; };
 		D08FC0A72AB86524002380BF /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FC0A62AB86524002380BF /* Delegates.swift */; };
 		D08FC0A92AB866FF002380BF /* BookmarkViewController+MediaTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FC0A82AB866FF002380BF /* BookmarkViewController+MediaTableViewCellDelegate.swift */; };
 		D08FC0AB2AB8692A002380BF /* MediaResultModel+BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FC0AA2AB8692A002380BF /* MediaResultModel+BookmarkModel.swift */; };
@@ -116,6 +119,7 @@
 		911158412AAF0AB60009965D /* Project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project-Bridging-Header.h"; sourceTree = "<group>"; };
 		9128BE022AB7D4AB00F596FF /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
 		913FCC122AB9684C001796FE /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
+		913FCC162AB99445001796FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		916AD40E2AB04B00001491DD /* UserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
 		916AD4102AB04C81001491DD /* MainNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
 		916AD4122AB04DBA001491DD /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
@@ -155,6 +159,9 @@
 		91C2F6162AB042380019D2F6 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		91D3FD942AB04AE5006EB68D /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		91E480402AB946D500F1CAB9 /* UILabel+IsTruncated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+IsTruncated.swift"; sourceTree = "<group>"; };
+		91FC38FA2ABACF5200397633 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		91FC38FC2ABACF6600397633 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		91FC38FD2ABAD80E00397633 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		BE3D9A54F596B6AD1649D79E /* Pods-BootcampProject-BootcampProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BootcampProject-BootcampProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-BootcampProject-BootcampProjectUITests/Pods-BootcampProject-BootcampProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BF34C843F3D4ED00A30FF5FD /* Pods-BootcampProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BootcampProject.debug.xcconfig"; path = "Target Support Files/Pods-BootcampProject/Pods-BootcampProject.debug.xcconfig"; sourceTree = "<group>"; };
 		D08FC0A62AB86524002380BF /* Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
@@ -296,6 +303,7 @@
 				911158112AAEE0CC0009965D /* Assets.xcassets */,
 				911158162AAEE0CC0009965D /* Info.plist */,
 				9111580A2AAEE0CB0009965D /* SceneDelegate.swift */,
+				91FC38FB2ABACF5200397633 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -326,9 +334,10 @@
 			isa = PBXGroup;
 			children = (
 				911158382AAF03360009965D /* Classes */,
+				910CA9E12AB03F49002C8CB9 /* Resources */,
 				911158132AAEE0CC0009965D /* LaunchScreen.storyboard */,
 				911158412AAF0AB60009965D /* Project-Bridging-Header.h */,
-				910CA9E12AB03F49002C8CB9 /* Resources */,
+				913FCC162AB99445001796FE /* ViewController.swift */,
 			);
 			path = BootcampProject;
 			sourceTree = "<group>";
@@ -419,6 +428,7 @@
 				91AC830A2AB29F9F00A06B9B /* BaseViewController.swift */,
 				D08FC0A62AB86524002380BF /* Delegates.swift */,
 				916AD4272AB05D64001491DD /* Global.swift */,
+				91FC38FD2ABAD80E00397633 /* Keys.swift */,
 				91AC830C2AB2A25700A06B9B /* LoadingView.swift */,
 				910CA9DE2AB03B66002C8CB9 /* MovieModel.swift */,
 				910CA9D22AB006CA002C8CB9 /* MusicModel.swift */,
@@ -602,6 +612,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = 911157FC2AAEE0CB0009965D;
 			productRefGroup = 911158062AAEE0CB0009965D /* Products */;
@@ -625,6 +636,7 @@
 				91AC83132AB2E34900A06B9B /* BookmarkViewController.xib in Resources */,
 				916AD40F2AB04B00001491DD /* UserViewController.xib in Resources */,
 				91AC83052AB29CF800A06B9B /* WebViewController.xib in Resources */,
+				91FC38F92ABACF5200397633 /* Localizable.strings in Resources */,
 				916AD4152AB04DBA001491DD /* MovieTableViewCell.xib in Resources */,
 				911158122AAEE0CC0009965D /* Assets.xcassets in Resources */,
 				91C2F6172AB042380019D2F6 /* SearchViewController.xib in Resources */,
@@ -781,11 +793,13 @@
 				91AC831A2AB3FB5900A06B9B /* SearchViewModel.swift in Sources */,
 				91AC83162AB2E5AC00A06B9B /* BookmarkViewController+UITableView.swift in Sources */,
 				916AD4372AB150D3001491DD /* UIImage+Fluent.swift in Sources */,
+				91FC38FE2ABAD80E00397633 /* Keys.swift in Sources */,
 				D08FC0AB2AB8692A002380BF /* MediaResultModel+BookmarkModel.swift in Sources */,
 				916AD43D2AB15B91001491DD /* DBModel.swift in Sources */,
 				911158092AAEE0CB0009965D /* AppDelegate.swift in Sources */,
 				D08FC0AD2AB893D4002380BF /* SearchViewController+MediaTableViewCellDelegate.swift in Sources */,
 				916AD4202AB05A46001491DD /* UILabel+Fluent.swift in Sources */,
+				913FCC172AB99445001796FE /* ViewController.swift in Sources */,
 				910CA9D32AB006CA002C8CB9 /* MusicModel.swift in Sources */,
 				916AD4142AB04DBA001491DD /* MovieTableViewCell.swift in Sources */,
 				916AD4242AB05A46001491DD /* UIViewController+RxAdditions.swift in Sources */,
@@ -855,6 +869,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		91FC38FB2ABACF5200397633 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91FC38FA2ABACF5200397633 /* en */,
+				91FC38FC2ABACF6600397633 /* zh-Hant */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -862,6 +885,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -922,6 +946,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

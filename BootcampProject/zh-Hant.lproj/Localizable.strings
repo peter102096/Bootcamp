@@ -1,0 +1,21 @@
+//搜尋頁面
+"Search" = "搜尋";
+"PleaseEnterKeyword" = "請輸入關鍵字";
+"Movie" = "電影";
+"Music" = "音樂";
+"ReadMore" = "...展開";
+"ReadLess" = "縮小";
+"Error" = "錯誤";
+"KeywordNotEmpty" = "關鍵字不可為空";
+"Confirm" = "確認";
+"ExpectionError" = "發生一些預期外的錯誤";
+
+//個人頁面
+"UserInfo" = "個人資料";
+"ThemeColor" = "主題顏色";
+"DarkTheme" = "深色主題";
+"LightTheme" = "淺色主題";
+"Cancel" = "取消";
+"FavoriteItem" = "收藏項目";
+"ShareFavoritesFormat" = "共有 %4d 項收藏";
+"AboutiTunes" = "關於Apple iTunes";

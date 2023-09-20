@@ -1,6 +1,3 @@
-import Foundation
-
-class Global: NSObject {
-    static let concurrentQueue = DispatchQueue(label: "concurrentQueue", attributes: .concurrent)
+struct Global {
     static var isDarkMode = false
 }

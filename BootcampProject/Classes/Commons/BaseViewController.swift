@@ -1,17 +1,28 @@
 import UIKit
 import JGProgressHUD
+import RxCocoa
+import RxSwift
+
+enum LoadViewStyle {
+    case Normal
+    case WithCancelBtn
+    case Unknowned
+}
 
 class BaseViewController: UIViewController {
 
-    private let loadingView = JGProgressHUD()
+    private let loadingViewWithCancelBtn = CustomLoadingView()
+    private let loadingView = JGProgressHUD(style: Global.isDarkMode ? .dark : .light)
 
-    private let expectionAlert: UIAlertController = .init(title: "Error", message: "something expection error", preferredStyle: .alert)
+    private let expectionAlert: UIAlertController = .init(title: "Error".localized(), message: "ExpectionError".localized(), preferredStyle: .alert)
 
+    private let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
-        expectionAlert.addAction(.init(title: "關閉", style: .cancel))
+        expectionAlert.addAction(.init(title: "Confirm".localized(), style: .cancel))
         setupUI()
-        bindingView()
+        bindView()
+        bindViewModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -19,14 +30,24 @@ class BaseViewController: UIViewController {
         updateAppearance()
     }
 
-    open func setupUI() {
-        
+    open func setupUI() {}
+
+    open func bindView() {
+        loadingViewWithCancelBtn.cancelBtnClicked
+            .subscribe(onNext: { [weak self] in
+                self?.loadingCancelBtnClicked()
+            })
+            .disposed(by: disposeBag)
     }
 
-    open func bindingView() {
-    }
+    open func bindViewModel() {}
+
+    open func loadingCancelBtnClicked() {}
 
     open func updateAppearance() {
+        loadingViewWithCancelBtn.updateStyle(Global.isDarkMode ? .dark : .light)
+        loadingView.style = Global.isDarkMode ? .dark : .light
+
         tabBarController?.tabBar.tintColor = Global.isDarkMode ? ._EEEEF0 : ._1C1C20
         tabBarController?.tabBar.unselectedItemTintColor = Global.isDarkMode ? ._5B5B60 : ._B9B9B9
 
@@ -38,12 +59,21 @@ class BaseViewController: UIViewController {
         tabBarController?.setNeedsStatusBarAppearanceUpdate()
     }
 
-    func showLoadingView(in view: UIView) {
-        loadingView.show(in: view)
+    func showLoadingView(in view: UIView?, style: LoadViewStyle) {
+        if view == nil { return }
+        switch style {
+        case .Normal:
+            loadingView.show(in: view!)
+        case .WithCancelBtn:
+            loadingViewWithCancelBtn.show(in: view!)
+        case .Unknowned:
+            return
+        }
     }
 
     func dismissLoadingView() {
         loadingView.dismiss(animated: true)
+        loadingViewWithCancelBtn.dismiss(animated: true)
     }
 
     func showExceptionErrorAlert(message errorMsg: String) {

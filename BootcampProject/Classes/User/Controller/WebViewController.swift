@@ -33,11 +33,11 @@ class WebViewController: BaseViewController {
         }
     }
 
-    override func bindingView() {
+    override func bindView() {
         webview.rx.didStartLoad
             .subscribe { [weak self] nav in
                 if let self = self {
-                    self.showLoadingView(in: self.view)
+                    self.showLoadingView(in: self.view, style: .Normal)
                 }
             }
             .disposed(by: disposeBag)

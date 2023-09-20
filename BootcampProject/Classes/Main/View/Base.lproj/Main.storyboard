@@ -49,7 +49,7 @@
         <!--Item-->
         <scene sceneID="o59-I2-wIT">
             <objects>
-                <viewController id="LXN-29-hj7" sceneMemberID="viewController">
+                <viewController id="LXN-29-hj7" customClass="ViewController" customModule="BootcampProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O6A-dS-Cwy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -7,14 +7,14 @@ class UserViewController: BaseViewController {
 
     lazy var themeColorTitleLabel: UILabel = {
         UILabel()
-            .setText("主題顏色")
+            .setText("ThemeColor".localized())
             .setTextAlignment(.left)
             .setFont(UIFont.boldSystemFont(ofSize: 17))
     }()
 
     lazy var themeButton: UIButton = {
         UIButton(type: .system)
-            .setTitle("深色主題")
+            .setTitle("DarkTheme".localized())
             .setContentMode(.scaleAspectFit)
             .setImage(.rightIcon)
             .setSemanticContent(.forceRightToLeft)
@@ -22,14 +22,14 @@ class UserViewController: BaseViewController {
 
     lazy var bookmarkTitleLabel: UILabel = {
         UILabel()
-            .setText("收藏項目")
+            .setText("LightTheme".localized())
             .setTextAlignment(.left)
             .setFont(UIFont.boldSystemFont(ofSize: 17))
     }()
 
     lazy var bookmarkButton: UIButton = {
         UIButton(type: .system)
-            .setTitle("共有 1,672 項收藏")
+            .setTitle("ShareFavoritesFormat".localizedWithFormat(1472))
             .setContentMode(.scaleAspectFit)
             .setImage(.rightIcon)
             .setSemanticContent(.forceRightToLeft)
@@ -37,7 +37,7 @@ class UserViewController: BaseViewController {
 
     lazy var aboutAppleButton: UIButton = {
         UIButton(type: .system)
-            .setTitle("關於Apple iTunes")
+            .setTitle("AboutiTunes".localized())
             .setFont(.boldSystemFont(ofSize: 17))
             .setContentMode(.scaleAspectFit)
             .setImage(.questionIcon)
@@ -54,7 +54,7 @@ class UserViewController: BaseViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabBarController?.title = "個人資料"
+        tabBarController?.title = "UserInfo".localized()
     }
 
     override func setupUI() {
@@ -94,23 +94,23 @@ class UserViewController: BaseViewController {
         super.setupUI()
     }
 
-    override func bindingView() {
+    override func bindView() {
         themeButton.rx.tap
             .subscribe { [weak self] _ in
-                self?.showAlert()
+                self?.showThemeActionSheet()
             }
             .disposed(by: disposeBag)
 
         bookmarkButton.rx.tap
             .subscribe { [weak self] _ in
-                let vc = BookmarkViewController(nibName: "BookmarkViewController", bundle: nil)
+                let vc = BookmarkViewController(nibName: Key.BOOKMARK_VC, bundle: nil)
                 self?.pushViewController(vc)
             }
             .disposed(by: disposeBag)
 
         aboutAppleButton.rx.tap
             .subscribe { [weak self] _ in
-                let vc = WebViewController(nibName: "WebViewController", bundle: nil)
+                let vc = WebViewController(nibName: Key.WEBVIEW_VC, bundle: nil)
                 self?.pushViewController(vc)
             }
             .disposed(by: disposeBag)
@@ -118,8 +118,7 @@ class UserViewController: BaseViewController {
 
     override func updateAppearance() {
         super.updateAppearance()
-        debugPrint("User", "updateAppearance")
-        themeButton.setTitle(Global.isDarkMode ? "深色主題" : "淺色主題")
+        themeButton.setTitle(Global.isDarkMode ? "DarkTheme".localized() : "LightTheme".localized())
 
         themeColorTitleLabel.setTextColor(Global.isDarkMode ? .darkModeTxtColor: .lightModeTxtColor)
 
@@ -136,15 +135,15 @@ class UserViewController: BaseViewController {
             .setTintColor(Global.isDarkMode ? .darkModeTxtColor: .lightModeTxtColor)
     }
 
-    private func showAlert() {
-        let alert = UIAlertController(title: "主題顏色", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(.init(title: "深色主題", style: .default, handler: { [weak self] _ in
+    private func showThemeActionSheet() {
+        let alert = UIAlertController(title: "ThemeColor".localized(), message: nil, preferredStyle: .actionSheet)
+        alert.addAction(.init(title: "DarkTheme".localized(), style: .default, handler: { [weak self] _ in
             self?.updateAppearanceWithShareDefault(true)
         }))
-        alert.addAction(.init(title: "淺色主題", style: .default, handler: { [weak self] _ in
+        alert.addAction(.init(title: "LightTheme".localized(), style: .default, handler: { [weak self] _ in
             self?.updateAppearanceWithShareDefault(false)
         }))
-        alert.addAction(.init(title: "取消", style: .cancel))
+        alert.addAction(.init(title: "Cancel".localized(), style: .cancel))
         present(alert, animated: true)
     }
 
@@ -156,7 +155,7 @@ class UserViewController: BaseViewController {
                     self?.updateAppearance()
                 }
             } else {
-                self?.showExceptionErrorAlert(message: "something error")
+                self?.showExceptionErrorAlert(message: "ExpectionError".localized())
             }
         }
     }

@@ -39,14 +39,14 @@ extension BookmarkViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch mediaTypeSegmentControl.selectedSegmentIndex {
         case 0:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "MovieTableViewCell", for: indexPath) as? MovieTableViewCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Key.MOVIE_CELL, for: indexPath) as? MovieTableViewCell {
                 cell.delegates = self
                 cell.setUp(moveieBookmarksList[indexPath.row])
                 return cell
             }
             break
         case 1:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "MusicTableViewCell", for: indexPath) as? MusicTableViewCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Key.MUSIC_CELL, for: indexPath) as? MusicTableViewCell {
                 cell.delegate = self
                 cell.setUp(musicBookmarksList[indexPath.row])
                 return cell
