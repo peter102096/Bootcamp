@@ -25,7 +25,7 @@ class MovieTableViewCell: UITableViewCell {
 
     private var readMoreBtnDisposable: Disposable? = nil
 
-    weak var delegates: MediaTableViewCellDelegate?
+    weak var delegate: MediaTableViewCellDelegate?
 
     private var isExpanded = false
 
@@ -54,6 +54,8 @@ class MovieTableViewCell: UITableViewCell {
                     self.bookmarkBtn.isLiked.toggle()
 
                     self.bookmarkBtn.isLiked ? self.setBookmark(model) : DBModel.shared.removeBookmark(String(model.trackID))
+
+                    self.delegate?.didRefreshBookmark?(self)
                 }
             }
     }
@@ -74,7 +76,7 @@ class MovieTableViewCell: UITableViewCell {
                 if let self = self {
                     self.bookmarkBtn.isLiked.toggle()
                     DBModel.shared.removeBookmark(model.trackId)
-                    self.delegates?.didDeselectBookmark(self, model: model)
+                    self.delegate?.didDeselectedBookmark?(self, model: model)
                 }
             }
     }

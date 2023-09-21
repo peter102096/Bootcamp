@@ -5,12 +5,12 @@ extension SearchViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.section {
         case 0:
-            if let movieResult = viewModel.movieSearchResult.value?.results[indexPath.row], let url = URL(string: movieResult.trackViewURL), UIApplication.shared.canOpenURL(url) {
+            if let url = URL(string: viewModel.movieSearchResult.value[indexPath.row].trackViewURL), UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             }
             break
         case 1:
-            if let musicResult = viewModel.musicSearchResult.value?.results[indexPath.row], let url = URL(string: musicResult.trackViewURL), UIApplication.shared.canOpenURL(url) {
+            if let url = URL(string: viewModel.musicSearchResult.value[indexPath.row].trackViewURL), UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url)
             }
             break
@@ -38,9 +38,9 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return viewModel.movieSearchResult.value?.results.count ?? 0
+            return viewModel.movieSearchResult.value.count
         case 1:
-            return viewModel.musicSearchResult.value?.results.count ?? 0
+            return viewModel.musicSearchResult.value.count
         default:
             return 0
         }
@@ -61,17 +61,17 @@ extension SearchViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: Key.MOVIE_CELL, for: indexPath) as? MovieTableViewCell {
-                if let movieResult = viewModel.movieSearchResult.value?.results[indexPath.row] {
-                    cell.setUp(movieResult, isLiked: viewModel.bookmarkList.value.first(where: { $0.trackId == String(movieResult.trackID) })?.isLiked ?? false)
-                }
+                let movieResult = viewModel.movieSearchResult.value[indexPath.row]
+                cell.delegate = self
+                cell.setUp(movieResult, isLiked: viewModel.bookmarkList.value.first(where: { $0.trackId == String(movieResult.trackID) })?.isLiked ?? false)
                 return cell
             }
             break
         case 1:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "MusicTableViewCell", for: indexPath) as? MusicTableViewCell {
-                if let musicResult = viewModel.musicSearchResult.value?.results[indexPath.row] {
-                    cell.setUp(musicResult, isLiked: viewModel.bookmarkList.value.first(where: { $0.trackId == String(musicResult.trackID) })?.isLiked ?? false)
-                }
+                let musicResult = viewModel.musicSearchResult.value[indexPath.row]
+                cell.delegate = self
+                cell.setUp(musicResult, isLiked: viewModel.bookmarkList.value.first(where: { $0.trackId == String(musicResult.trackID) })?.isLiked ?? false)
                 return cell
             }
             break

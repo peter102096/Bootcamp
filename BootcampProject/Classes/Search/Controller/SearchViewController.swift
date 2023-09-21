@@ -25,10 +25,6 @@ class SearchViewController: BaseViewController {
 
     let disposeBag = DisposeBag()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.title = "Search".localized()
@@ -54,7 +50,7 @@ class SearchViewController: BaseViewController {
     override func bindView() {
         super.bindView()
 
-        rx.viewDidAppear
+        rx.viewWillAppear
             .subscribe(onNext: { [weak self] _ in
                 self?.showLoadingView(in: self?.view, style: .Normal)
             })
@@ -83,7 +79,7 @@ class SearchViewController: BaseViewController {
 
     override func bindViewModel() {
 
-        rx.viewDidAppear
+        rx.viewWillAppear
             .mapToVoid()
             .bind(to: viewModel.input.refresh)
             .disposed(by: disposeBag)
@@ -91,9 +87,11 @@ class SearchViewController: BaseViewController {
         viewModel.output.movieSearchResult
             .drive(onNext: { [weak self] movieModel in
                 self?.dismissLoadingView()
-                if let self = self, let _ = movieModel {
+                if let self = self {
                     DispatchQueue.main.async {
-                        self.searchResultTableView.reloadSections(.init(integer: 0), with: .none)
+                        self.searchResultTableView.reloadData()
+                        self.searchResultTableView.scrollRectToVisible(.init(x: 0, y: 0, width: 1, height: 1), animated: true)
+
                     }
                 }
             })
@@ -102,9 +100,11 @@ class SearchViewController: BaseViewController {
         viewModel.output.musicSearchResult
             .drive(onNext: { [weak self] musicModel in
                 self?.dismissLoadingView()
-                if let self = self, let _ = musicModel {
+                if let self = self {
                     DispatchQueue.main.async {
-                        self.searchResultTableView.reloadSections(.init(integer: 1), with: .none)
+                        self.searchResultTableView.reloadData()
+                        self.searchResultTableView.scrollRectToVisible(.init(x: 0, y: 0, width: 1, height: 1), animated: true)
+
                     }
                 }
             })

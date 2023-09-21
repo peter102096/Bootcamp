@@ -12,9 +12,9 @@ class SearchViewModel: NSObject, ViewModelType {
 
     private let cancelRequest = PublishSubject<Void>()
 
-    private(set) var movieSearchResult = BehaviorRelay<MovieModel?>(value: .init(resultCount: 0, results: []))
+    private(set) var movieSearchResult = BehaviorRelay<[MovieResultModel]>(value: .init([]))
 
-    private(set) var musicSearchResult = BehaviorRelay<MusicModel?>(value: .init(resultCount: 0, results: []))
+    private(set) var musicSearchResult = BehaviorRelay<[MusicResultModel]>(value: .init([]))
 
     private(set) var bookmarkList: BehaviorRelay<[BookmarkModel]> = .init(value: [])
 
@@ -58,13 +58,13 @@ class SearchViewModel: NSObject, ViewModelType {
 
         APIModel.shared.getMovie(keyword) { [weak self] statusCode, result in
             if statusCode == 200, let movieModel = result as? MovieModel {
-                self?.movieSearchResult.accept(movieModel)
+                self?.movieSearchResult.accept(movieModel.results)
             }
         }
 
         APIModel.shared.getMusic(keyword) { [weak self] statusCode, result in
             if statusCode == 200, let musicModel = result as? MusicModel {
-                self?.musicSearchResult.accept(musicModel)
+                self?.musicSearchResult.accept(musicModel.results)
             }
         }
     }
@@ -83,8 +83,8 @@ extension SearchViewModel {
     }
 
     struct Output {
-        let movieSearchResult: Driver<MovieModel?>
-        let musicSearchResult: Driver<MusicModel?>
+        let movieSearchResult: Driver<[MovieResultModel]>
+        let musicSearchResult: Driver<[MusicResultModel]>
         let bookmarksResult: Driver<[BookmarkModel]>
     }
 }

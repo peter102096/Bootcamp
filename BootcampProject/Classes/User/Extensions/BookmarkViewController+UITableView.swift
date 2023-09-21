@@ -40,7 +40,7 @@ extension BookmarkViewController: UITableViewDataSource {
         switch mediaTypeSegmentControl.selectedSegmentIndex {
         case 0:
             if let cell = tableView.dequeueReusableCell(withIdentifier: Key.MOVIE_CELL, for: indexPath) as? MovieTableViewCell {
-                cell.delegates = self
+                cell.delegate = self
                 cell.setUp(viewModel.bookmarks.value[Key.MOVIE]![indexPath.row])
                 return cell
             }

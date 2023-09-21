@@ -42,6 +42,8 @@ class MusicTableViewCell: UITableViewCell {
                     self.bookmarkBtn.isLiked.toggle()
 
                     self.bookmarkBtn.isLiked ? self.setBookmark(model) : DBModel.shared.removeBookmark(String(model.trackID))
+
+                    self.delegate?.didRefreshBookmark?(self)
                 }
             }
     }
@@ -60,7 +62,7 @@ class MusicTableViewCell: UITableViewCell {
                 if let self = self {
                     self.bookmarkBtn.isLiked.toggle()
                     DBModel.shared.removeBookmark(model.trackId)
-                    self.delegate?.didDeselectBookmark(self, model: model)
+                    self.delegate?.didDeselectedBookmark?(self, model: model)
                 }
             }
     }
