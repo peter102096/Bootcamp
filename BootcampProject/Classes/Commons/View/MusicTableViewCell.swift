@@ -2,6 +2,7 @@ import UIKit
 import SDWebImage
 import RxSwift
 import RxCocoa
+import ShareModels
 
 class MusicTableViewCell: UITableViewCell {
 

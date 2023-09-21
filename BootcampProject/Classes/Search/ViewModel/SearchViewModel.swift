@@ -1,5 +1,6 @@
 import RxCocoa
 import RxSwift
+import ShareModels
 
 class SearchViewModel: NSObject, ViewModelType {
     private(set) var input: Input!
@@ -11,15 +12,15 @@ class SearchViewModel: NSObject, ViewModelType {
 
     private let cancelRequest = PublishSubject<Void>()
 
-    private(set) var searchResult = BehaviorRelay<Dictionary<String, Codable?>>(value: [Key.MOVIE: nil, Key.MUSIC: nil])
+    private(set) var movieSearchResult = BehaviorRelay<MovieModel?>(value: .init(resultCount: 0, results: []))
+
+    private(set) var musicSearchResult = BehaviorRelay<MusicModel?>(value: .init(resultCount: 0, results: []))
 
     private(set) var bookmarkList: BehaviorRelay<[BookmarkModel]> = .init(value: [])
 
-    private var cancelFlag = false
-
     private let disposeBag = DisposeBag()
 
-    private let group = DispatchGroup()
+//    public let group = DispatchGroup()
 
     override init() {
         super.init()
@@ -30,13 +31,14 @@ class SearchViewModel: NSObject, ViewModelType {
             })
             .disposed(by: disposeBag)
 
-        let bookmarks = refresh.flatMapLatest { [weak self] in
-            self?.getBookmarks() ?? .empty()
-        }.asDriver(onErrorJustReturn: [])
+        refresh
+            .subscribe(onNext: { [weak self] in
+                self?.getBookmarks()
+            })
+            .disposed(by: disposeBag)
 
         cancelRequest
-            .subscribe(onNext: { [weak self] in
-                self?.cancelFlag = true
+            .subscribe(onNext: {
                 APIModel.shared.cancelAllRequest()
             })
             .disposed(by: disposeBag)
@@ -47,47 +49,29 @@ class SearchViewModel: NSObject, ViewModelType {
             cancelRequest: self.cancelRequest.asObserver())
 
         output = .init(
-            searchResult: self.searchResult.asDriver(),
-            bookmarksResult: bookmarks)
+            movieSearchResult: movieSearchResult.asDriver(),
+            musicSearchResult: musicSearchResult.asDriver(),
+            bookmarksResult: bookmarkList.asDriver())
     }
 
     private func getSearchResult(_ keyword: String) {
-        var tmpSearchResult: Dictionary<String, Codable?> = [Key.MOVIE: nil, Key.MUSIC: nil]
-        group.enter()
-        DispatchQueue(label: "getMovieQueue", attributes: .concurrent).async {
-            APIModel.shared.getMovie(keyword) { [weak self] statusCode, result in
-                if statusCode == 200, result is MovieModel {
-                    tmpSearchResult.updateValue(result, forKey: Key.MOVIE)
-                }
-                self?.group.leave()
+
+        APIModel.shared.getMovie(keyword) { [weak self] statusCode, result in
+            if statusCode == 200, let movieModel = result as? MovieModel {
+                self?.movieSearchResult.accept(movieModel)
             }
         }
 
-        group.enter()
-        DispatchQueue(label: "getMusicQueue", attributes: .concurrent).async {
-            APIModel.shared.getMusic(keyword) { [weak self] statusCode, result in
-                if statusCode == 200, result is MusicModel {
-                    tmpSearchResult.updateValue(result, forKey: Key.MUSIC)
-                }
-                self?.group.leave()
-            }
-        }
-
-        group.notify(queue: .main) { [weak self] in
-            if let self = self {
-                self.cancelFlag ? self.cancelFlag.toggle() : self.searchResult.accept(tmpSearchResult)
+        APIModel.shared.getMusic(keyword) { [weak self] statusCode, result in
+            if statusCode == 200, let musicModel = result as? MusicModel {
+                self?.musicSearchResult.accept(musicModel)
             }
         }
     }
 
-    private func getBookmarks() -> Observable<[BookmarkModel]> {
-        Observable.create { observer in
-            DBModel.shared.getBookmarks { [weak self] (bookmarks) in
-                self?.bookmarkList.accept(bookmarks)
-                observer.onNext(bookmarks)
-                observer.onCompleted()
-            }
-            return Disposables.create()
+    private func getBookmarks() {
+        DBModel.shared.getBookmarks { [weak self] (bookmarks) in
+            self?.bookmarkList.accept(bookmarks)
         }
     }
 }
@@ -99,7 +83,8 @@ extension SearchViewModel {
     }
 
     struct Output {
-        let searchResult: Driver<Dictionary<String, Codable?>>
+        let movieSearchResult: Driver<MovieModel?>
+        let musicSearchResult: Driver<MusicModel?>
         let bookmarksResult: Driver<[BookmarkModel]>
     }
 }

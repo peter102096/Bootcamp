@@ -8,6 +8,7 @@ def shared_pods
   pod 'AFNetworking', '~> 4.0'
   pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
+  pod 'RealmSwift', '10.42.2'
 end
 
 target 'BootcampProject' do
@@ -18,7 +19,6 @@ target 'BootcampProject' do
   pod 'IQKeyboardManagerSwift', '6.5.10'
   pod 'JGProgressHUD', '2.2'
   pod 'SDWebImage', '~> 5.0'
-  pod 'RealmSwift', '10.42.2'
 
   post_install do |installer|
     installer.pods_project.targets.each do |target|
@@ -39,5 +39,9 @@ target 'BootcampProject' do
   target 'BootcampProjectUITests' do
     # Pods for testing
   end
+
+  target 'ShareModels' do
+    shared_pods
+    end
 
 end

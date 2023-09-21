@@ -1,5 +1,6 @@
 import UIKit
 import RealmSwift
+import ShareModels
 
 class DBModel: NSObject {
     private let TAG = String(describing: DBModel.self)

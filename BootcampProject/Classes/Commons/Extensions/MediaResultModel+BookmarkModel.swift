@@ -1,4 +1,5 @@
 import Foundation
+import ShareModels
 
 extension MovieResultModel {
     var bookmarkModel: BookmarkModel {

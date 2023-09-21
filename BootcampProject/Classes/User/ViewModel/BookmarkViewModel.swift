@@ -1,5 +1,6 @@
 import RxCocoa
 import RxSwift
+import ShareModels
 
 class BookmarkViewModel: NSObject, ViewModelType {
     private(set) var input: Input!

@@ -88,13 +88,23 @@ class SearchViewController: BaseViewController {
             .bind(to: viewModel.input.refresh)
             .disposed(by: disposeBag)
 
-        viewModel.output.searchResult
-            .drive(onNext: { [weak self] result in
+        viewModel.output.movieSearchResult
+            .drive(onNext: { [weak self] movieModel in
                 self?.dismissLoadingView()
-                if let self = self, result[Key.MUSIC] is MusicModel, result[Key.MOVIE] is MovieModel {
+                if let self = self, let _ = movieModel {
                     DispatchQueue.main.async {
-                        self.searchResultTableView.reloadData()
-                        self.searchResultTableView.scrollRectToVisible(.init(x: 0, y: 0, width: 1, height: 1), animated: true)
+                        self.searchResultTableView.reloadSections(.init(integer: 0), with: .none)
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.output.musicSearchResult
+            .drive(onNext: { [weak self] musicModel in
+                self?.dismissLoadingView()
+                if let self = self, let _ = musicModel {
+                    DispatchQueue.main.async {
+                        self.searchResultTableView.reloadSections(.init(integer: 1), with: .none)
                     }
                 }
             })

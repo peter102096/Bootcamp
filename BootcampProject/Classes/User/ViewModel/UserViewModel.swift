@@ -1,5 +1,6 @@
 import RxCocoa
 import RxSwift
+import ShareModels
 
 enum AppearanceMode {
     case Dark
