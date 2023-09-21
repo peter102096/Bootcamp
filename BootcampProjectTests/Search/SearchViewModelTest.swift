@@ -29,16 +29,21 @@ class SearchViewModelTest: QuickSpec {
             }
 
             context("When initial") {
-                it("searchResult should have get nil value") {
+                it("movie and music searchResult should have get nil value") {
 
-                    let searchResult = scheduler.createObserver(Dictionary<String, Codable?>.self)
+                    let movieSearchResult = scheduler.createObserver([MovieResultModel].self)
+                    let musicSearchResult = scheduler.createObserver([MusicResultModel].self)
 
-                    viewModel.output.searchResult
-                        .drive(searchResult)
+                    viewModel.output.movieSearchResult
+                        .drive(movieSearchResult)
                         .disposed(by: disposeBag)
 
-                    expect(searchResult.events.first?.value.element?[Key.MOVIE]).to(beNil())
-                    expect(searchResult.events.first?.value.element?[Key.MUSIC]).to(beNil())
+                    viewModel.output.musicSearchResult
+                        .drive(musicSearchResult)
+                        .disposed(by: disposeBag)
+
+                    expect(movieSearchResult.events.first?.value.element?.count).to(equal(0))
+                    expect(musicSearchResult.events.first?.value.element?.count).to(equal(0))
                     
                 }
 
@@ -96,23 +101,26 @@ class SearchViewModelTest: QuickSpec {
 
             context("when enter keyword") {
                 it("should be get search result") {
-                    let searchResult = scheduler.createObserver(Dictionary<String, Codable?>.self)
+                    let movieSearchResult = scheduler.createObserver([MovieResultModel].self)
+                    let musicSearchResult = scheduler.createObserver([MusicResultModel].self)
 
-                    viewModel.output.searchResult
-                        .drive(searchResult)
+                    viewModel.output.movieSearchResult
+                        .drive(movieSearchResult)
+                        .disposed(by: disposeBag)
+
+                    viewModel.output.musicSearchResult
+                        .drive(musicSearchResult)
                         .disposed(by: disposeBag)
 
                     viewModel.input.keyword.onNext("Nothing")
-                    let exoectation = self.expectation(description: "getAPI")
-                    viewModel.output.searchResult
+                    let movieExoectation = self.expectation(description: "getMovieAPI")
+                    viewModel.output.movieSearchResult
                         .asObservable()
                         .take(10)
                         .subscribe {
                             dump($0.element)
-                            if $0.element?[Key.MOVIE] != nil, $0.element?[Key.MUSIC] != nil {
-                                exoectation.fulfill()
-//                                viewModel.group.leave()
-//                                viewModel.group.leave()
+                            if $0.element?.count != 0 {
+                                movieExoectation.fulfill()
                                 return
                             }
                         }
@@ -120,8 +128,26 @@ class SearchViewModelTest: QuickSpec {
 
                     self.waitForExpectations(timeout: 11) {
                         _ in
-                        expect(searchResult.events.last?.value.element?[Key.MOVIE]).notTo(beNil())
-                        expect(searchResult.events.last?.value.element?[Key.MUSIC]).notTo(beNil())
+                        expect(movieSearchResult.events.last?.value.element?.count).notTo(equal(0))
+                    }
+
+                    viewModel.input.keyword.onNext("Nothing")
+                    let musicExoectation = self.expectation(description: "getMusicAPI")
+                    viewModel.output.musicSearchResult
+                        .asObservable()
+                        .take(10)
+                        .subscribe {
+                            dump($0.element)
+                            if $0.element?.count != 0 {
+                                musicExoectation.fulfill()
+                                return
+                            }
+                        }
+                        .disposed(by: disposeBag)
+
+                    self.waitForExpectations(timeout: 11) {
+                        _ in
+                        expect(musicSearchResult.events.last?.value.element?.count).notTo(equal(0))
                     }
                 }
             }
