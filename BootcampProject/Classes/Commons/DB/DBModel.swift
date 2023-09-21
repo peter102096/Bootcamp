@@ -17,12 +17,7 @@ class DBModel: NSObject {
     }
 
     func didApplicationLunch() {
-        let config = Realm.Configuration(schemaVersion: curSchemaVer) { migration, oldSchemaVersion in
-            if oldSchemaVersion < self.curSchemaVer {
-                //TODO: 待處理版本同步問題
-                debugPrint(self.classForCoder, "待處理版本同步問題")
-            }
-        }
+        let config = Realm.Configuration(schemaVersion: curSchemaVer)
         Realm.Configuration.defaultConfiguration = config
 //        debugPrint(self.classForCoder, "url: \(Realm.Configuration.defaultConfiguration.fileURL!.absoluteString)")
     }

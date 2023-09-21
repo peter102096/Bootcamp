@@ -1,13 +1,19 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'BootcampProject' do
-  # Comment the next line if you don't want to use dynamic frameworks
+def shared_pods
   use_frameworks!
+  inhibit_all_warnings!
 
   pod 'AFNetworking', '~> 4.0'
   pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
+end
+
+target 'BootcampProject' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  shared_pods
+
   pod 'SnapKit', '5.6.0'
   pod 'IQKeyboardManagerSwift', '6.5.10'
   pod 'JGProgressHUD', '2.2'
@@ -24,7 +30,10 @@ target 'BootcampProject' do
   
   target 'BootcampProjectTests' do
     inherit! :search_paths
-    # Pods for testing
+    shared_pods
+
+    pod 'Quick', '5.0.1'
+    pod 'RxNimble', '6.0.0', subspecs: ['RxBlocking', 'RxTest']
   end
 
   target 'BootcampProjectUITests' do
