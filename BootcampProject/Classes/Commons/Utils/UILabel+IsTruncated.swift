@@ -1,6 +1,7 @@
 import UIKit
 
 extension UILabel {
+
     var isTruncated: Bool {
         guard let labelText = text, let font = font else {
             return false

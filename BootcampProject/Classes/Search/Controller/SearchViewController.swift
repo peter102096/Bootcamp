@@ -153,5 +153,4 @@ class SearchViewController: BaseViewController {
         alert.addAction(.init(title: "Confirm".localized(), style: .cancel))
         present(alert, animated: true)
     }
-
 }

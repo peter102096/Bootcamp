@@ -19,7 +19,7 @@ class BaseViewController: UIViewController {
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = .init(title: "Back".localized(), style: .plain, target: nil, action: nil)
 
         expectionAlert.addAction(.init(title: "Confirm".localized(), style: .cancel))
         setupUI()

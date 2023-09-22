@@ -51,6 +51,7 @@ class UserViewModelTest: QuickSpec {
                 }
             }
 
+            // MARK: - refresh
             context("when view will appear that will call input with refresh") {
                 it("when app not have bookmark record that should be get count is 0") {
                     let bookmarksCount = scheduler.createObserver(Int.self)
@@ -122,6 +123,7 @@ class UserViewModelTest: QuickSpec {
                 }
             }
 
+            // MARK: - select theme mode
             context("when select theme mode with action sheet") {
                 it("set dark mode should be get setSucceed that must be true") {
                     let setThemeModeSucceed = scheduler.createObserver(Bool.self)

@@ -19,3 +19,8 @@
 "FavoriteItem" = "Favorite Item";
 "ShareFavoritesFormat" = "Total %@ items";
 "AboutiTunes" = "About Apple iTunes";
+
+"DidFailLoad" = "Load web view failed.";
+"NoAccess" = "No access to other pages";
+
+"Back" = "Back";

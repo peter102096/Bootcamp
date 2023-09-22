@@ -86,6 +86,10 @@
 		D08FC0A92AB866FF002380BF /* BookmarkViewController+MediaTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FC0A82AB866FF002380BF /* BookmarkViewController+MediaTableViewCellDelegate.swift */; };
 		D08FC0AB2AB8692A002380BF /* MediaResultModel+BookmarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FC0AA2AB8692A002380BF /* MediaResultModel+BookmarkModel.swift */; };
 		D08FC0AD2AB893D4002380BF /* SearchViewController+MediaTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FC0AC2AB893D4002380BF /* SearchViewController+MediaTableViewCellDelegate.swift */; };
+		D08FC0AF2ABDBB43002380BF /* AboutiTunesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FC0AE2ABDBB43002380BF /* AboutiTunesViewModel.swift */; };
+		D08FC0B02ABDBB62002380BF /* AboutiTunesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FC0AE2ABDBB43002380BF /* AboutiTunesViewModel.swift */; };
+		D08FC0B62ABDC27C002380BF /* AboutiTunesViewModel+WKNavigationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FC0B52ABDC27C002380BF /* AboutiTunesViewModel+WKNavigationDelegate.swift */; };
+		D08FC0B82ABDCCCB002380BF /* AboutiTunesViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08FC0B72ABDCCCB002380BF /* AboutiTunesViewModelTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +206,9 @@
 		D08FC0A82AB866FF002380BF /* BookmarkViewController+MediaTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookmarkViewController+MediaTableViewCellDelegate.swift"; sourceTree = "<group>"; };
 		D08FC0AA2AB8692A002380BF /* MediaResultModel+BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MediaResultModel+BookmarkModel.swift"; sourceTree = "<group>"; };
 		D08FC0AC2AB893D4002380BF /* SearchViewController+MediaTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewController+MediaTableViewCellDelegate.swift"; sourceTree = "<group>"; };
+		D08FC0AE2ABDBB43002380BF /* AboutiTunesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutiTunesViewModel.swift; sourceTree = "<group>"; };
+		D08FC0B52ABDC27C002380BF /* AboutiTunesViewModel+WKNavigationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AboutiTunesViewModel+WKNavigationDelegate.swift"; sourceTree = "<group>"; };
+		D08FC0B72ABDCCCB002380BF /* AboutiTunesViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutiTunesViewModelTest.swift; sourceTree = "<group>"; };
 		DF87AC9F22592CD154E75ECB /* Pods_BootcampProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BootcampProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -275,9 +282,9 @@
 		910CA9D72AB03A8C002C8CB9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				916AD4432AB29CDD001491DD /* AboutiTunesViewController.swift */,
 				91AC83102AB2E34900A06B9B /* BookmarkViewController.swift */,
 				91D3FD942AB04AE5006EB68D /* UserViewController.swift */,
-				916AD4432AB29CDD001491DD /* AboutiTunesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -285,8 +292,8 @@
 		910CA9D82AB03A91002C8CB9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				910CA9E22AB04053002C8CB9 /* MainTabBarController.swift */,
 				916AD4102AB04C81001491DD /* MainNavController.swift */,
+				910CA9E22AB04053002C8CB9 /* MainTabBarController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -301,6 +308,7 @@
 		910CA9DA2AB03A9D002C8CB9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D08FC0AE2ABDBB43002380BF /* AboutiTunesViewModel.swift */,
 				913FCC122AB9684C001796FE /* BookmarkViewModel.swift */,
 				916AD4382AB1562F001491DD /* UserViewModel.swift */,
 			);
@@ -310,9 +318,9 @@
 		910CA9DB2AB03AA4002C8CB9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				91AC83042AB29CF800A06B9B /* AboutiTunesViewController.xib */,
 				91AC83112AB2E34900A06B9B /* BookmarkViewController.xib */,
 				916AD40E2AB04B00001491DD /* UserViewController.xib */,
-				91AC83042AB29CF800A06B9B /* AboutiTunesViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -337,8 +345,8 @@
 				911158082AAEE0CB0009965D /* AppDelegate.swift */,
 				911158112AAEE0CC0009965D /* Assets.xcassets */,
 				911158162AAEE0CC0009965D /* Info.plist */,
-				9111580A2AAEE0CB0009965D /* SceneDelegate.swift */,
 				91FC38FB2ABACF5200397633 /* Localizable.strings */,
+				9111580A2AAEE0CB0009965D /* SceneDelegate.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -493,8 +501,8 @@
 		916AD42D2AB0623E001491DD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				916AD42E2AB0625C001491DD /* SearchViewController+UITableView.swift */,
 				D08FC0AC2AB893D4002380BF /* SearchViewController+MediaTableViewCellDelegate.swift */,
+				916AD42E2AB0625C001491DD /* SearchViewController+UITableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -510,8 +518,9 @@
 		91AC83142AB2E58400A06B9B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				91AC83152AB2E5AC00A06B9B /* BookmarkViewController+UITableView.swift */,
+				D08FC0B52ABDC27C002380BF /* AboutiTunesViewModel+WKNavigationDelegate.swift */,
 				D08FC0A82AB866FF002380BF /* BookmarkViewController+MediaTableViewCellDelegate.swift */,
+				91AC83152AB2E5AC00A06B9B /* BookmarkViewController+UITableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -519,6 +528,7 @@
 		91D836ED2ABD3B2B009FDB2E /* User */ = {
 			isa = PBXGroup;
 			children = (
+				D08FC0B72ABDCCCB002380BF /* AboutiTunesViewModelTest.swift */,
 				91D836F42ABD9066009FDB2E /* BookmarkViewModelTest.swift */,
 				91D836EE2ABD3B43009FDB2E /* UserViewModelTest.swift */,
 			);
@@ -857,6 +867,7 @@
 				910CA9E32AB04053002C8CB9 /* MainTabBarController.swift in Sources */,
 				916AD4212AB05A46001491DD /* ObserableType+Extensions.swift in Sources */,
 				D08FC0A72AB86524002380BF /* Delegates.swift in Sources */,
+				D08FC0AF2ABDBB43002380BF /* AboutiTunesViewModel.swift in Sources */,
 				916AD42F2AB0625C001491DD /* SearchViewController+UITableView.swift in Sources */,
 				91AC831A2AB3FB5900A06B9B /* SearchViewModel.swift in Sources */,
 				91AC83162AB2E5AC00A06B9B /* BookmarkViewController+UITableView.swift in Sources */,
@@ -877,6 +888,7 @@
 				9111580B2AAEE0CB0009965D /* SceneDelegate.swift in Sources */,
 				916AD4262AB05AB2001491DD /* UISearchBar+Fluent.swift in Sources */,
 				913FCC132AB9684C001796FE /* BookmarkViewModel.swift in Sources */,
+				D08FC0B62ABDC27C002380BF /* AboutiTunesViewModel+WKNavigationDelegate.swift in Sources */,
 				916AD4182AB04DC6001491DD /* MusicTableViewCell.swift in Sources */,
 				916AD4222AB05A46001491DD /* UITableView+Fluent.swift in Sources */,
 				91AC83122AB2E34900A06B9B /* BookmarkViewController.swift in Sources */,
@@ -893,8 +905,10 @@
 			files = (
 				91FC39082ABBC93A00397633 /* MovieModel.swift in Sources */,
 				91FC39032ABBC5C400397633 /* ViewModelType.swift in Sources */,
+				D08FC0B02ABDBB62002380BF /* AboutiTunesViewModel.swift in Sources */,
 				91D836F12ABD7B67009FDB2E /* ShareDefaults.swift in Sources */,
 				91FC39062ABBC5E900397633 /* DBModel.swift in Sources */,
+				D08FC0B82ABDCCCB002380BF /* AboutiTunesViewModelTest.swift in Sources */,
 				91D836F02ABD3B92009FDB2E /* UserViewModel.swift in Sources */,
 				91D836F52ABD9066009FDB2E /* BookmarkViewModelTest.swift in Sources */,
 				91FC39092ABBC94400397633 /* MusicModel.swift in Sources */,

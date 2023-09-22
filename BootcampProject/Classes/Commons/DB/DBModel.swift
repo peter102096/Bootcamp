@@ -9,7 +9,7 @@ class DBModel: NSObject {
     
     private var realm: Realm!
 
-    private let curSchemaVer: UInt64 = 1001
+    private let curSchemaVer: UInt64 = 1002
     
     private let queue = DispatchQueue(label: "BootCampRealmDB")
     

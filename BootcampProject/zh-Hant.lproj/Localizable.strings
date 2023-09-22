@@ -19,3 +19,8 @@
 "FavoriteItem" = "收藏項目";
 "ShareFavoritesFormat" = "共有 %@ 項收藏";
 "AboutiTunes" = "關於Apple iTunes";
+
+"DidFailLoad" = "網頁讀取失敗";
+"NoAccess" = "禁止前往其他頁面";
+
+"Back" = "返回";

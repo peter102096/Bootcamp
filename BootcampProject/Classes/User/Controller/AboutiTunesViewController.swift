@@ -8,10 +8,10 @@ class AboutiTunesViewController: BaseViewController {
 
     lazy var webview: WKWebView = {
         WKWebView()
-            .setNavigationDelegate(self)
+            .setNavigationDelegate(viewModel)
     }()
 
-    private let aboutiTunesUrl = "https://support.apple.com/itunes"
+    private let viewModel = AboutiTunesViewModel()
 
     let disposeBag = DisposeBag()
 
@@ -22,10 +22,6 @@ class AboutiTunesViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "AboutiTunes".localized()
-        if let url = URL(string: aboutiTunesUrl) {
-            let request = URLRequest(url: url)
-            webview.load(request)
-        }
     }
 
     override func setupUI() {
@@ -37,43 +33,42 @@ class AboutiTunesViewController: BaseViewController {
         }
     }
 
-//    override func bindView() {
-//        webview.rx.didStartLoad
-//            .subscribe { [weak self] nav in
-//                if let self = self {
-//                    self.showLoadingView(in: self.view, style: .Normal)
-//                }
-//            }
-//            .disposed(by: disposeBag)
-//
-//        webview.rx.didFinishLoad
-//            .subscribe { [weak self] nav in
-//                self?.dismissLoadingView()
-//            }
-//            .disposed(by: disposeBag)
-//    }
-}
-
-extension AboutiTunesViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if let urlStr = navigationAction.request.url?.absoluteString {
-            debugPrint(self.classForCoder, "urlStr: \(urlStr)")
-            if urlStr == aboutiTunesUrl {
-                debugPrint(self.classForCoder, "== aboutiTunesUrl")
-                decisionHandler(.allow)
-                return
-            }
-        }
-        decisionHandler(.cancel)
+    override func bindView() {
+        super.bindView()
+        rx.viewDidAppear
+            .subscribe(onNext: { [weak self] _ in
+                self?.showLoadingView(in: self?.view, style: .Normal)
+            })
+            .disposed(by: disposeBag)
     }
 
-    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        debugPrint(self.classForCoder, "didCommit")
-        showLoadingView(in: self.view, style: .Normal)
-    }
+    override func bindViewModel() {
+        rx.viewDidAppear
+            .mapToVoid()
+            .bind(to: viewModel.input.refresh)
+            .disposed(by: disposeBag)
 
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        debugPrint(self.classForCoder, "didFinish")
-        dismissLoadingView()
+        viewModel.output.urlRequest
+            .drive(onNext: { [weak self] (urlRequest) in
+                if let urlRequest = urlRequest {
+                    self?.webview.load(urlRequest)
+                } else {
+                    self?.dismissLoadingView()
+                }
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.output.didFinishLoad
+            .drive(onNext: { [weak self] _ in
+                self?.dismissLoadingView()
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.output.didFailLoad
+            .drive(onNext: { [weak self] msg in
+                self?.dismissLoadingView()
+                self?.showExceptionErrorAlert(message: msg)
+            })
+            .disposed(by: disposeBag)
     }
 }
