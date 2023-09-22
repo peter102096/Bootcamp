@@ -72,13 +72,10 @@ class BookmarkViewController: BaseViewController {
             .bind(to: viewModel.input.refresh)
             .disposed(by: disposeBag)
 
-        viewModel.output.bookmarks
-            .drive(onNext: { [weak self] bookmarks in
+        viewModel.output.getBookmarkSucceed
+            .drive(onNext: { [weak self] isSucceed in
+                self?.bookmarksTableView.reloadData()
                 self?.dismissLoadingView()
-                DispatchQueue.main.async {
-                    self?.bookmarksTableView.reloadData()
-                }
-
             })
             .disposed(by: disposeBag)
     }

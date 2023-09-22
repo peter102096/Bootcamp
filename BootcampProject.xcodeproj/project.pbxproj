@@ -64,6 +64,8 @@
 		91D836F02ABD3B92009FDB2E /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4382AB1562F001491DD /* UserViewModel.swift */; };
 		91D836F12ABD7B67009FDB2E /* ShareDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC830E2AB2AB6F00A06B9B /* ShareDefaults.swift */; };
 		91D836F22ABD7B80009FDB2E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4272AB05D64001491DD /* Global.swift */; };
+		91D836F52ABD9066009FDB2E /* BookmarkViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D836F42ABD9066009FDB2E /* BookmarkViewModelTest.swift */; };
+		91D836F62ABD90DC009FDB2E /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913FCC122AB9684C001796FE /* BookmarkViewModel.swift */; };
 		91E480412AB946D500F1CAB9 /* UILabel+IsTruncated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E480402AB946D500F1CAB9 /* UILabel+IsTruncated.swift */; };
 		91FC38F92ABACF5200397633 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91FC38FB2ABACF5200397633 /* Localizable.strings */; };
 		91FC38FE2ABAD80E00397633 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FC38FD2ABAD80E00397633 /* Keys.swift */; };
@@ -181,6 +183,7 @@
 		91C2F6162AB042380019D2F6 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		91D3FD942AB04AE5006EB68D /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		91D836EE2ABD3B43009FDB2E /* UserViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelTest.swift; sourceTree = "<group>"; };
+		91D836F42ABD9066009FDB2E /* BookmarkViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModelTest.swift; sourceTree = "<group>"; };
 		91E480402AB946D500F1CAB9 /* UILabel+IsTruncated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+IsTruncated.swift"; sourceTree = "<group>"; };
 		91FC38FA2ABACF5200397633 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		91FC38FC2ABACF6600397633 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -379,8 +382,8 @@
 		9111581E2AAEE0CC0009965D /* BootcampProjectTests */ = {
 			isa = PBXGroup;
 			children = (
-				91D836ED2ABD3B2B009FDB2E /* User */,
 				91FC38FF2ABBC38600397633 /* Search */,
+				91D836ED2ABD3B2B009FDB2E /* User */,
 			);
 			path = BootcampProjectTests;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 		91D836ED2ABD3B2B009FDB2E /* User */ = {
 			isa = PBXGroup;
 			children = (
+				91D836F42ABD9066009FDB2E /* BookmarkViewModelTest.swift */,
 				91D836EE2ABD3B43009FDB2E /* UserViewModelTest.swift */,
 			);
 			path = User;
@@ -892,10 +896,12 @@
 				91D836F12ABD7B67009FDB2E /* ShareDefaults.swift in Sources */,
 				91FC39062ABBC5E900397633 /* DBModel.swift in Sources */,
 				91D836F02ABD3B92009FDB2E /* UserViewModel.swift in Sources */,
+				91D836F52ABD9066009FDB2E /* BookmarkViewModelTest.swift in Sources */,
 				91FC39092ABBC94400397633 /* MusicModel.swift in Sources */,
 				91D836EF2ABD3B43009FDB2E /* UserViewModelTest.swift in Sources */,
 				91FC39022ABBC5BD00397633 /* SearchViewModel.swift in Sources */,
 				91D836F22ABD7B80009FDB2E /* Global.swift in Sources */,
+				91D836F62ABD90DC009FDB2E /* BookmarkViewModel.swift in Sources */,
 				91FC39012ABBC3A400397633 /* SearchViewModelTest.swift in Sources */,
 				91FC39072ABBC93000397633 /* APIModel.swift in Sources */,
 				91FC39042ABBC5CF00397633 /* Keys.swift in Sources */,

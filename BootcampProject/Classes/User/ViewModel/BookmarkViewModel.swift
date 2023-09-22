@@ -10,28 +10,30 @@ class BookmarkViewModel: NSObject, ViewModelType {
 
     private let disposeBag = DisposeBag()
 
-    private(set) var bookmarks: BehaviorRelay<Dictionary<String, [BookmarkModel]>> = BehaviorRelay(value: [Key.MOVIE: [], Key.MUSIC: []])
+    private(set) var movieBookmarks: BehaviorRelay<[BookmarkModel]> = BehaviorRelay(value: [])
+
+    private(set) var musicBookmarks: BehaviorRelay<[BookmarkModel]> = BehaviorRelay(value: [])
 
     override init() {
         super.init()
-        refresh
-            .subscribe(onNext: { [weak self] in
-                self?.getBookmarks()
-            })
-            .disposed(by: disposeBag)
+        let getBookmarkSucceed = refresh.flatMapLatest { [unowned self] in
+            getBookmarks()
+        }
 
         input = .init(refresh: refresh.asObserver())
-        output = .init(bookmarks: bookmarks.asDriver())
+
+        output = .init(getBookmarkSucceed: getBookmarkSucceed.asDriver(onErrorJustReturn: false))
     }
 
-    private func getBookmarks() {
-        DBModel.shared.getBookmarks { [weak self] totalBookmarks in
-            var tmpBookmarks: Dictionary<String, [BookmarkModel]> = [Key.MOVIE: [], Key.MUSIC: []]
-            tmpBookmarks.updateValue(totalBookmarks.filter({ $0.mediaType == .Movie }), forKey: Key.MOVIE)
-
-            tmpBookmarks.updateValue(totalBookmarks.filter({ $0.mediaType == .Music }), forKey: Key.MUSIC)
-
-            self?.bookmarks.accept(tmpBookmarks)
+    private func getBookmarks() -> Observable<Bool> {
+        Observable.create { observer in
+            DBModel.shared.getBookmarks { [weak self] totalBookmarks in
+                self?.movieBookmarks.accept(totalBookmarks.filter({ $0.mediaType == .Movie }))
+                self?.musicBookmarks.accept(totalBookmarks.filter({ $0.mediaType == .Music }))
+                observer.onNext(true)
+                observer.onCompleted()
+            }
+            return Disposables.create()
         }
     }
 }
@@ -42,6 +44,6 @@ extension BookmarkViewModel {
     }
 
     struct Output {
-        let bookmarks: Driver<Dictionary<String, [BookmarkModel]>>
+        let getBookmarkSucceed: Driver<Bool>
     }
 }
