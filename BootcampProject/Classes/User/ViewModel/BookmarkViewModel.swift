@@ -14,6 +14,10 @@ class BookmarkViewModel: NSObject, ViewModelType {
 
     private(set) var musicBookmarks: BehaviorRelay<[BookmarkModel]> = BehaviorRelay(value: [])
 
+    deinit {
+        debugPrint(self.classForCoder, "deinit")
+    }
+
     override init() {
         super.init()
         let getBookmarkSucceed = refresh.flatMapLatest { [unowned self] in

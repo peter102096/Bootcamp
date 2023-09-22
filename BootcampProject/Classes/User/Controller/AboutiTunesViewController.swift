@@ -15,10 +15,6 @@ class AboutiTunesViewController: BaseViewController {
 
     let disposeBag = DisposeBag()
 
-    deinit {
-        debugPrint(self.classForCoder, "deinit")
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         title = "AboutiTunes".localized()

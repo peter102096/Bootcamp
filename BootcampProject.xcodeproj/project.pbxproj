@@ -256,9 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				910CA9D82AB03A91002C8CB9 /* Controller */,
-				910CA9DD2AB03AAC002C8CB9 /* Model */,
 				910CA9D52AB03A7C002C8CB9 /* View */,
-				910CA9D92AB03A98002C8CB9 /* ViewModel */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -298,13 +296,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		910CA9D92AB03A98002C8CB9 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		910CA9DA2AB03A9D002C8CB9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,20 +314,6 @@
 				916AD40E2AB04B00001491DD /* UserViewController.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		910CA9DC2AB03AA7002C8CB9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		910CA9DD2AB03AAC002C8CB9 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		910CA9E12AB03F49002C8CB9 /* Resources */ = {
@@ -412,7 +389,6 @@
 			children = (
 				910CA9D62AB03A85002C8CB9 /* Controller */,
 				916AD42D2AB0623E001491DD /* Extensions */,
-				9111583B2AAF03A40009965D /* Model */,
 				9111583C2AAF03A80009965D /* View */,
 				9111583D2AAF03AC0009965D /* ViewModel */,
 			);
@@ -424,18 +400,10 @@
 			children = (
 				910CA9D72AB03A8C002C8CB9 /* Controller */,
 				91AC83142AB2E58400A06B9B /* Extensions */,
-				910CA9DC2AB03AA7002C8CB9 /* Model */,
 				910CA9DB2AB03AA4002C8CB9 /* View */,
 				910CA9DA2AB03A9D002C8CB9 /* ViewModel */,
 			);
 			path = User;
-			sourceTree = "<group>";
-		};
-		9111583B2AAF03A40009965D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		9111583C2AAF03A80009965D /* View */ = {

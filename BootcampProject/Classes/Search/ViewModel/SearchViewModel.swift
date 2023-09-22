@@ -20,6 +20,10 @@ class SearchViewModel: NSObject, ViewModelType {
 
     private let disposeBag = DisposeBag()
 
+    deinit {
+        debugPrint(self.classForCoder, "deinit")
+    }
+
     override init() {
         super.init()
 

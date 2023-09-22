@@ -20,7 +20,6 @@ class DBModel: NSObject {
     func didApplicationLunch() {
         let config = Realm.Configuration(schemaVersion: curSchemaVer)
         Realm.Configuration.defaultConfiguration = config
-//        debugPrint(self.classForCoder, "url: \(Realm.Configuration.defaultConfiguration.fileURL!.absoluteString)")
     }
 
     //MARK: - Bookmark

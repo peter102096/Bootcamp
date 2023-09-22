@@ -14,6 +14,10 @@ class AboutiTunesViewModel: NSObject, ViewModelType {
 
     internal let didFailRelay = PublishRelay<String>()
 
+    deinit {
+        debugPrint(self.classForCoder, "deinit")
+    }
+
     override init() {
         super.init()
 

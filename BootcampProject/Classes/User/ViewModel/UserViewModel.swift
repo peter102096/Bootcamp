@@ -14,6 +14,10 @@ class UserViewModel: NSObject, ViewModelType {
     private let refresh = PublishSubject<Void>()
     private let isDarkMode = PublishSubject<Bool>()
 
+    deinit {
+        debugPrint(self.classForCoder, "deinit")
+    }
+
     override init() {
         super.init()
 

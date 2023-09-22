@@ -33,10 +33,6 @@ class MovieTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    deinit {
-        debugPrint(self.classForCoder, "deinit")
-    }
-
     func setUp(_ model: MovieResultModel, isLiked: Bool) {
         resetViewState()
         thunbnilImgView.sd_setImage(with: URL(string: model.thumbnailURL), placeholderImage: .photoIcon, options: [.refreshCached, .allowInvalidSSLCertificates])

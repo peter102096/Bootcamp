@@ -13,18 +13,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loadingView.cancelBtnClicked
-            .subscribe (onNext: { _ in
-                debugPrint(self.classForCoder, "cancel")
-                self.loadingView.dismiss()
-            })
-            .disposed(by: disposeBag)
+//        loadingView.cancelBtnClicked
+//            .subscribe (onNext: { _ in
+//                self.loadingView.dismiss()
+//            })
+//            .disposed(by: disposeBag)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.loadingView.show(in: self.view)
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//            self.loadingView.show(in: self.view)
+//        }
     }
 }
