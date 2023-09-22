@@ -46,6 +46,7 @@ class UserViewController: BaseViewController {
     lazy var viewModel: UserViewModel = {
         UserViewModel()
     }()
+
     let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -129,11 +130,23 @@ class UserViewController: BaseViewController {
             .bind(to: viewModel.input.refresh)
             .disposed(by: disposeBag)
 
-        viewModel.output.bookmarks
-            .drive(onNext: { [weak self] (bookmarks) in
+        viewModel.output.bookmarksCount
+            .drive(onNext: { [weak self] (count) in
                 self?.dismissLoadingView()
                 DispatchQueue.main.async {
-                    self?.bookmarkButton.setTitle("ShareFavoritesFormat".localizedWithFormat(bookmarks.count + 1000))
+                    self?.bookmarkButton.setTitle("ShareFavoritesFormat".localizedWithFormat(count + 1000))
+                }
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.output.setThemeModeSucceed
+            .drive(onNext: { [weak self] (isSucceed) in
+                DispatchQueue.main.async {
+                    if isSucceed {
+                        self?.updateAppearance()
+                    } else {
+                        self?.showExceptionErrorAlert(message: "ExpectionError".localized())
+                    }
                 }
             })
             .disposed(by: disposeBag)
@@ -161,25 +174,12 @@ class UserViewController: BaseViewController {
     private func showThemeActionSheet() {
         let alert = UIAlertController(title: "ThemeColor".localized(), message: nil, preferredStyle: .actionSheet)
         alert.addAction(.init(title: "DarkTheme".localized(), style: .default, handler: { [weak self] _ in
-            self?.updateAppearanceWithShareDefault(true)
+            self?.viewModel.input.isDarkMode.onNext(true)
         }))
         alert.addAction(.init(title: "LightTheme".localized(), style: .default, handler: { [weak self] _ in
-            self?.updateAppearanceWithShareDefault(false)
+            self?.viewModel.input.isDarkMode.onNext(false)
         }))
         alert.addAction(.init(title: "Cancel".localized(), style: .cancel))
         present(alert, animated: true)
-    }
-
-    private func updateAppearanceWithShareDefault(_ isDarkMode: Bool) {
-        ShareDefaults.shared.setDarkMode(isDarkMode) { [weak self] isSuccess in
-            if isSuccess {
-                Global.isDarkMode = isDarkMode
-                DispatchQueue.main.async { [weak self] in
-                    self?.updateAppearance()
-                }
-            } else {
-                self?.showExceptionErrorAlert(message: "ExpectionError".localized())
-            }
-        }
     }
 }

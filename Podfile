@@ -36,10 +36,6 @@ target 'BootcampProject' do
     pod 'RxNimble', '6.0.0', subspecs: ['RxBlocking', 'RxTest']
   end
 
-  target 'BootcampProjectUITests' do
-    # Pods for testing
-  end
-
   target 'ShareModels' do
     shared_pods
     end

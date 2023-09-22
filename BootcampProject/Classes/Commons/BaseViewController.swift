@@ -91,7 +91,7 @@ class BaseViewController: UIViewController {
         super.traitCollectionDidChange(previousTraitCollection)
         // 模擬器正常，實機有出入
 //        if UIApplication.shared.applicationState == .active {
-//            ShareDefaults.shared.setAppearance(isDarkMode: traitCollection.userInterfaceStyle == .dark, completion: { [weak self] success in
+//            ShareDefaults.shared.setAppearance(isDarkMode: traitCollection.userInterfaceStyle == .dark, completion: { [weak self] isSucceed in
 //                Global.isDarkMode = self?.traitCollection.userInterfaceStyle == .dark
 //                self?.updateAppearance()
 //            })

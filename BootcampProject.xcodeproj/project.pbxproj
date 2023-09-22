@@ -62,6 +62,8 @@
 		91D3FD962AB04AE5006EB68D /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3FD942AB04AE5006EB68D /* UserViewController.swift */; };
 		91D836EF2ABD3B43009FDB2E /* UserViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D836EE2ABD3B43009FDB2E /* UserViewModelTest.swift */; };
 		91D836F02ABD3B92009FDB2E /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4382AB1562F001491DD /* UserViewModel.swift */; };
+		91D836F12ABD7B67009FDB2E /* ShareDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC830E2AB2AB6F00A06B9B /* ShareDefaults.swift */; };
+		91D836F22ABD7B80009FDB2E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4272AB05D64001491DD /* Global.swift */; };
 		91E480412AB946D500F1CAB9 /* UILabel+IsTruncated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E480402AB946D500F1CAB9 /* UILabel+IsTruncated.swift */; };
 		91FC38F92ABACF5200397633 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91FC38FB2ABACF5200397633 /* Localizable.strings */; };
 		91FC38FE2ABAD80E00397633 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FC38FD2ABAD80E00397633 /* Keys.swift */; };
@@ -887,11 +889,13 @@
 			files = (
 				91FC39082ABBC93A00397633 /* MovieModel.swift in Sources */,
 				91FC39032ABBC5C400397633 /* ViewModelType.swift in Sources */,
+				91D836F12ABD7B67009FDB2E /* ShareDefaults.swift in Sources */,
 				91FC39062ABBC5E900397633 /* DBModel.swift in Sources */,
 				91D836F02ABD3B92009FDB2E /* UserViewModel.swift in Sources */,
 				91FC39092ABBC94400397633 /* MusicModel.swift in Sources */,
 				91D836EF2ABD3B43009FDB2E /* UserViewModelTest.swift in Sources */,
 				91FC39022ABBC5BD00397633 /* SearchViewModel.swift in Sources */,
+				91D836F22ABD7B80009FDB2E /* Global.swift in Sources */,
 				91FC39012ABBC3A400397633 /* SearchViewModelTest.swift in Sources */,
 				91FC39072ABBC93000397633 /* APIModel.swift in Sources */,
 				91FC39042ABBC5CF00397633 /* Keys.swift in Sources */,

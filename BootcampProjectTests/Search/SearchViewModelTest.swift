@@ -29,8 +29,19 @@ class SearchViewModelTest: QuickSpec {
             }
 
             // MARK: - viewmodel initial
-            context("When initial") {
-                it("movie and music searchResult should have get nil value") {
+            context("When view model initial") {
+
+                it("keywordIsEmpty should have get nil") {
+                    let keywordIsEmpty = scheduler.createObserver(Bool.self)
+
+                    viewModel.output.keywordIsEmpty
+                        .drive(keywordIsEmpty)
+                        .disposed(by: disposeBag)
+
+                    expect(keywordIsEmpty.events.first?.value.element).to(beNil())
+                }
+
+                it("movie and music searchResult should have get array size 0") {
 
                     let movieSearchResult = scheduler.createObserver([MovieResultModel].self)
                     let musicSearchResult = scheduler.createObserver([MusicResultModel].self)
@@ -45,10 +56,9 @@ class SearchViewModelTest: QuickSpec {
 
                     expect(movieSearchResult.events.first?.value.element?.count).to(equal(0))
                     expect(musicSearchResult.events.first?.value.element?.count).to(equal(0))
-                    
                 }
 
-                it("bookmarksResult should have get nil value") {
+                it("bookmarksResult should have get array size 0") {
                     let bookmarksResult = scheduler.createObserver([BookmarkModel].self)
 
                     viewModel.output.bookmarksResult
@@ -60,7 +70,36 @@ class SearchViewModelTest: QuickSpec {
             }
             // MARK: - refresh
             context("when view will appear that will call input with refresh") {
-                it("should be get bookmarks array") {
+
+                it("if db has not bookmark record that should be get bookmarks array count is 0") {
+
+                    let bookmarksResult = scheduler.createObserver([BookmarkModel].self)
+
+                    viewModel.output.bookmarksResult
+                        .drive(bookmarksResult)
+                        .disposed(by: disposeBag)
+
+                    viewModel.input.refresh.onNext(())
+
+                    let expectation = self.expectation(description: "getDB")
+                    viewModel.output.bookmarksResult
+                        .asObservable()
+                        .take(2)
+                        .subscribe {
+                            if $0.count == 0 {
+                                expectation.fulfill()
+                                return
+                            }
+                        }
+                        .disposed(by: disposeBag)
+
+                    self.waitForExpectations(timeout: 3) {
+                        _ in
+                        expect(bookmarksResult.events.last?.value.element?.count).to(equal(0))
+                    }
+                }
+
+                it("if db set 1 bookmark record that should be get bookmarks array count is 1") {
                     DBModel.shared.setBookmark(
                         .init(trackId: "854658129",
                               type: .Movie,
@@ -81,13 +120,14 @@ class SearchViewModelTest: QuickSpec {
                         .disposed(by: disposeBag)
 
                     viewModel.input.refresh.onNext(())
-                    let exoectation = self.expectation(description: "getDB")
+
+                    let expectation = self.expectation(description: "getDB")
                     viewModel.output.bookmarksResult
                         .asObservable()
                         .take(2)
                         .subscribe {
                             if $0.count != 0 {
-                                exoectation.fulfill()
+                                expectation.fulfill()
                                 return
                             }
                         }
@@ -96,6 +136,7 @@ class SearchViewModelTest: QuickSpec {
                     self.waitForExpectations(timeout: 3) {
                         _ in
                         expect(bookmarksResult.events.last?.value.element?.count).to(equal(1))
+                        DBModel.shared.resetDB()
                     }
                 }
             }
@@ -110,7 +151,7 @@ class SearchViewModelTest: QuickSpec {
 
                     viewModel.input.keyword.onNext("")
 
-                    expect(keywordIsEmpty.events.last?.value.element).to(equal(true))
+                    expect(keywordIsEmpty.events.last?.value.element).to(beTrue())
                 }
 
                 it("if keyword is nil should be get keywordIsEmpty is true") {
@@ -121,7 +162,7 @@ class SearchViewModelTest: QuickSpec {
 
                     viewModel.input.keyword.onNext(nil)
 
-                    expect(keywordIsEmpty.events.last?.value.element).to(equal(true))
+                    expect(keywordIsEmpty.events.last?.value.element).to(beTrue())
                 }
                 // MARK: APITest
                 it("if keyword not empty should be get search result") {
@@ -144,14 +185,13 @@ class SearchViewModelTest: QuickSpec {
 
                     viewModel.input.keyword.onNext("Nothing")
 
-                    let movieExoectation = self.expectation(description: "getMovieAPI")
+                    let movieExpectation = self.expectation(description: "getMovieAPI")
                     viewModel.output.movieSearchResult
                         .asObservable()
                         .take(10)
                         .subscribe {
-                            dump($0.element)
                             if $0.element?.count != 0 {
-                                movieExoectation.fulfill()
+                                movieExpectation.fulfill()
                                 return
                             }
                         }
@@ -160,18 +200,17 @@ class SearchViewModelTest: QuickSpec {
                     self.waitForExpectations(timeout: 11) {
                         _ in
                         expect(movieSearchResult.events.last?.value.element?.count).notTo(equal(0))
-                        expect(keywordIsEmpty.events.first?.value.element).to(equal(false))
+                        expect(keywordIsEmpty.events.first?.value.element).to(beFalse())
                     }
 
                     viewModel.input.keyword.onNext("Nothing")
-                    let musicExoectation = self.expectation(description: "getMusicAPI")
+                    let musicExpectation = self.expectation(description: "getMusicAPI")
                     viewModel.output.musicSearchResult
                         .asObservable()
                         .take(10)
                         .subscribe {
-                            dump($0.element)
                             if $0.element?.count != 0 {
-                                musicExoectation.fulfill()
+                                musicExpectation.fulfill()
                                 return
                             }
                         }
@@ -180,7 +219,7 @@ class SearchViewModelTest: QuickSpec {
                     self.waitForExpectations(timeout: 11) {
                         _ in
                         expect(musicSearchResult.events.last?.value.element?.count).notTo(equal(0))
-                        expect(keywordIsEmpty.events.last?.value.element).to(equal(false))
+                        expect(keywordIsEmpty.events.last?.value.element).to(beFalse())
                     }
                 }
             }
@@ -203,14 +242,14 @@ class SearchViewModelTest: QuickSpec {
 
                     scheduler.start()
                     
-                    let musicExoectation = self.expectation(description: "getMusicAPI")
+                    let musicExpectation = self.expectation(description: "getMusicAPI")
                     viewModel.output.musicSearchResult
                         .asObservable()
                         .take(10)
                         .subscribe {
                             dump($0.element)
                             if $0.element?.count == 0 {
-                                musicExoectation.fulfill()
+                                musicExpectation.fulfill()
                                 return
                             }
                         }
