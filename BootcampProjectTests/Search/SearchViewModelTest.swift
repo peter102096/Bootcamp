@@ -28,6 +28,7 @@ class SearchViewModelTest: QuickSpec {
                 disposeBag = nil
             }
 
+            // MARK: - viewmodel initial
             context("When initial") {
                 it("movie and music searchResult should have get nil value") {
 
@@ -57,8 +58,8 @@ class SearchViewModelTest: QuickSpec {
                     expect(bookmarksResult.events.first?.value.element?.count).to(equal(0))
                 }
             }
-
-            context("when refresh") {
+            // MARK: - refresh
+            context("when view will appear that will call input with refresh") {
                 it("should be get bookmarks array") {
                     DBModel.shared.setBookmark(
                         .init(trackId: "854658129",
@@ -99,10 +100,39 @@ class SearchViewModelTest: QuickSpec {
                 }
             }
 
+            //MARK: - enter keyword
             context("when enter keyword") {
-                it("should be get search result") {
+                it("if keyword is empty should be get keywordIsEmpty is true") {
+                    let keywordIsEmpty = scheduler.createObserver(Bool.self)
+                    viewModel.output.keywordIsEmpty
+                        .drive(keywordIsEmpty)
+                        .disposed(by: disposeBag)
+
+                    viewModel.input.keyword.onNext("")
+
+                    expect(keywordIsEmpty.events.last?.value.element).to(equal(true))
+                }
+
+                it("if keyword is nil should be get keywordIsEmpty is true") {
+                    let keywordIsEmpty = scheduler.createObserver(Bool.self)
+                    viewModel.output.keywordIsEmpty
+                        .drive(keywordIsEmpty)
+                        .disposed(by: disposeBag)
+
+                    viewModel.input.keyword.onNext(nil)
+
+                    expect(keywordIsEmpty.events.last?.value.element).to(equal(true))
+                }
+                // MARK: APITest
+                it("if keyword not empty should be get search result") {
+                    let keywordIsEmpty = scheduler.createObserver(Bool.self)
                     let movieSearchResult = scheduler.createObserver([MovieResultModel].self)
                     let musicSearchResult = scheduler.createObserver([MusicResultModel].self)
+
+                    viewModel.output.keywordIsEmpty
+                        .drive(keywordIsEmpty)
+                        .disposed(by: disposeBag)
+
 
                     viewModel.output.movieSearchResult
                         .drive(movieSearchResult)
@@ -113,6 +143,7 @@ class SearchViewModelTest: QuickSpec {
                         .disposed(by: disposeBag)
 
                     viewModel.input.keyword.onNext("Nothing")
+
                     let movieExoectation = self.expectation(description: "getMovieAPI")
                     viewModel.output.movieSearchResult
                         .asObservable()
@@ -129,6 +160,7 @@ class SearchViewModelTest: QuickSpec {
                     self.waitForExpectations(timeout: 11) {
                         _ in
                         expect(movieSearchResult.events.last?.value.element?.count).notTo(equal(0))
+                        expect(keywordIsEmpty.events.first?.value.element).to(equal(false))
                     }
 
                     viewModel.input.keyword.onNext("Nothing")
@@ -148,6 +180,45 @@ class SearchViewModelTest: QuickSpec {
                     self.waitForExpectations(timeout: 11) {
                         _ in
                         expect(musicSearchResult.events.last?.value.element?.count).notTo(equal(0))
+                        expect(keywordIsEmpty.events.last?.value.element).to(equal(false))
+                    }
+                }
+            }
+
+            // MARK: - APITest cancel request
+            context("when cancel request") {
+                it("should be cancel all request") {
+                    let musicSearchResult = scheduler.createObserver([MusicResultModel].self)
+                    
+                    viewModel.output.musicSearchResult
+                        .drive(musicSearchResult)
+                        .disposed(by: disposeBag)
+
+                    scheduler.createColdObservable([.next(10, "hello")])
+                        .bind(to: viewModel.input.keyword)
+                        .disposed(by: disposeBag)
+                    scheduler.createColdObservable([.next(15, ())])
+                        .bind(to: viewModel.input.cancelRequest)
+                        .disposed(by: disposeBag)
+
+                    scheduler.start()
+                    
+                    let musicExoectation = self.expectation(description: "getMusicAPI")
+                    viewModel.output.musicSearchResult
+                        .asObservable()
+                        .take(10)
+                        .subscribe {
+                            dump($0.element)
+                            if $0.element?.count == 0 {
+                                musicExoectation.fulfill()
+                                return
+                            }
+                        }
+                        .disposed(by: disposeBag)
+                    
+                    self.waitForExpectations(timeout: 11) {
+                        _ in
+                        expect(musicSearchResult.events.last?.value.element?.count).to(equal(0))
                     }
                 }
             }

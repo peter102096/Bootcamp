@@ -64,15 +64,7 @@ class SearchViewController: BaseViewController {
 
         searchBar.rx.textDidEndEditing
             .subscribe(onNext: { [weak self] _ in
-                if let keyword = self?.searchBar.text {
-                    if keyword.isEmpty {
-                        self?.showEmptyAlert()
-                    } else {
-                        self?.showLoadingView(in: self?.view, style: .WithCancelBtn)
-                        self?.viewModel.input.keyword.onNext(keyword)
-                    }
-                    
-                }
+                self?.viewModel.input.keyword.onNext(self?.searchBar.text)
             })
             .disposed(by: disposeBag)
     }
@@ -82,6 +74,16 @@ class SearchViewController: BaseViewController {
         rx.viewWillAppear
             .mapToVoid()
             .bind(to: viewModel.input.refresh)
+            .disposed(by: disposeBag)
+
+        viewModel.output.keywordIsEmpty
+            .drive(onNext: { [weak self] isEmpty in
+                if isEmpty {
+                    self?.showEmptyAlert()
+                } else {
+                    self?.showLoadingView(in: self?.view, style: .WithCancelBtn)
+                }
+            })
             .disposed(by: disposeBag)
 
         viewModel.output.movieSearchResult

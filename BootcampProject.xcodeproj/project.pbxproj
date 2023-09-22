@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		30A58D9917E89837E9E1CE61 /* Pods_BootcampProject_BootcampProjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 314F4E4504016B69F646D615 /* Pods_BootcampProject_BootcampProjectUITests.framework */; };
 		49A29EF59A471CEE717E15D8 /* Pods_BootcampProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF87AC9F22592CD154E75ECB /* Pods_BootcampProject.framework */; };
 		7CCA5FACA981767BD7D770FD /* Pods_BootcampProject_ShareModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A4C0AB546BF25C159A08AC /* Pods_BootcampProject_ShareModels.framework */; };
 		8F76531ADB26C42EE32E8E58 /* Pods_BootcampProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414E4593661A1D9AC989940F /* Pods_BootcampProjectTests.framework */; };
@@ -20,9 +19,6 @@
 		911158102AAEE0CB0009965D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9111580E2AAEE0CB0009965D /* Main.storyboard */; };
 		911158122AAEE0CC0009965D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 911158112AAEE0CC0009965D /* Assets.xcassets */; };
 		911158152AAEE0CC0009965D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911158132AAEE0CC0009965D /* LaunchScreen.storyboard */; };
-		911158202AAEE0CC0009965D /* BootcampProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9111581F2AAEE0CC0009965D /* BootcampProjectTests.swift */; };
-		9111582A2AAEE0CC0009965D /* BootcampProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 911158292AAEE0CC0009965D /* BootcampProjectUITests.swift */; };
-		9111582C2AAEE0CC0009965D /* BootcampProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9111582B2AAEE0CC0009965D /* BootcampProjectUITestsLaunchTests.swift */; };
 		911158402AAF09400009965D /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9111583F2AAF09400009965D /* APIModel.swift */; };
 		9128BE032AB7D4AB00F596FF /* BookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9128BE022AB7D4AB00F596FF /* BookmarkButton.swift */; };
 		913FCC132AB9684C001796FE /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913FCC122AB9684C001796FE /* BookmarkViewModel.swift */; };
@@ -64,6 +60,8 @@
 		91AC831C2AB427B500A06B9B /* String+Fluent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AC831B2AB427B500A06B9B /* String+Fluent.swift */; };
 		91C2F6172AB042380019D2F6 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C2F6162AB042380019D2F6 /* SearchViewController.xib */; };
 		91D3FD962AB04AE5006EB68D /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D3FD942AB04AE5006EB68D /* UserViewController.swift */; };
+		91D836EF2ABD3B43009FDB2E /* UserViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D836EE2ABD3B43009FDB2E /* UserViewModelTest.swift */; };
+		91D836F02ABD3B92009FDB2E /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4382AB1562F001491DD /* UserViewModel.swift */; };
 		91E480412AB946D500F1CAB9 /* UILabel+IsTruncated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E480402AB946D500F1CAB9 /* UILabel+IsTruncated.swift */; };
 		91FC38F92ABACF5200397633 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91FC38FB2ABACF5200397633 /* Localizable.strings */; };
 		91FC38FE2ABAD80E00397633 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FC38FD2ABAD80E00397633 /* Keys.swift */; };
@@ -88,13 +86,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		9111581C2AAEE0CC0009965D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 911157FD2AAEE0CB0009965D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 911158042AAEE0CB0009965D;
-			remoteInfo = BootcampProject;
-		};
-		911158262AAEE0CC0009965D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 911157FD2AAEE0CB0009965D /* Project object */;
 			proxyType = 1;
@@ -145,10 +136,6 @@
 		911158142AAEE0CC0009965D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		911158162AAEE0CC0009965D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9111581B2AAEE0CC0009965D /* BootcampProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BootcampProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9111581F2AAEE0CC0009965D /* BootcampProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootcampProjectTests.swift; sourceTree = "<group>"; };
-		911158252AAEE0CC0009965D /* BootcampProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BootcampProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		911158292AAEE0CC0009965D /* BootcampProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootcampProjectUITests.swift; sourceTree = "<group>"; };
-		9111582B2AAEE0CC0009965D /* BootcampProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootcampProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9111583F2AAF09400009965D /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
 		911158412AAF0AB60009965D /* Project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Project-Bridging-Header.h"; sourceTree = "<group>"; };
 		9128BE022AB7D4AB00F596FF /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
@@ -191,6 +178,7 @@
 		91AC831B2AB427B500A06B9B /* String+Fluent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Fluent.swift"; sourceTree = "<group>"; };
 		91C2F6162AB042380019D2F6 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		91D3FD942AB04AE5006EB68D /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		91D836EE2ABD3B43009FDB2E /* UserViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelTest.swift; sourceTree = "<group>"; };
 		91E480402AB946D500F1CAB9 /* UILabel+IsTruncated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+IsTruncated.swift"; sourceTree = "<group>"; };
 		91FC38FA2ABACF5200397633 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		91FC38FC2ABACF6600397633 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -227,14 +215,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F76531ADB26C42EE32E8E58 /* Pods_BootcampProjectTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		911158222AAEE0CC0009965D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				30A58D9917E89837E9E1CE61 /* Pods_BootcampProject_BootcampProjectUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,7 +344,6 @@
 				91FC397F2ABBECF100397633 /* BookmarkModel.swift */,
 				911158072AAEE0CB0009965D /* BootcampProject */,
 				9111581E2AAEE0CC0009965D /* BootcampProjectTests */,
-				911158282AAEE0CC0009965D /* BootcampProjectUITests */,
 				91FC39722ABBEB7700397633 /* ShareModels */,
 				911158062AAEE0CB0009965D /* Products */,
 				EE4097E4B7A5A5D02642CD2D /* Pods */,
@@ -377,7 +356,6 @@
 			children = (
 				911158052AAEE0CB0009965D /* BootcampProject.app */,
 				9111581B2AAEE0CC0009965D /* BootcampProjectTests.xctest */,
-				911158252AAEE0CC0009965D /* BootcampProjectUITests.xctest */,
 				91FC39712ABBEB7700397633 /* ShareModels.framework */,
 			);
 			name = Products;
@@ -399,19 +377,10 @@
 		9111581E2AAEE0CC0009965D /* BootcampProjectTests */ = {
 			isa = PBXGroup;
 			children = (
+				91D836ED2ABD3B2B009FDB2E /* User */,
 				91FC38FF2ABBC38600397633 /* Search */,
-				9111581F2AAEE0CC0009965D /* BootcampProjectTests.swift */,
 			);
 			path = BootcampProjectTests;
-			sourceTree = "<group>";
-		};
-		911158282AAEE0CC0009965D /* BootcampProjectUITests */ = {
-			isa = PBXGroup;
-			children = (
-				911158292AAEE0CC0009965D /* BootcampProjectUITests.swift */,
-				9111582B2AAEE0CC0009965D /* BootcampProjectUITestsLaunchTests.swift */,
-			);
-			path = BootcampProjectUITests;
 			sourceTree = "<group>";
 		};
 		911158382AAF03360009965D /* Classes */ = {
@@ -542,6 +511,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		91D836ED2ABD3B2B009FDB2E /* User */ = {
+			isa = PBXGroup;
+			children = (
+				91D836EE2ABD3B43009FDB2E /* UserViewModelTest.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		91E4803F2AB946B200F1CAB9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,26 +627,6 @@
 			productReference = 9111581B2AAEE0CC0009965D /* BootcampProjectTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		911158242AAEE0CC0009965D /* BootcampProjectUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 911158352AAEE0CC0009965D /* Build configuration list for PBXNativeTarget "BootcampProjectUITests" */;
-			buildPhases = (
-				F990EDC2CB34C789CDDFF62E /* [CP] Check Pods Manifest.lock */,
-				911158212AAEE0CC0009965D /* Sources */,
-				911158222AAEE0CC0009965D /* Frameworks */,
-				911158232AAEE0CC0009965D /* Resources */,
-				2766692D2E5F79019CEEFAF3 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				911158272AAEE0CC0009965D /* PBXTargetDependency */,
-			);
-			name = BootcampProjectUITests;
-			productName = BootcampProjectUITests;
-			productReference = 911158252AAEE0CC0009965D /* BootcampProjectUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		91FC39702ABBEB7700397633 /* ShareModels */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 91FC397B2ABBEB7700397633 /* Build configuration list for PBXNativeTarget "ShareModels" */;
@@ -706,10 +663,6 @@
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 911158042AAEE0CB0009965D;
 					};
-					911158242AAEE0CC0009965D = {
-						CreatedOnToolsVersion = 14.2;
-						TestTargetID = 911158042AAEE0CB0009965D;
-					};
 					91FC39702ABBEB7700397633 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -731,7 +684,6 @@
 			targets = (
 				911158042AAEE0CB0009965D /* BootcampProject */,
 				9111581A2AAEE0CC0009965D /* BootcampProjectTests */,
-				911158242AAEE0CC0009965D /* BootcampProjectUITests */,
 				91FC39702ABBEB7700397633 /* ShareModels */,
 			);
 		};
@@ -762,13 +714,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		911158232AAEE0CC0009965D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		91FC396F2ABBEB7700397633 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -779,23 +724,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2766692D2E5F79019CEEFAF3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BootcampProject-BootcampProjectUITests/Pods-BootcampProject-BootcampProjectUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BootcampProject-BootcampProjectUITests/Pods-BootcampProject-BootcampProjectUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BootcampProject-BootcampProjectUITests/Pods-BootcampProject-BootcampProjectUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		37DFF54A190EE0483A8A81C5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -896,28 +824,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F990EDC2CB34C789CDDFF62E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BootcampProject-BootcampProjectUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -982,21 +888,13 @@
 				91FC39082ABBC93A00397633 /* MovieModel.swift in Sources */,
 				91FC39032ABBC5C400397633 /* ViewModelType.swift in Sources */,
 				91FC39062ABBC5E900397633 /* DBModel.swift in Sources */,
+				91D836F02ABD3B92009FDB2E /* UserViewModel.swift in Sources */,
 				91FC39092ABBC94400397633 /* MusicModel.swift in Sources */,
+				91D836EF2ABD3B43009FDB2E /* UserViewModelTest.swift in Sources */,
 				91FC39022ABBC5BD00397633 /* SearchViewModel.swift in Sources */,
 				91FC39012ABBC3A400397633 /* SearchViewModelTest.swift in Sources */,
 				91FC39072ABBC93000397633 /* APIModel.swift in Sources */,
-				911158202AAEE0CC0009965D /* BootcampProjectTests.swift in Sources */,
 				91FC39042ABBC5CF00397633 /* Keys.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		911158212AAEE0CC0009965D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9111582A2AAEE0CC0009965D /* BootcampProjectUITests.swift in Sources */,
-				9111582C2AAEE0CC0009965D /* BootcampProjectUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1016,11 +914,6 @@
 			isa = PBXTargetDependency;
 			target = 911158042AAEE0CB0009965D /* BootcampProject */;
 			targetProxy = 9111581C2AAEE0CC0009965D /* PBXContainerItemProxy */;
-		};
-		911158272AAEE0CC0009965D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 911158042AAEE0CB0009965D /* BootcampProject */;
-			targetProxy = 911158262AAEE0CC0009965D /* PBXContainerItemProxy */;
 		};
 		91FC39782ABBEB7700397633 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1294,44 +1187,6 @@
 			};
 			name = Release;
 		};
-		911158362AAEE0CC0009965D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BE3D9A54F596B6AD1649D79E /* Pods-BootcampProject-BootcampProjectUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H4K27VLK2T;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tw.com.peter.BootcampProjectUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BootcampProject;
-			};
-			name = Debug;
-		};
-		911158372AAEE0CC0009965D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 88D7395B7120C6A3531FAA05 /* Pods-BootcampProject-BootcampProjectUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H4K27VLK2T;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tw.com.peter.BootcampProjectUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BootcampProject;
-			};
-			name = Release;
-		};
 		91FC397C2ABBEB7700397633 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2DF8BCDE12086B0B18B12A84 /* Pods-BootcampProject-ShareModels.debug.xcconfig */;
@@ -1422,15 +1277,6 @@
 			buildConfigurations = (
 				911158332AAEE0CC0009965D /* Debug */,
 				911158342AAEE0CC0009965D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		911158352AAEE0CC0009965D /* Build configuration list for PBXNativeTarget "BootcampProjectUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				911158362AAEE0CC0009965D /* Debug */,
-				911158372AAEE0CC0009965D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

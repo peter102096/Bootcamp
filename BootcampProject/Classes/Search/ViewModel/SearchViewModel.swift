@@ -8,7 +8,7 @@ class SearchViewModel: NSObject, ViewModelType {
 
     private let refresh = PublishSubject<Void>()
 
-    private var keyword = PublishSubject<String>()
+    private var keyword = PublishSubject<String?>()
 
     private let cancelRequest = PublishSubject<Void>()
 
@@ -20,16 +20,16 @@ class SearchViewModel: NSObject, ViewModelType {
 
     private let disposeBag = DisposeBag()
 
-//    public let group = DispatchGroup()
-
     override init() {
         super.init()
 
-        keyword
-            .subscribe(onNext: { [weak self] in
-                self?.getSearchResult($0)
-            })
-            .disposed(by: disposeBag)
+        let keywordIsEmpty: Observable<Bool> = keyword.flatMapLatest { [unowned self] in
+            let isEmpty = checkKeyword($0)
+            if !isEmpty {
+                getSearchResult($0!)
+            }
+            return Observable.just(isEmpty)
+        }
 
         refresh
             .subscribe(onNext: { [weak self] in
@@ -42,16 +42,24 @@ class SearchViewModel: NSObject, ViewModelType {
                 APIModel.shared.cancelAllRequest()
             })
             .disposed(by: disposeBag)
-        
+
         input = .init(
             refresh: self.refresh.asObserver(),
             keyword: self.keyword.asObserver(),
             cancelRequest: self.cancelRequest.asObserver())
 
         output = .init(
+            keywordIsEmpty: keywordIsEmpty.asDriver(onErrorJustReturn: true),
             movieSearchResult: movieSearchResult.asDriver(),
             musicSearchResult: musicSearchResult.asDriver(),
             bookmarksResult: bookmarkList.asDriver())
+    }
+
+    private func checkKeyword(_ keyword: String?) -> Bool {
+        if let keyword = keyword {
+            return keyword.isEmpty
+        }
+        return true
     }
 
     private func getSearchResult(_ keyword: String) {
@@ -78,11 +86,12 @@ class SearchViewModel: NSObject, ViewModelType {
 extension SearchViewModel {
     struct Input {
         let refresh: AnyObserver<Void>
-        let keyword: AnyObserver<String>
+        let keyword: AnyObserver<String?>
         let cancelRequest: AnyObserver<Void>
     }
 
     struct Output {
+        let keywordIsEmpty: Driver<Bool>
         let movieSearchResult: Driver<[MovieResultModel]>
         let musicSearchResult: Driver<[MusicResultModel]>
         let bookmarksResult: Driver<[BookmarkModel]>
