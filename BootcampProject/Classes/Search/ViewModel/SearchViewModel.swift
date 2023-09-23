@@ -70,10 +70,10 @@ class SearchViewModel: NSObject, ViewModelType {
     }
 
     private func getSearchResult(_ keyword: String) {
-        var movieUrl = String(format: Global.apiURL, arguments: [keyword, Key.MOVIE, Global.country.rawValue])
-        var musicUrl = String(format: Global.apiURL, arguments: [keyword, Key.MUSIC, Global.country.rawValue])
+        var movieUrl = String(format: Global.apiURL, arguments: [keyword, Key.MOVIE, Global.country.rawValue]).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        var musicUrl = String(format: Global.apiURL, arguments: [keyword, Key.MUSIC, Global.country.rawValue]).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 
-        APIModel.shared.getMovie(url: movieUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) { [weak self] statusCode, result in
+        APIModel.shared.getMovie(url: movieUrl) { [weak self] statusCode, result in
             if let movieModel = result as? MovieModel {
                 self?.movieSearchResult.accept(movieModel.results)
             }
@@ -82,7 +82,7 @@ class SearchViewModel: NSObject, ViewModelType {
             }
         }
 
-        APIModel.shared.getMusic(url: musicUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) { [weak self] statusCode, result in
+        APIModel.shared.getMusic(url: musicUrl) { [weak self] statusCode, result in
             if statusCode == 200, let musicModel = result as? MusicModel {
                 self?.musicSearchResult.accept(musicModel.results)
             }
