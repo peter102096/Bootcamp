@@ -18,9 +18,17 @@
 "Cancel" = "取消";
 "FavoriteItem" = "收藏項目";
 "ShareFavoritesFormat" = "共有 %@ 項收藏";
+"SearchCountry" = "欲搜尋的國家";
 "AboutiTunes" = "關於Apple iTunes";
+"SettingFailed" = "設定失敗，發生一些預期外的錯誤";
 
 "DidFailLoad" = "網頁讀取失敗";
 "NoAccess" = "禁止前往其他頁面";
 
 "Back" = "返回";
+
+"US" = "美國";
+"TW" = "臺灣";
+"JP" = "日本";
+"SG" = "新加坡";
+"KR" = "南韓";

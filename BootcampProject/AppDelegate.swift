@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         Global.isDarkMode = ShareDefaults.shared.isDarkMode
+        Global.country = Country(rawValue: ShareDefaults.shared.getCountry) ?? .TW
         DBModel.shared.didApplicationLunch()
         return true
     }

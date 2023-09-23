@@ -79,8 +79,10 @@ class BaseViewController: UIViewController {
     }
 
     func showExceptionErrorAlert(message errorMsg: String) {
-        expectionAlert.message = errorMsg
-        present(expectionAlert, animated: true)
+        if !expectionAlert.isBeingPresented {
+            expectionAlert.message = errorMsg
+            present(expectionAlert, animated: true)
+        }
     }
 
     func dismissExceptionErrorAlert() {

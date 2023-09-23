@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 
 class BookmarkButton: UIButton {
-    private var fillColor: UIColor? = Global.isDarkMode ? .cyan : .blue
+    private var fillColor: UIColor? = Global.isDarkMode ? .orange : .purple
     private var notFillColor: UIColor? = Global.isDarkMode ? .darkModeTxtColor : .lightModeTxtColor
     var isLiked: Bool = false {
         didSet {
@@ -16,7 +16,7 @@ class BookmarkButton: UIButton {
     }
 
     func updateAppearance() {
-        fillColor = Global.isDarkMode ? .cyan : .blue
+        fillColor = Global.isDarkMode ? .orange : .purple
         notFillColor = Global.isDarkMode ?
             .darkModeTxtColor : .lightModeTxtColor
         tintColor = isLiked ? fillColor : notFillColor

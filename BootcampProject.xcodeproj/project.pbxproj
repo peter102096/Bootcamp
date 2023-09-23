@@ -10,6 +10,7 @@
 		49A29EF59A471CEE717E15D8 /* Pods_BootcampProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF87AC9F22592CD154E75ECB /* Pods_BootcampProject.framework */; };
 		7CCA5FACA981767BD7D770FD /* Pods_BootcampProject_ShareModels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A4C0AB546BF25C159A08AC /* Pods_BootcampProject_ShareModels.framework */; };
 		8F76531ADB26C42EE32E8E58 /* Pods_BootcampProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 414E4593661A1D9AC989940F /* Pods_BootcampProjectTests.framework */; };
+		910031022ABE947E00474414 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910031012ABE947E00474414 /* ErrorModel.swift */; };
 		910CA9D32AB006CA002C8CB9 /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910CA9D22AB006CA002C8CB9 /* MusicModel.swift */; };
 		910CA9DF2AB03B66002C8CB9 /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910CA9DE2AB03B66002C8CB9 /* MovieModel.swift */; };
 		910CA9E32AB04053002C8CB9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910CA9E22AB04053002C8CB9 /* MainTabBarController.swift */; };
@@ -132,6 +133,7 @@
 		60C47A13759CFC29ED31D5D8 /* Pods-BootcampProject-ShareModels.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BootcampProject-ShareModels.release.xcconfig"; path = "Target Support Files/Pods-BootcampProject-ShareModels/Pods-BootcampProject-ShareModels.release.xcconfig"; sourceTree = "<group>"; };
 		80250D0AA6617EB2DC1EA4AA /* Pods-BootcampProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BootcampProject.release.xcconfig"; path = "Target Support Files/Pods-BootcampProject/Pods-BootcampProject.release.xcconfig"; sourceTree = "<group>"; };
 		88D7395B7120C6A3531FAA05 /* Pods-BootcampProject-BootcampProjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BootcampProject-BootcampProjectUITests.release.xcconfig"; path = "Target Support Files/Pods-BootcampProject-BootcampProjectUITests/Pods-BootcampProject-BootcampProjectUITests.release.xcconfig"; sourceTree = "<group>"; };
+		910031012ABE947E00474414 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		910CA9D22AB006CA002C8CB9 /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
 		910CA9DE2AB03B66002C8CB9 /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		910CA9E22AB04053002C8CB9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -250,6 +252,17 @@
 				B9A4C0AB546BF25C159A08AC /* Pods_BootcampProject_ShareModels.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		910031002ABE946D00474414 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				9111583F2AAF09400009965D /* APIModel.swift */,
+				910031012ABE947E00474414 /* ErrorModel.swift */,
+				910CA9DE2AB03B66002C8CB9 /* MovieModel.swift */,
+				910CA9D22AB006CA002C8CB9 /* MusicModel.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		910CA9D42AB03A74002C8CB9 /* Main */ = {
@@ -425,18 +438,16 @@
 		9111583E2AAF091E0009965D /* Commons */ = {
 			isa = PBXGroup;
 			children = (
+				910031002ABE946D00474414 /* API */,
 				916AD43E2AB15BB9001491DD /* DB */,
 				916AD41A2AB05A18001491DD /* Extensions */,
 				91E4803F2AB946B200F1CAB9 /* Utils */,
 				D08FC0A52AB8631B002380BF /* View */,
-				9111583F2AAF09400009965D /* APIModel.swift */,
 				91AC830A2AB29F9F00A06B9B /* BaseViewController.swift */,
 				D08FC0A62AB86524002380BF /* Delegates.swift */,
 				916AD4272AB05D64001491DD /* Global.swift */,
 				91FC38FD2ABAD80E00397633 /* Keys.swift */,
 				91AC830C2AB2A25700A06B9B /* LoadingView.swift */,
-				910CA9DE2AB03B66002C8CB9 /* MovieModel.swift */,
-				910CA9D22AB006CA002C8CB9 /* MusicModel.swift */,
 				91AC830E2AB2AB6F00A06B9B /* ShareDefaults.swift */,
 				916AD43A2AB15657001491DD /* ViewModelType.swift */,
 			);
@@ -845,6 +856,7 @@
 				916AD43D2AB15B91001491DD /* DBModel.swift in Sources */,
 				911158092AAEE0CB0009965D /* AppDelegate.swift in Sources */,
 				D08FC0AD2AB893D4002380BF /* SearchViewController+MediaTableViewCellDelegate.swift in Sources */,
+				910031022ABE947E00474414 /* ErrorModel.swift in Sources */,
 				916AD4202AB05A46001491DD /* UILabel+Fluent.swift in Sources */,
 				913FCC172AB99445001796FE /* ViewController.swift in Sources */,
 				910CA9D32AB006CA002C8CB9 /* MusicModel.swift in Sources */,

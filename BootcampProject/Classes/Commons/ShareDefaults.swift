@@ -5,6 +5,8 @@ class ShareDefaults: NSObject {
     
     private let KEY_APPEARANCE = "appearance"
 
+    private let KEY_COUNTRY = "country"
+
     private var user:UserDefaults
     
     private override init() {
@@ -22,5 +24,17 @@ class ShareDefaults: NSObject {
             return UIViewController().traitCollection.userInterfaceStyle == .dark
         }
         return isDarkMode
+    }
+
+    func setSearchCountry(_ country: String, completion: @escaping (Bool) -> Void) {
+        user.set(country, forKey: KEY_COUNTRY)
+        completion(user.synchronize())
+    }
+
+    var getCountry: String {
+        guard let country = user.object(forKey: KEY_COUNTRY) as? String else {
+            return Country.TW.rawValue
+        }
+        return country
     }
 }

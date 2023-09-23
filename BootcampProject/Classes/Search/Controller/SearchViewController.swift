@@ -113,9 +113,16 @@ class SearchViewController: BaseViewController {
             .disposed(by: disposeBag)
 
         viewModel.output.bookmarksResult
-            .drive (onNext: { [weak self] (result) in
+            .drive(onNext: { [weak self] (result) in
                 self?.searchResultTableView.reloadData()
                 self?.dismissLoadingView()
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.output.getDataError
+            .drive(onNext: { [weak self] (errorModel) in
+                self?.dismissLoadingView()
+                self?.showExceptionErrorAlert(message: errorModel.reason)
             })
             .disposed(by: disposeBag)
     }

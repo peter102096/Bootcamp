@@ -12,6 +12,8 @@ class SearchViewModel: NSObject, ViewModelType {
 
     private let cancelRequest = PublishSubject<Void>()
 
+    private var apiErrorModel = PublishRelay<ErrorModel>()
+
     private(set) var movieSearchResult = BehaviorRelay<[MovieResultModel]>(value: .init([]))
 
     private(set) var musicSearchResult = BehaviorRelay<[MusicResultModel]>(value: .init([]))
@@ -54,6 +56,7 @@ class SearchViewModel: NSObject, ViewModelType {
 
         output = .init(
             keywordIsEmpty: keywordIsEmpty.asDriver(onErrorJustReturn: true),
+            getDataError: apiErrorModel.asDriver(onErrorJustReturn: .init(statusCode: 404, reason: "ExpectionError".localized())),
             movieSearchResult: movieSearchResult.asDriver(),
             musicSearchResult: musicSearchResult.asDriver(),
             bookmarksResult: bookmarkList.asDriver())
@@ -67,16 +70,24 @@ class SearchViewModel: NSObject, ViewModelType {
     }
 
     private func getSearchResult(_ keyword: String) {
+        var movieUrl = String(format: Global.apiURL, arguments: [keyword, Key.MOVIE, Global.country.rawValue])
+        var musicUrl = String(format: Global.apiURL, arguments: [keyword, Key.MUSIC, Global.country.rawValue])
 
-        APIModel.shared.getMovie(keyword) { [weak self] statusCode, result in
-            if statusCode == 200, let movieModel = result as? MovieModel {
+        APIModel.shared.getMovie(url: movieUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) { [weak self] statusCode, result in
+            if let movieModel = result as? MovieModel {
                 self?.movieSearchResult.accept(movieModel.results)
+            }
+            if let errorModel = result as? ErrorModel {
+                self?.apiErrorModel.accept(errorModel)
             }
         }
 
-        APIModel.shared.getMusic(keyword) { [weak self] statusCode, result in
+        APIModel.shared.getMusic(url: musicUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)) { [weak self] statusCode, result in
             if statusCode == 200, let musicModel = result as? MusicModel {
                 self?.musicSearchResult.accept(musicModel.results)
+            }
+            if let errorModel = result as? ErrorModel {
+                self?.apiErrorModel.accept(errorModel)
             }
         }
     }
@@ -96,6 +107,7 @@ extension SearchViewModel {
 
     struct Output {
         let keywordIsEmpty: Driver<Bool>
+        let getDataError: Driver<ErrorModel>
         let movieSearchResult: Driver<[MovieResultModel]>
         let musicSearchResult: Driver<[MusicResultModel]>
         let bookmarksResult: Driver<[BookmarkModel]>

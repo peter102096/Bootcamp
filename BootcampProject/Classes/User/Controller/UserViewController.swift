@@ -35,6 +35,21 @@ class UserViewController: BaseViewController {
             .setSemanticContent(.forceRightToLeft)
     }()
 
+    lazy var countryTitleLabel: UILabel = {
+        UILabel()
+            .setText("SearchCountry".localized())
+            .setTextAlignment(.left)
+            .setFont(UIFont.boldSystemFont(ofSize: 17))
+    }()
+
+    lazy var countryButton: UIButton = {
+        UIButton(type: .system)
+            .setTitle(Country.TW.rawValue.localized())
+            .setContentMode(.scaleAspectFit)
+            .setImage(.rightIcon)
+            .setSemanticContent(.forceRightToLeft)
+    }()
+
     lazy var aboutAppleButton: UIButton = {
         UIButton(type: .system)
             .setTitle("AboutiTunes".localized())
@@ -83,9 +98,23 @@ class UserViewController: BaseViewController {
             $0.leading.greaterThanOrEqualTo(bookmarkTitleLabel.snp.trailing).inset(16)
         }
 
+        view.addSubview(countryTitleLabel)
+        countryTitleLabel.snp.makeConstraints {
+            $0.top.equalTo(bookmarkTitleLabel.snp.bottom).offset(36)
+            $0.leading.equalToSuperview().inset(16)
+        }
+
+        view.addSubview(countryButton)
+        countryButton.snp.makeConstraints {
+            $0.top.equalTo(countryTitleLabel.snp.top).inset(2)
+            $0.bottom.equalTo(countryTitleLabel.snp.bottom).offset(2)
+            $0.trailing.equalToSuperview().inset(16)
+            $0.leading.greaterThanOrEqualTo(countryTitleLabel.snp.trailing).inset(16)
+        }
+
         view.addSubview(aboutAppleButton)
         aboutAppleButton.snp.makeConstraints {
-            $0.top.equalTo(bookmarkButton.snp.bottom).offset(36)
+            $0.top.equalTo(countryButton.snp.bottom).offset(36)
             $0.trailing.equalToSuperview().inset(16)
         }
         super.setupUI()
@@ -104,6 +133,12 @@ class UserViewController: BaseViewController {
                 let vc = BookmarkViewController(nibName: Key.BOOKMARK_VC, bundle: nil)
                 self?.pushViewController(vc)
             }
+            .disposed(by: disposeBag)
+
+        countryButton.rx.tap
+            .subscribe(onNext: { [weak self] _ in
+                self?.showCountryActionSheet()
+            })
             .disposed(by: disposeBag)
 
         aboutAppleButton.rx.tap
@@ -141,7 +176,19 @@ class UserViewController: BaseViewController {
                     if isSucceed {
                         self?.updateAppearance()
                     } else {
-                        self?.showExceptionErrorAlert(message: "ExpectionError".localized())
+                        self?.showExceptionErrorAlert(message: "SettingFailed".localized())
+                    }
+                }
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.output.setCountrySucceed
+            .drive(onNext: { [weak self] (isSucceed) in
+                DispatchQueue.main.async {
+                    if isSucceed {
+                        self?.updateAppearance()
+                    } else {
+                        self?.showExceptionErrorAlert(message: "SettingFailed".localized())
                     }
                 }
             })
@@ -152,6 +199,8 @@ class UserViewController: BaseViewController {
         super.updateAppearance()
         themeButton.setTitle(Global.isDarkMode ? "DarkTheme".localized() : "LightTheme".localized())
 
+        countryButton.setTitle(Global.country.rawValue.localized())
+
         themeColorTitleLabel.setTextColor(Global.isDarkMode ? .darkModeTxtColor: .lightModeTxtColor)
 
         themeButton
@@ -161,6 +210,12 @@ class UserViewController: BaseViewController {
             .setTextColor(Global.isDarkMode ? .darkModeTxtColor: .lightModeTxtColor)
 
         bookmarkButton
+            .setTintColor(Global.isDarkMode ? .darkModeTxtColor: .lightModeTxtColor)
+
+        countryTitleLabel
+            .setTextColor(Global.isDarkMode ? .darkModeTxtColor: .lightModeTxtColor)
+
+        countryButton
             .setTintColor(Global.isDarkMode ? .darkModeTxtColor: .lightModeTxtColor)
 
         aboutAppleButton
@@ -177,5 +232,30 @@ class UserViewController: BaseViewController {
         }))
         alert.addAction(.init(title: "Cancel".localized(), style: .cancel))
         present(alert, animated: true)
+    }
+
+    private func showCountryActionSheet() {
+        let alert = UIAlertController(title: "SearchCountry".localized(), message: nil, preferredStyle: .actionSheet)
+        alert.addAction(.init(title: "US".localized(), style: .default, handler: { [weak self] _ in
+            self?.setCountry(.US)
+        }))
+        alert.addAction(.init(title: "TW".localized(), style: .default, handler: { [weak self] _ in
+            self?.setCountry(.TW)
+        }))
+        alert.addAction(.init(title: "JP".localized(), style: .default, handler: { [weak self] _ in
+            self?.setCountry(.JP)
+        }))
+        alert.addAction(.init(title: "SG".localized(), style: .default, handler: { [weak self] _ in
+            self?.setCountry(.SG)
+        }))
+        alert.addAction(.init(title: "KR".localized(), style: .default, handler: { [weak self] _ in
+            self?.setCountry(.KR)
+        }))
+        alert.addAction(.init(title: "Cancel".localized(), style: .cancel))
+        present(alert, animated: true)
+    }
+
+    private func setCountry(_ country: Country) {
+        viewModel.input.country.onNext(country)
     }
 }

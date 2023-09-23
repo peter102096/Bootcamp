@@ -18,9 +18,17 @@
 "Cancel" = "Cancel";
 "FavoriteItem" = "Favorite Item";
 "ShareFavoritesFormat" = "Total %@ items";
+"SearchCountry" = "Search Country";
 "AboutiTunes" = "About Apple iTunes";
+"SettingFailed" = "Setting failed, Something expection error";
 
 "DidFailLoad" = "Load web view failed.";
 "NoAccess" = "No access to other pages";
 
 "Back" = "Back";
+
+"US" = "U.S.A";
+"TW" = "Taiwan";
+"JP" = "Japan";
+"SG" = "Singapore";
+"KR" = "South Korea";

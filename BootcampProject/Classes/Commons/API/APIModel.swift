@@ -6,24 +6,29 @@ class APIModel: NSObject {
     public typealias APICallback = (Int?, Codable?) -> Void
     let manager = AFHTTPSessionManager(sessionConfiguration: .default)
     var statusCode: Int? = 404
-    private let baseUrl = "https://itunes.apple.com/search"
-    private let countryTW = "country=TW"
     private var tasks: [URLSessionDataTask?] = []
     private override init() {
         super.init()
     }
 
-    public func getMusic(_ keyword: String, completion: @escaping (Int?, Codable?) -> Void) {
-        let url = "\(baseUrl)?term=\(keyword)&media=music&\(countryTW)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        getFromServer(url: url!, dataStruct: MusicModel.self) { (statusCode, data) in
-            completion(statusCode, data)
+    public func getMovie(url: String?, completion: @escaping APICallback) {
+        if let url = url {
+            getFromServer(url: url, dataStruct: MovieModel.self) { (statusCode, data) in
+                completion(statusCode, data)
+            }
+        } else {
+            completion(404, ErrorModel(statusCode: 404, reason: "ExpectionError".localized()))
         }
     }
 
-    public func getMovie(_ keyword: String, completion: @escaping APICallback) {
-        let url = "\(baseUrl)?term=\(keyword)&media=movie&\(countryTW)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        getFromServer(url: url!, dataStruct: MovieModel.self) { (statusCode, data) in
-            completion(statusCode, data)
+    public func getMusic(url: String?, completion: @escaping (Int?, Codable?) -> Void) {
+
+        if let url = url {
+            getFromServer(url: url, dataStruct: MusicModel.self) { (statusCode, data) in
+                completion(statusCode, data)
+            }
+        } else {
+            completion(404, ErrorModel(statusCode: 404, reason: "ExpectionError".localized()))
         }
     }
 
@@ -39,6 +44,7 @@ class APIModel: NSObject {
         tasks.append(manager.get(url, parameters: nil, headers: nil, progress: nil) { [weak self] (task, responseObject) in
             if let response = task.response as? HTTPURLResponse, let jsonDict = responseObject as? [String: Any] {
                 self?.statusCode = response.statusCode
+                var errorModel: ErrorModel? = nil
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: jsonDict, options: [])
                     let model = try JSONDecoder().decode(T.self, from: jsonData)
@@ -46,15 +52,16 @@ class APIModel: NSObject {
                     return
                 } catch {
                     debugPrint("API", "error decode \(T.self): \(error.localizedDescription)")
+                    errorModel = ErrorModel(statusCode: response.statusCode, reason: error.localizedDescription)
                 }
-                completion(self?.statusCode, nil)
+                completion(self?.statusCode, errorModel)
             }
         } failure: { [weak self] (task, error) in
             debugPrint("API", "getFromServer \(T.self) failure: \(error.localizedDescription)")
             if let response = task?.response as? HTTPURLResponse {
                 self?.statusCode = response.statusCode
             }
-            completion(self?.statusCode, nil)
+            completion(self?.statusCode, ErrorModel(statusCode: self?.statusCode ?? 404, reason: error.localizedDescription))
         })
     }
 }
