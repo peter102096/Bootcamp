@@ -21,6 +21,7 @@
 		911158122AAEE0CC0009965D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 911158112AAEE0CC0009965D /* Assets.xcassets */; };
 		911158152AAEE0CC0009965D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 911158132AAEE0CC0009965D /* LaunchScreen.storyboard */; };
 		911158402AAF09400009965D /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9111583F2AAF09400009965D /* APIModel.swift */; };
+		912380FB2ABEC26A001A3504 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910031012ABE947E00474414 /* ErrorModel.swift */; };
 		9128BE032AB7D4AB00F596FF /* BookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9128BE022AB7D4AB00F596FF /* BookmarkButton.swift */; };
 		913FCC132AB9684C001796FE /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913FCC122AB9684C001796FE /* BookmarkViewModel.swift */; };
 		913FCC172AB99445001796FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913FCC162AB99445001796FE /* ViewController.swift */; };
@@ -883,6 +884,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				912380FB2ABEC26A001A3504 /* ErrorModel.swift in Sources */,
 				91FC39082ABBC93A00397633 /* MovieModel.swift in Sources */,
 				91FC39032ABBC5C400397633 /* ViewModelType.swift in Sources */,
 				D08FC0B02ABDBB62002380BF /* AboutiTunesViewModel.swift in Sources */,

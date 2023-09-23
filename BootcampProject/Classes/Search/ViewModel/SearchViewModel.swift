@@ -56,7 +56,7 @@ class SearchViewModel: NSObject, ViewModelType {
 
         output = .init(
             keywordIsEmpty: keywordIsEmpty.asDriver(onErrorJustReturn: true),
-            getDataError: apiErrorModel.asDriver(onErrorJustReturn: .init(statusCode: 404, reason: "ExpectionError".localized())),
+            getDataError: apiErrorModel.asDriver(onErrorJustReturn: .init(statusCode: 404, reason: "ExpectionError")),
             movieSearchResult: movieSearchResult.asDriver(),
             musicSearchResult: musicSearchResult.asDriver(),
             bookmarksResult: bookmarkList.asDriver())
@@ -70,8 +70,8 @@ class SearchViewModel: NSObject, ViewModelType {
     }
 
     private func getSearchResult(_ keyword: String) {
-        var movieUrl = String(format: Global.apiURL, arguments: [keyword, Key.MOVIE, Global.country.rawValue]).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        var musicUrl = String(format: Global.apiURL, arguments: [keyword, Key.MUSIC, Global.country.rawValue]).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let movieUrl = String(format: Global.apiURL, arguments: [keyword, Key.MOVIE, Global.country.rawValue]).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let musicUrl = String(format: Global.apiURL, arguments: [keyword, Key.MUSIC, Global.country.rawValue]).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
 
         APIModel.shared.getMovie(url: movieUrl) { [weak self] statusCode, result in
             if let movieModel = result as? MovieModel {

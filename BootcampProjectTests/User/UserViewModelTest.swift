@@ -125,7 +125,7 @@ class UserViewModelTest: QuickSpec {
 
             // MARK: - select theme mode
             context("when select theme mode with action sheet") {
-                it("set dark mode should be get setSucceed that must be true") {
+                it("set dark mode should be get setThemeModeSucceed that must be true") {
                     let setThemeModeSucceed = scheduler.createObserver(Bool.self)
 
                     viewModel.output.setThemeModeSucceed
@@ -152,7 +152,7 @@ class UserViewModelTest: QuickSpec {
                     }
                 }
 
-                it("set light mode should be get setSucceed that must be true") {
+                it("set light mode should be get setThemeModeSucceed that must be true") {
                     let setThemeModeSucceed = scheduler.createObserver(Bool.self)
 
                     viewModel.output.setThemeModeSucceed
@@ -176,6 +176,36 @@ class UserViewModelTest: QuickSpec {
 
                     self.waitForExpectations(timeout: 4) { _ in
                         expect(setThemeModeSucceed.events.first?.value.element).to(beTrue())
+                    }
+                }
+            }
+
+            // MARK: - select country
+            context("when select country with action sheet") {
+                it("set country should be get setCountrySucceed that must be true") {
+                    let setCountrySucceed = scheduler.createObserver(Bool.self)
+
+                    viewModel.output.setCountrySucceed
+                        .drive(setCountrySucceed)
+                        .disposed(by: disposeBag)
+
+                    viewModel.input.country.onNext(.JP)
+
+                    let setCountryExpectation = self.expectation(description: "setCountry")
+
+                    viewModel.output.setCountrySucceed
+                        .asObservable()
+                        .take(3)
+                        .subscribe {
+                            if $0.element == true {
+                                setCountryExpectation.fulfill()
+                                return
+                            }
+                        }
+                        .disposed(by: disposeBag)
+
+                    self.waitForExpectations(timeout: 4) { _ in
+                        expect(setCountrySucceed.events.first?.value.element).to(beTrue())
                     }
                 }
             }

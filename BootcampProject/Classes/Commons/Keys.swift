@@ -1,6 +1,6 @@
 struct Key {
-    static let MOVIE = "Movie"
-    static let MUSIC = "Music"
+    static let MOVIE = "movie"
+    static let MUSIC = "music"
     static let MUSIC_CELL = "MusicTableViewCell"
     static let MOVIE_CELL = "MovieTableViewCell"
     static let SEARCH_VC = "SearchViewController"

@@ -17,7 +17,7 @@ class APIModel: NSObject {
                 completion(statusCode, data)
             }
         } else {
-            completion(404, ErrorModel(statusCode: 404, reason: "ExpectionError".localized()))
+            completion(404, ErrorModel(statusCode: 404, reason: "ExpectionError"))
         }
     }
 
@@ -28,7 +28,7 @@ class APIModel: NSObject {
                 completion(statusCode, data)
             }
         } else {
-            completion(404, ErrorModel(statusCode: 404, reason: "ExpectionError".localized()))
+            completion(404, ErrorModel(statusCode: 404, reason: "ExpectionError"))
         }
     }
 
@@ -57,11 +57,14 @@ class APIModel: NSObject {
                 completion(self?.statusCode, errorModel)
             }
         } failure: { [weak self] (task, error) in
-            debugPrint("API", "getFromServer \(T.self) failure: \(error.localizedDescription)")
+            debugPrint("API", "getFromServer \(T.self) failure: \(error)")
             if let response = task?.response as? HTTPURLResponse {
                 self?.statusCode = response.statusCode
             }
-            completion(self?.statusCode, ErrorModel(statusCode: self?.statusCode ?? 404, reason: error.localizedDescription))
+
+            if let error = error as? NSError, error.code != -999 {
+                completion(self?.statusCode, ErrorModel(statusCode: self?.statusCode ?? 404, reason: error.localizedDescription))
+            }
         })
     }
 }
