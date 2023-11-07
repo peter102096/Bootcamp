@@ -200,7 +200,6 @@
 		91FC39712ABBEB7700397633 /* ShareModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ShareModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91FC39732ABBEB7700397633 /* ShareModels.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareModels.h; sourceTree = "<group>"; };
 		91FC39742ABBEB7700397633 /* ShareModels.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = ShareModels.docc; sourceTree = "<group>"; };
-		91FC397F2ABBECF100397633 /* BookmarkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookmarkModel.swift; path = ShareModels/ShareModels.docc/Resources/BookmarkModel.swift; sourceTree = "<group>"; };
 		91FC39832ABBED3900397633 /* BookmarkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkModel.swift; sourceTree = "<group>"; };
 		B9A4C0AB546BF25C159A08AC /* Pods_BootcampProject_ShareModels.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BootcampProject_ShareModels.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3D9A54F596B6AD1649D79E /* Pods-BootcampProject-BootcampProjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BootcampProject-BootcampProjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-BootcampProject-BootcampProjectUITests/Pods-BootcampProject-BootcampProjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -345,7 +344,6 @@
 		911157FC2AAEE0CB0009965D = {
 			isa = PBXGroup;
 			children = (
-				91FC397F2ABBECF100397633 /* BookmarkModel.swift */,
 				911158072AAEE0CB0009965D /* BootcampProject */,
 				9111581E2AAEE0CC0009965D /* BootcampProjectTests */,
 				91FC39722ABBEB7700397633 /* ShareModels */,

@@ -165,10 +165,9 @@ class SearchViewModelTest: QuickSpec {
                     expect(keywordIsEmpty.events.last?.value.element).to(beTrue())
                 }
                 // MARK: APITest
-                it("if keyword not empty should be get search result") {
+                it("if keyword not empty should be get search movie result") {
                     let keywordIsEmpty = scheduler.createObserver(Bool.self)
                     let movieSearchResult = scheduler.createObserver([MovieResultModel].self)
-                    let musicSearchResult = scheduler.createObserver([MusicResultModel].self)
 
                     viewModel.output.keywordIsEmpty
                         .drive(keywordIsEmpty)
@@ -177,10 +176,6 @@ class SearchViewModelTest: QuickSpec {
 
                     viewModel.output.movieSearchResult
                         .drive(movieSearchResult)
-                        .disposed(by: disposeBag)
-
-                    viewModel.output.musicSearchResult
-                        .drive(musicSearchResult)
                         .disposed(by: disposeBag)
 
                     viewModel.input.keyword.onNext("Nothing")
@@ -202,8 +197,22 @@ class SearchViewModelTest: QuickSpec {
                         expect(movieSearchResult.events.last?.value.element?.count).notTo(equal(0))
                         expect(keywordIsEmpty.events.first?.value.element).to(beFalse())
                     }
+                }
+                
+                it("if keyword not empty should be get search music result") {
+                    let keywordIsEmpty = scheduler.createObserver(Bool.self)
+                    let musicSearchResult = scheduler.createObserver([MusicResultModel].self)
+
+                    viewModel.output.keywordIsEmpty
+                        .drive(keywordIsEmpty)
+                        .disposed(by: disposeBag)
+
+                    viewModel.output.musicSearchResult
+                        .drive(musicSearchResult)
+                        .disposed(by: disposeBag)
 
                     viewModel.input.keyword.onNext("Nothing")
+                    
                     let musicExpectation = self.expectation(description: "getMusicAPI")
                     viewModel.output.musicSearchResult
                         .asObservable()
@@ -222,6 +231,7 @@ class SearchViewModelTest: QuickSpec {
                         expect(keywordIsEmpty.events.last?.value.element).to(beFalse())
                     }
                 }
+
             }
 
             // MARK: - APITest cancel request
