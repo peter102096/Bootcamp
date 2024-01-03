@@ -51,8 +51,8 @@ class BookmarkViewController: BaseViewController {
         }
     }
 
-    override func bindView() {
-        super.bindView()
+    override func bindViews() {
+        super.bindViews()
         mediaTypeSegmentControl.rx.selectedSegmentIndex
             .subscribe { [weak self] _ in
                 self?.bookmarksTableView.reloadData()

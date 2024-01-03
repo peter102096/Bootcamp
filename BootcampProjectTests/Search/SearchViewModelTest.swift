@@ -257,7 +257,6 @@ class SearchViewModelTest: QuickSpec {
                         .asObservable()
                         .take(10)
                         .subscribe {
-                            dump($0.element)
                             if $0.element?.count == 0 {
                                 musicExpectation.fulfill()
                                 return

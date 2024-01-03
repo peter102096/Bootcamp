@@ -38,7 +38,7 @@ class SearchViewController: BaseViewController {
             $0.leading.trailing.equalToSuperview().inset(6)
         }
         view.addSubview(searchResultTableView)
-
+        
         searchResultTableView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom).inset(6)
             $0.leading.trailing.equalToSuperview().inset(6)
@@ -47,8 +47,14 @@ class SearchViewController: BaseViewController {
         super.setupUI()
     }
 
-    override func bindView() {
-        super.bindView()
+    override func bindViews() {
+        super.bindViews()
+        
+        rx.viewDidLoad
+            .subscribe { [weak self] _ in
+                debugPrint(self?.classForCoder, "yeah viewDidload")
+            }
+            .disposed(by: disposeBag)
 
         rx.viewWillAppear
             .subscribe(onNext: { [weak self] _ in
@@ -85,30 +91,15 @@ class SearchViewController: BaseViewController {
                 }
             })
             .disposed(by: disposeBag)
-
-        viewModel.output.movieSearchResult
+        
+        viewModel.output.searchResult
             .drive(onNext: { [weak self] movieModel in
-                self?.dismissLoadingView()
                 self?.searchResultTableView.scrollRectToVisible(.init(x: 0, y: 0, width: 1, height: 1), animated: true)
-                if let self = self {
-                    DispatchQueue.main.async {
-                        self.searchResultTableView.reloadData()
-                    }
-                }
-            })
-            .disposed(by: disposeBag)
-
-        viewModel.output.musicSearchResult
-            .drive(onNext: { [weak self] musicModel in
+                self?.searchResultTableView.reloadData()
                 self?.dismissLoadingView()
-                if let self = self {
-                    DispatchQueue.main.async {
-                        self.searchResultTableView.reloadData()
-                    }
-                }
             })
             .disposed(by: disposeBag)
-
+        
         viewModel.output.bookmarksResult
             .drive(onNext: { [weak self] (result) in
                 self?.searchResultTableView.reloadData()
@@ -116,7 +107,7 @@ class SearchViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
 
-        viewModel.output.getDataError
+        viewModel.output.searchError
             .drive(onNext: { [weak self] (errorModel) in
                 if errorModel.reason == "ExpectionError" {
                     self?.showExceptionErrorAlert(message: errorModel.reason.localized())

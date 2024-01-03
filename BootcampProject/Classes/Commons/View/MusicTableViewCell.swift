@@ -27,7 +27,7 @@ class MusicTableViewCell: UITableViewCell {
 
     }
 
-    func setUp(_ model: MusicResultModel, isLiked: Bool) {
+    func setUp(_ model: MediaResultModel, isLiked: Bool) {
         resetViewState()
         thunbnilImgView.sd_setImage(with: URL(string: model.thumbnailURL), placeholderImage: .photoIcon, options: [.refreshCached, .allowInvalidSSLCertificates])
         trackNameLabel.text = model.trackName
@@ -67,7 +67,7 @@ class MusicTableViewCell: UITableViewCell {
             }
     }
 
-    func setBookmark(_ model: MusicResultModel) {
+    private func setBookmark(_ model: MediaResultModel) {
         DBModel.shared.setBookmark(model.bookmarkModel)
     }
 

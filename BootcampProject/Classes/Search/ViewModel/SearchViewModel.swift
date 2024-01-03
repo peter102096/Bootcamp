@@ -11,12 +11,10 @@ class SearchViewModel: NSObject, ViewModelType {
     private var keyword = PublishSubject<String?>()
 
     private let cancelRequest = PublishSubject<Void>()
-
-    private var apiErrorModel = PublishRelay<ErrorModel>()
-
-    private(set) var movieSearchResult = BehaviorRelay<[MovieResultModel]>(value: .init([]))
-
-    private(set) var musicSearchResult = BehaviorRelay<[MusicResultModel]>(value: .init([]))
+    
+    private(set) var searchResult = BehaviorRelay<[MediaType: [MediaResultModel]]>(value: [.Movie:[], .Music: []])
+    
+    private var searchError: PublishRelay<ErrorModel> = .init()
 
     private(set) var bookmarkList: BehaviorRelay<[BookmarkModel]> = .init(value: [])
 
@@ -56,9 +54,8 @@ class SearchViewModel: NSObject, ViewModelType {
 
         output = .init(
             keywordIsEmpty: keywordIsEmpty.asDriver(onErrorJustReturn: true),
-            getDataError: apiErrorModel.asDriver(onErrorJustReturn: .init(statusCode: 404, reason: "ExpectionError")),
-            movieSearchResult: movieSearchResult.asDriver(),
-            musicSearchResult: musicSearchResult.asDriver(),
+            searchResult: searchResult.asDriver(),
+            searchError: searchError.asDriver(onErrorJustReturn: .init(statusCode: 404, reason: "ExpectionError")),
             bookmarksResult: bookmarkList.asDriver())
     }
 
@@ -68,27 +65,58 @@ class SearchViewModel: NSObject, ViewModelType {
         }
         return true
     }
-
+    
     private func getSearchResult(_ keyword: String) {
-        let movieUrl = String(format: Global.apiURL, arguments: [keyword, Key.MOVIE, Global.country.rawValue]).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let musicUrl = String(format: Global.apiURL, arguments: [keyword, Key.MUSIC, Global.country.rawValue]).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        Observable.zip(getMovieSearchResult(keyword), getMusicSearchResult(keyword))
+            .map { (apiResult1, apiResult2) in
+                var results: [MediaType: [MediaResultModel]] = [.Movie:[], .Music: []]
+                results.updateValue(apiResult1, forKey: .Movie)
+                results.updateValue(apiResult2, forKey: .Music)
+                return results
+            }
+            .subscribe(onNext: { [weak self] (results) in
+                self?.searchResult.accept(results)
+            }, onError: { [weak self] (error) in
+                if error is ErrorModel {
+                    self?.searchError.accept(error as! ErrorModel)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
 
-        APIModel.shared.getMovie(url: movieUrl) { [weak self] statusCode, result in
-            if let movieModel = result as? MovieModel {
-                self?.movieSearchResult.accept(movieModel.results)
+    private func getMusicSearchResult(_ keyword: String) -> Observable<[MediaResultModel]> {
+        Observable.create { (observer) in
+            let musicUrl = String(format: Global.apiURL, arguments: [keyword, Key.MUSIC, Global.country.rawValue]).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            
+            APIModel.shared.getMusic(url: musicUrl) { (statusCode, result) in
+                if statusCode == 200, let musicModel = result as? MusicModel {
+                    observer.onNext(musicModel.results.map {$0.mediaResultModel})
+                    observer.onCompleted()
+                }
+                if let errorModel = result as? ErrorModel {
+                    observer.onError(errorModel)
+                    observer.onCompleted()
+                }
             }
-            if let errorModel = result as? ErrorModel {
-                self?.apiErrorModel.accept(errorModel)
-            }
+            return Disposables.create()
         }
-
-        APIModel.shared.getMusic(url: musicUrl) { [weak self] statusCode, result in
-            if statusCode == 200, let musicModel = result as? MusicModel {
-                self?.musicSearchResult.accept(musicModel.results)
+    }
+    
+    private func getMovieSearchResult(_ keyword: String) -> Observable<[MediaResultModel]> {
+        Observable.create { (observer) in
+            let movieUrl = String(format: Global.apiURL, arguments: [keyword, Key.MOVIE, Global.country.rawValue]).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            
+            APIModel.shared.getMovie(url: movieUrl) { (statusCode, result) in
+                if statusCode == 200, let movieModel = result as? MovieModel {
+                    observer.onNext(movieModel.results.map {$0.mediaResultModel})
+                    observer.onCompleted()
+                }
+                if let errorModel = result as? ErrorModel {
+                    observer.onError(errorModel)
+                    observer.onCompleted()
+                }
             }
-            if let errorModel = result as? ErrorModel {
-                self?.apiErrorModel.accept(errorModel)
-            }
+            return Disposables.create()
         }
     }
 
@@ -107,9 +135,8 @@ extension SearchViewModel {
 
     struct Output {
         let keywordIsEmpty: Driver<Bool>
-        let getDataError: Driver<ErrorModel>
-        let movieSearchResult: Driver<[MovieResultModel]>
-        let musicSearchResult: Driver<[MusicResultModel]>
+        let searchResult: Driver<[MediaType: [MediaResultModel]]>
+        let searchError: Driver<ErrorModel>
         let bookmarksResult: Driver<[BookmarkModel]>
     }
 }

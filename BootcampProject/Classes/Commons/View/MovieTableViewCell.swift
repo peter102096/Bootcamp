@@ -33,7 +33,7 @@ class MovieTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func setUp(_ model: MovieResultModel, isLiked: Bool) {
+    func setUp(_ model: MediaResultModel, isLiked: Bool) {
         resetViewState()
         thunbnilImgView.sd_setImage(with: URL(string: model.thumbnailURL), placeholderImage: .photoIcon, options: [.refreshCached, .allowInvalidSSLCertificates])
         trackNameLabel.text = model.trackName
@@ -77,7 +77,7 @@ class MovieTableViewCell: UITableViewCell {
             }
     }
 
-    private func setBookmark(_ model: MovieResultModel) {
+    private func setBookmark(_ model: MediaResultModel) {
         DBModel.shared.setBookmark(model.bookmarkModel)
     }
 

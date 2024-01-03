@@ -17,14 +17,19 @@ class BaseViewController: UIViewController {
     private let expectionAlert: UIAlertController = .init(title: "Error".localized(), message: "ExpectionError".localized(), preferredStyle: .alert)
 
     private let disposeBag = DisposeBag()
+    
+    override func loadView() {
+        super.loadView()
+        bindViews()
+        bindViewModel()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = .init(title: "Back".localized(), style: .plain, target: nil, action: nil)
 
         expectionAlert.addAction(.init(title: "Confirm".localized(), style: .cancel))
         setupUI()
-        bindView()
-        bindViewModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +39,7 @@ class BaseViewController: UIViewController {
 
     open func setupUI() {}
 
-    open func bindView() {
+    open func bindViews() {
         loadingViewWithCancelBtn.cancelBtnClicked
             .subscribe(onNext: { [weak self] in
                 self?.loadingCancelBtnClicked()

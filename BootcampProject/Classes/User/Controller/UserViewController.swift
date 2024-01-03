@@ -120,8 +120,8 @@ class UserViewController: BaseViewController {
         super.setupUI()
     }
 
-    override func bindView() {
-        super.bindView()
+    override func bindViews() {
+        super.bindViews()
         themeButton.rx.tap
             .subscribe { [weak self] _ in
                 self?.showThemeActionSheet()

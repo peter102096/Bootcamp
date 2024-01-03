@@ -29,8 +29,8 @@ class AboutiTunesViewController: BaseViewController {
         }
     }
 
-    override func bindView() {
-        super.bindView()
+    override func bindViews() {
+        super.bindViews()
         rx.viewDidAppear
             .subscribe(onNext: { [weak self] _ in
                 self?.showLoadingView(in: self?.view, style: .Normal)

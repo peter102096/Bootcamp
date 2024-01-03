@@ -24,7 +24,6 @@ class DBModel: NSObject {
 
     //MARK: - Bookmark
     func setBookmark(_ model: BookmarkModel) {
-        dump(model)
         queue.sync { [unowned self] in
             realm = try! Realm()
             try! realm.write {

@@ -1,7 +1,7 @@
 import Foundation
 import ShareModels
 
-extension MovieResultModel {
+extension MediaResultModel {
     var bookmarkModel: BookmarkModel {
         .init(
             trackId: String(trackID),
@@ -14,23 +14,6 @@ extension MovieResultModel {
             releaseDate: releaseDate,
             trackTimeMillis: trackTimeMillis ?? 0,
             longDescription: longDescription ?? "",
-            isLiked: true)
-    }
-}
-
-extension MusicResultModel {
-    var bookmarkModel: BookmarkModel {
-        .init(
-            trackId: String(trackID),
-            type: .Music,
-            artistName: artistName,
-            collectionName: collectionName ?? "",
-            trackName: trackName,
-            trackViewURL: trackViewURL,
-            thumbnailURL: thumbnailURL,
-            releaseDate: releaseDate,
-            trackTimeMillis: trackTimeMillis ?? 0,
-            longDescription: "",
             isLiked: true)
     }
 }

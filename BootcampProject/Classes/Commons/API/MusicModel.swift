@@ -15,8 +15,8 @@ struct MusicModel: Codable {
 struct MusicResultModel: Codable {
     let trackID: Int
     let artistName: String
-    let collectionName: String?
     let trackName: String
+    let collectionName: String?
     let trackViewURL: String
     let thumbnailURL: String
     let releaseDate: String
@@ -25,8 +25,8 @@ struct MusicResultModel: Codable {
     enum CodingKeys: String, CodingKey {
         case trackID = "trackId"
         case artistName
-        case collectionName
         case trackName
+        case collectionName
         case trackViewURL = "trackViewUrl"
         case thumbnailURL = "artworkUrl100"
         case releaseDate

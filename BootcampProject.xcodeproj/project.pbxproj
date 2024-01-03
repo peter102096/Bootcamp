@@ -25,6 +25,8 @@
 		9128BE032AB7D4AB00F596FF /* BookmarkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9128BE022AB7D4AB00F596FF /* BookmarkButton.swift */; };
 		913FCC132AB9684C001796FE /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913FCC122AB9684C001796FE /* BookmarkViewModel.swift */; };
 		913FCC172AB99445001796FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913FCC162AB99445001796FE /* ViewController.swift */; };
+		915C7DB12B3C288300F87D26 /* MovieAndMusicResultModel+MediaResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C7DB02B3C288300F87D26 /* MovieAndMusicResultModel+MediaResultModel.swift */; };
+		915C7DB42B3C28D800F87D26 /* MediaResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C7DB32B3C28D800F87D26 /* MediaResultModel.swift */; };
 		916AD40F2AB04B00001491DD /* UserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916AD40E2AB04B00001491DD /* UserViewController.xib */; };
 		916AD4112AB04C81001491DD /* MainNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4102AB04C81001491DD /* MainNavController.swift */; };
 		916AD4142AB04DBA001491DD /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916AD4122AB04DBA001491DD /* MovieTableViewCell.swift */; };
@@ -152,6 +154,8 @@
 		9128BE022AB7D4AB00F596FF /* BookmarkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkButton.swift; sourceTree = "<group>"; };
 		913FCC122AB9684C001796FE /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		913FCC162AB99445001796FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		915C7DB02B3C288300F87D26 /* MovieAndMusicResultModel+MediaResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieAndMusicResultModel+MediaResultModel.swift"; sourceTree = "<group>"; };
+		915C7DB32B3C28D800F87D26 /* MediaResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaResultModel.swift; sourceTree = "<group>"; };
 		916AD40E2AB04B00001491DD /* UserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserViewController.xib; sourceTree = "<group>"; };
 		916AD4102AB04C81001491DD /* MainNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavController.swift; sourceTree = "<group>"; };
 		916AD4122AB04DBA001491DD /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
@@ -401,6 +405,7 @@
 			children = (
 				910CA9D62AB03A85002C8CB9 /* Controller */,
 				916AD42D2AB0623E001491DD /* Extensions */,
+				915C7DB22B3C28CA00F87D26 /* Model */,
 				9111583C2AAF03A80009965D /* View */,
 				9111583D2AAF03AC0009965D /* ViewModel */,
 			);
@@ -453,9 +458,18 @@
 			path = Commons;
 			sourceTree = "<group>";
 		};
+		915C7DB22B3C28CA00F87D26 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				915C7DB32B3C28D800F87D26 /* MediaResultModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		916AD41A2AB05A18001491DD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				915C7DB02B3C288300F87D26 /* MovieAndMusicResultModel+MediaResultModel.swift */,
 				D08FC0AA2AB8692A002380BF /* MediaResultModel+BookmarkModel.swift */,
 				916AD41C2AB05A46001491DD /* ObserableType+Extensions.swift */,
 				91AC831B2AB427B500A06B9B /* String+Fluent.swift */,
@@ -838,6 +852,7 @@
 				916AD4282AB05D64001491DD /* Global.swift in Sources */,
 				91AC830B2AB29F9F00A06B9B /* BaseViewController.swift in Sources */,
 				911158402AAF09400009965D /* APIModel.swift in Sources */,
+				915C7DB12B3C288300F87D26 /* MovieAndMusicResultModel+MediaResultModel.swift in Sources */,
 				910CA9E72AB0420D002C8CB9 /* SearchViewController.swift in Sources */,
 				91AC83092AB29EF000A06B9B /* WKWebView+Fluent.swift in Sources */,
 				916AD4312AB148C5001491DD /* UIButton+Fluent.swift in Sources */,
@@ -857,6 +872,7 @@
 				D08FC0AD2AB893D4002380BF /* SearchViewController+MediaTableViewCellDelegate.swift in Sources */,
 				910031022ABE947E00474414 /* ErrorModel.swift in Sources */,
 				916AD4202AB05A46001491DD /* UILabel+Fluent.swift in Sources */,
+				915C7DB42B3C28D800F87D26 /* MediaResultModel.swift in Sources */,
 				913FCC172AB99445001796FE /* ViewController.swift in Sources */,
 				910CA9D32AB006CA002C8CB9 /* MusicModel.swift in Sources */,
 				916AD4142AB04DBA001491DD /* MovieTableViewCell.swift in Sources */,
