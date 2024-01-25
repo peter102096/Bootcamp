@@ -68,7 +68,7 @@ class MusicTableViewCell: UITableViewCell {
     }
 
     private func setBookmark(_ model: MediaResultModel) {
-        DBModel.shared.setBookmark(model.bookmarkModel)
+        DBModel.shared.setBookmark(model.musicBookmarkModel)
     }
 
     private func updateAppearance() {
